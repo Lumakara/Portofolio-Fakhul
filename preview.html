@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prjoject Preview - WhatsappBot</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<!-- ==========================
+     Custom CSS (put to style.css or inside <style>)
+========================== -->
+<style>
+/* aspect 16:9 helper */
+.aspect-16-9 { position: relative; padding-top: 56.25%; }
+.aspect-16-9 > * { position: absolute; inset: 0; }
+
+/* track & slide sizing */
+#ucTrack { height: 100%; transition: transform 700ms cubic-bezier(.2,.9,.2,1); }
+.uc-slide { width: 100%; height: 100%; position: relative; }
+
+/* overlay gradient + parallax */
+.uc-overlay {
+  background: linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.35));
+  mix-blend-mode: multiply;
+  transition: opacity 500ms ease, transform 600ms ease;
+}
+
+/* subtle image hover zoom */
+.uc-img { transform-origin: center; }
+
+/* control button style */
+.uc-control { backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+
+/* modal */
+#ucModal { transition: opacity 300ms ease; }
+#ucModalContent { transform: translateY(20px) scale(.98); transition: transform 350ms cubic-bezier(.2,.9,.2,1), opacity 250ms ease; }
+#ucModal.show #ucModalContent { transform: translateY(0) scale(1); }
+
+/* dot active state */
+.uc-dot.active { background: linear-gradient(90deg,#6366f1,#8b5cf6); box-shadow: 0 6px 18px rgba(99,102,241,0.25); transform: scale(1.15); }
+
+/* responsive tweaks */
+@media (min-width: 768px) {
+  .uc-control { display: flex !important; }
+}
+
+/* tiny accessibility focus */
+.uc-dot:focus, .uc-control:focus, #ucPreviewBtn:focus { outline: 3px solid rgba(99,102,241,0.15); outline-offset: 3px; }
+
+/* add smooth image load effect */
+.uc-img { opacity: 0; transform: scale(1.03); transition: opacity 600ms ease, transform 900ms cubic-bezier(.2,.9,.2,1); }
+.uc-img.loaded { opacity: 1; transform: scale(1); }
+
+/* swipe cursor for desktop */
+.uc-slide { cursor: grab; }
+.uc-slide:active { cursor: grabbing; }
+</style>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 text-gray-900">
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
+<div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+<div class="flex items-center space-x-4">
+<a href="index.html" data-readdy="true" class="nav-item w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
+<i class="ri-arrow-left-line text-lg"></i>
+</a>
+</div>
+<h1 class="text-xl font-semibold text-gray-800">WhatsappBot</h1>
+<!-- Button -->
+<button id="shareBtn" 
+        class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
+  <i class="ri-share-line text-lg"></i>
+</button>
+</div>
+</header>
+<main class="pt-20">
+<!-- ==============================
+     ULTRA 16:9 CAROUSEL + PREVIEW
+     Put this where you want the banner
+     Requires Tailwind + remixicon (you already have them)
+================================= -->
+<section id="ultra-carousel" class="max-w-6xl mx-auto px-6 py-12">
+  <!-- Banner / Forced 16:9 -->
+  <div class="relative mx-auto max-w-full rounded-2xl overflow-hidden shadow-2xl">
+    <!-- Aspect ratio 16:9 wrapper -->
+    <div class="aspect-16-9 relative bg-black">
+      <!-- Slides track -->
+      <div id="ucTrack" class="absolute inset-0 flex will-change-transform">
+        <!-- Slide items -->
+        <div class="uc-slide relative flex-shrink-0 w-full">
+          <img data-src="assets/p1/p1.jpg" src="assets/p1/p1.jpg" alt="Slide 1"
+               class="uc-img absolute inset-0 w-full h-full object-cover transform transition-transform duration-800 ease-out" />
+          <div class="uc-overlay absolute inset-0 pointer-events-none"></div>
+        </div>
+        <div class="uc-slide relative flex-shrink-0 w-full">
+          <img data-src="assets/p1/p2.jpg" src="assets/p1/p2.jpg" alt="Slide 2"
+               class="uc-img absolute inset-0 w-full h-full object-cover transform transition-transform duration-800 ease-out" />
+          <div class="uc-overlay absolute inset-0 pointer-events-none"></div>
+        </div>
+        <div class="uc-slide relative flex-shrink-0 w-full">
+          <img data-src="assets/p1/p3.jpg" src="assets/p1/p3.jpg" alt="Slide 3"
+               class="uc-img absolute inset-0 w-full h-full object-cover transform transition-transform duration-800 ease-out" />
+          <div class="uc-overlay absolute inset-0 pointer-events-none"></div>
+        </div>
+        <div class="uc-slide relative flex-shrink-0 w-full">
+          <img data-src="assets/p1/p4.jpg" src="assets/p1/p4.jpg" alt="Slide 4"
+               class="uc-img absolute inset-0 w-full h-full object-cover transform transition-transform duration-800 ease-out" />
+          <div class="uc-overlay absolute inset-0 pointer-events-none"></div>
+        </div>
+      </div>)
+
+      <!-- control overlay: left/right arrows (desktop) -->
+      <button id="ucPrev" class="uc-control hidden md:flex items-center justify-center absolute left-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-white/90 shadow hover:scale-105 transition">
+        <i class="ri-arrow-left-s-line text-2xl"></i>
+      </button>
+      <button id="ucNext" class="uc-control hidden md:flex items-center justify-center absolute right-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-white/90 shadow hover:scale-105 transition">
+        <i class="ri-arrow-right-s-line text-2xl"></i>
+      </button>
+
+      <!-- click-to-preview fullsize -->
+      <button id="ucPreviewBtn"></button>
+    </div>
+
+    <!-- dots -->
+    <div class="absolute z-40 left-1/2 -translate-x-1/2 bottom-4 flex items-center gap-3">
+      <!-- generated by JS if you prefer static, keep placeholders -->
+      <button class="uc-dot w-3 h-3 rounded-full bg-white/60 ring-0 shadow-md" aria-label="slide 1"></button>
+      <button class="uc-dot w-3 h-3 rounded-full bg-white/40" aria-label="slide 2"></button>
+      <button class="uc-dot w-3 h-3 rounded-full bg-white/40" aria-label="slide 3"></button>
+      <button class="uc-dot w-3 h-3 rounded-full bg-white/40" aria-label="slide 4"></button>
+    </div>
+  </div>
+</section>
+<section class="py-12 bg-gray-50">
+<div class="max-w-6xl mx-auto px-6">
+<div class="grid lg:grid-cols-3 gap-8">
+<div class="lg:col-span-2">
+<h2 class="text-3xl font-bold mb-6">Whatsapp Bot
+</h2>
+<p class="text-lg text-gray-600 mb-8 leading-relaxed">
+Bot WhatsApp yang saya kembangkan dengan berbagai fitur, mulai dari game interaktif, integrasi AI untuk chat & pembuatan gambar, hingga manajemen grup dan panel admin. Dibangun untuk menghadirkan hiburan, produktivitas, serta automasi dalam komunitas WhatsApp.
+</p>
+<div class="mb-8">
+<h3 class="text-xl font-semibold mb-4">Technologies & FrameWork</h3>
+<div class="flex flex-wrap gap-3">
+<div class="tech-badge bg-yellow-100 text-yellow-700 px-4 py-2 rounded-full flex items-center space-x-2">
+  <img src="assets/icons/js.svg" alt="Python" class="w-5 h-5">
+  <span class="font-medium">JavaScript</span>
+</div>
+<div class="tech-badge bg-green-100 text-green-700 px-4 py-2 rounded-full flex items-center space-x-2">
+  <img src="assets/icons/nodejs.svg" alt="Python" class="w-5 h-5">
+  <span class="font-medium">NodeJS</span>
+</div>
+<div class="tech-badge bg-python text--700 px-4 py-2 rounded-full flex items-center space-x-2">
+  <img src="assets/icons/python.svg" alt="Python" class="w-5 h-5">
+  <span class="font-medium">Python</span>
+</div>
+<div class="tech-badge bg-gray-200 text-gray-900 px-4 py-2 rounded-full flex items-center space-x-2">
+  <img src="assets/icons/json.webp" alt="Python" class="w-5 h-5">
+  <span class="font-medium">Json</span>
+</div>
+</div>
+</div>
+<div class="mb-8">
+<h3 class="text-xl font-semibold mb-4">Fitur Unggulan</h3>
+<div class="grid md:grid-cols-2 gap-4">
+<!-- Game Interaktif -->
+<div class="feature-card bg-white p-6 rounded-xl shadow-lg">
+  <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+    <i class="ri-gamepad-line text-2xl text-blue-600"></i>
+  </div>
+  <h4 class="text-lg font-semibold mb-2">Game Interaktif</h4>
+  <p class="text-gray-600">Nikmati berbagai game seru langsung di WhatsApp seperti Uno, Casino, Tebak-Tebakan, Family100, dan banyak lagi.</p>
+</div>
+
+<!-- AI Chat & Image -->
+<div class="feature-card bg-white p-6 rounded-xl shadow-lg">
+  <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+    <i class="ri-robot-line text-2xl text-purple-600"></i>
+  </div>
+  <h4 class="text-lg font-semibold mb-2">AI Chat & Image</h4>
+  <p class="text-gray-600">Terintegrasi dengan AI untuk percakapan otomatis serta kemampuan membuat gambar unik dari teks prompt.</p>
+</div>
+
+<!-- Manajemen Pengguna -->
+<div class="feature-card bg-white p-6 rounded-xl shadow-lg">
+  <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+    <i class="ri-group-line text-2xl text-green-600"></i>
+  </div>
+  <h4 class="text-lg font-semibold mb-2">Manajemen Pengguna</h4>
+  <p class="text-gray-600">Sistem saldo, limit, gold, serta fitur jual-beli untuk mengelola interaksi dan aktivitas pengguna.</p>
+</div>
+
+<!-- Admin Tools -->
+<div class="feature-card bg-white p-6 rounded-xl shadow-lg">
+  <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+    <i class="ri-tools-line text-2xl text-red-600"></i>
+  </div>
+  <h4 class="text-lg font-semibold mb-2">Admin Tools</h4>
+  <p class="text-gray-600">Panel canggih untuk backup & reset database, broadcast, push kontak, hingga provisioning VPS DigitalOcean.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-1">
+<div class="bg-white p-6 rounded-xl shadow-lg mb-6">
+<h3 class="text-xl font-semibold mb-4">Project Details</h3>
+<div class="space-y-4">
+<div class="flex justify-between">
+<span class="text-gray-600">Timeline</span>
+<span class="font-medium">4 months</span>
+</div>
+<div class="flex justify-between">
+<span class="text-gray-600">Team Size</span>
+<span class="font-medium">1 developers</span>
+</div>
+<div class="flex justify-between">
+<span class="text-gray-600">Status</span>
+<span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-medium">On Progres</span>
+</div>
+</div>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-lg mb-6">
+<h3 class="text-xl font-semibold mb-4">Performance</h3>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-gray-600">Response Speed</span>
+<span class="font-medium">0.9s</span>
+</div>
+<div class="w-full bg-gray-200 rounded-full h-2">
+<div class="bg-green-500 h-2 rounded-full" style="width: 95%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-gray-600">User Satisfaction</span>
+<span class="font-medium">4.8/5</span>
+</div>
+<div class="w-full bg-gray-200 rounded-full h-2">
+<div class="bg-blue-500 h-2 rounded-full" style="width: 96%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-gray-600">Command Accuracy</span>
+<span class="font-medium">90%</span>
+</div>
+<div class="w-full bg-gray-200 rounded-full h-2">
+<div class="bg-purple-500 h-2 rounded-full" style="width: 98%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<a href="https://wa.link/ypr90w" class="block w-full bg-primary text-white py-4 px-6 !rounded-button font-semibold text-center hover:bg-primary/90 transition-colors whitespace-nowrap">
+<i class="ri-external-link-line mr-2"></i>
+View Live Demo
+</a>
+<!-- Button -->
+<a href="javascript:void(0)" 
+   onclick="document.getElementById('privateNotice').classList.remove('hidden')" 
+   class="block w-full border-2 border-primary text-primary py-4 px-6 !rounded-button font-semibold text-center hover:bg-primary/10 transition-colors whitespace-nowrap">
+  <i class="ri-github-line mr-2"></i>
+  Source Code
+</a>
+
+<!-- Modal -->
+<div id="privateNotice" class="hidden fixed inset-0 flex items-center justify-center bg-black/50">
+  <div class="bg-white p-6 rounded-xl shadow-lg max-w-sm text-center">
+    <h3 class="text-lg font-semibold mb-2">Privat Project 🚀</h3>
+    <p class="text-gray-600 mb-4">Jika ingin akses source code, silakan hubungi developer.</p>
+    <button onclick="document.getElementById('privateNotice').classList.add('hidden')" 
+            class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition">
+      Oke
+    </button>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-12 bg-gray-50">
+<div class="max-w-4xl mx-auto px-6 text-center">
+<h3 class="text-2xl font-bold mb-6">Ready to Start Your Project?</h3>
+<p class="text-lg text-gray-600 mb-8">
+Let's discuss how we can bring your ideas to life with cutting-edge technology and innovative design.
+</p>
+<div class="flex flex-wrap justify-center gap-4">
+<a href="index.html" data-readdy="true" class="bg-primary text-white px-8 py-4 !rounded-button font-semibold hover:bg-primary/90 transition-colors whitespace-nowrap">
+<i class="ri-arrow-left-line mr-2"></i>
+Back to Portfolio
+</a>
+<button class="border-2 border-primary text-primary px-8 py-4 !rounded-button font-semibold hover:bg-primary/10 transition-colors whitespace-nowrap">
+<i class="ri-mail-line mr-2"></i>
+Contact Me
+</button>
+</div>
+</div>
+</section>
+</main>
+<div id="fullscreenModal" class="preview-modal fixed inset-0 bg-black/90 flex items-center justify-center z-50 hidden">
+<div class="relative max-w-6xl mx-4">
+<button id="closeFullscreen" class="absolute -top-12 right-0 text-white text-2xl hover:text-gray-300">
+<i class="ri-close-line"></i>
+</button>
+<img id="fullscreenImage" src="" alt="Fullscreen Preview" class="w-full h-auto max-h-screen object-contain">
+</div>
+</div>
+<!-- Modal Overlay -->
+<div id="shareModal" 
+     class="hidden fixed inset-0 z-50 flex items-end md:items-center justify-center bg-black/40 backdrop-blur-sm">
+  
+  <!-- Modal Panel -->
+  <div id="modalContent"
+       class="bg-white/80 backdrop-blur-xl rounded-t-3xl md:rounded-2xl shadow-2xl p-6 w-full md:max-w-md transform translate-y-full md:translate-y-0 scale-95 opacity-0 transition-all duration-500 ease-out">
+    
+    <!-- Drag Handle (mobile feel) -->
+    <div class="w-12 h-1.5 bg-gray-300 rounded-full mx-auto mb-4 md:hidden"></div>
+    
+    <!-- Header -->
+    <h3 class="text-xl font-bold mb-2 text-gray-800">Bagikan Project 🚀</h3>
+    <p class="text-gray-500 mb-6">Pilih platform untuk membagikan project ini</p>
+
+    <!-- Share Buttons Grid -->
+    <div class="grid grid-cols-3 gap-4 mb-6">
+      <button onclick="copyLink()" 
+              class="flex flex-col items-center gap-2 p-4 rounded-2xl bg-gradient-to-br from-gray-100 to-gray-200 hover:from-gray-200 hover:to-gray-300 transition transform hover:scale-105 active:scale-95">
+        <i class="ri-links-line text-2xl text-gray-700"></i>
+        <span class="text-sm font-medium">Copy</span>
+      </button>
+      <a href="https://wa.me/?text=Check%20this%20project!" target="_blank"
+         class="flex flex-col items-center gap-2 p-4 rounded-2xl bg-gradient-to-br from-green-100 to-green-200 hover:from-green-200 hover:to-green-300 transition transform hover:scale-105 active:scale-95">
+        <i class="ri-whatsapp-line text-2xl text-green-600"></i>
+        <span class="text-sm font-medium">WhatsApp</span>
+      </a>
+      <a href="https://twitter.com/intent/tweet?text=Check%20this%20project!" target="_blank"
+         class="flex flex-col items-center gap-2 p-4 rounded-2xl bg-gradient-to-br from-blue-100 to-blue-200 hover:from-blue-200 hover:to-blue-300 transition transform hover:scale-105 active:scale-95">
+        <i class="ri-twitter-x-line text-2xl text-blue-600"></i>
+        <span class="text-sm font-medium">Twitter</span>
+      </a>
+      <a href="https://t.me/share/url?url=Check%20this%20project!" target="_blank"
+         class="flex flex-col items-center gap-2 p-4 rounded-2xl bg-gradient-to-br from-sky-100 to-sky-200 hover:from-sky-200 hover:to-sky-300 transition transform hover:scale-105 active:scale-95">
+        <i class="ri-telegram-line text-2xl text-sky-600"></i>
+        <span class="text-sm font-medium">Telegram</span>
+      </a>
+<a href="https://www.instagram.com/fatkulxc" target="_blank"
+   class="flex flex-col items-center gap-2 p-4 rounded-2xl bg-gradient-to-br from-pink-100 to-pink-200 hover:from-pink-200 hover:to-pink-300 transition transform hover:scale-105 active:scale-95">
+  <i class="ri-instagram-line text-2xl text-pink-600"></i>
+  <span class="text-sm font-medium">Instagram</span>
+</a>
+      <a href="mailto:?subject=Check%20this%20project&body=Look%20at%20this%20awesome%20project!" target="_blank"
+         class="flex flex-col items-center gap-2 p-4 rounded-2xl bg-gradient-to-br from-red-100 to-red-200 hover:from-red-200 hover:to-red-300 transition transform hover:scale-105 active:scale-95">
+        <i class="ri-mail-line text-2xl text-red-600"></i>
+        <span class="text-sm font-medium">Email</span>
+      </a>
+    </div>
+
+    <!-- Close Button -->
+    <button id="closeShare"
+            class="w-full bg-gradient-to-r from-primary to-purple-500 text-white py-3 rounded-xl font-semibold shadow hover:shadow-lg transition transform hover:scale-[1.02] active:scale-95">
+      Tutup
+    </button>
+  </div>
+</div>
+
+<!-- Toast Notification -->
+<div id="toast" 
+     class="hidden fixed bottom-6 right-6 bg-black/90 text-white px-5 py-3 rounded-xl shadow-lg transition transform translate-y-4 opacity-0">
+  Link berhasil disalin ✅
+</div>
+
+<!-- ==========================
+     PREVIEW MODAL
+========================== -->
+<div id="ucModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-6">
+  <div id="ucModalContent" class="relative max-w-5xl w-full rounded-2xl overflow-hidden bg-gradient-to-br from-black/80 to-neutral-900 shadow-2xl">
+    <button id="ucModalClose" class="absolute right-4 top-4 z-50 text-white bg-white/10 hover:bg-white/20 rounded-full p-2 transition">
+      <i class="ri-close-line text-lg"></i>
+    </button>
+
+    <div class="relative aspect-16-9 bg-black">
+      <img id="ucModalImg" src="" alt="Preview" class="absolute inset-0 w-full h-full object-contain bg-black" />
+      <!-- Prev/Next -->
+      <button id="ucModalPrev" class="absolute left-3 top-1/2 -translate-y-1/2 z-50 bg-white/10 hover:bg-white/20 rounded-full p-3 text-white transition">
+        <i class="ri-arrow-left-s-line text-2xl"></i>
+      </button>
+      <button id="ucModalNext" class="absolute right-3 top-1/2 -translate-y-1/2 z-50 bg-white/10 hover:bg-white/20 rounded-full p-3 text-white transition">
+        <i class="ri-arrow-right-s-line text-2xl"></i>
+      </button>
+
+      <!-- caption -->
+      <div id="ucModalCaption" class="absolute left-6 bottom-6 text-white/90 text-sm font-medium drop-shadow">Slide 1 / 4</div>
+    </div>
+  </div>
+</div>
+<!-- ==========================
+     JavaScript (paste at end of body or inside your script.js)
+========================== -->
+<script>
+(function () {
+  const track = document.getElementById('ucTrack');
+  const slides = Array.from(track.querySelectorAll('.uc-slide'));
+  const dots = Array.from(document.querySelectorAll('.uc-dot'));
+  const prevBtn = document.getElementById('ucPrev');
+  const nextBtn = document.getElementById('ucNext');
+  const previewBtn = document.getElementById('ucPreviewBtn');
+
+  const modal = document.getElementById('ucModal');
+  const modalImg = document.getElementById('ucModalImg');
+  const modalCaption = document.getElementById('ucModalCaption');
+  const modalClose = document.getElementById('ucModalClose');
+  const modalPrev = document.getElementById('ucModalPrev');
+  const modalNext = document.getElementById('ucModalNext');
+
+  let current = 0;
+  let isAnimating = false;
+  let autoplayInterval = 4500;
+  let autoplayTimer = null;
+  let isPaused = false;
+
+  // ensure aspect helper class exists on wrapper
+  const aspectWrappers = document.querySelectorAll('.aspect-16-9');
+  aspectWrappers.forEach(w => {
+    // lazy load images + set loaded class when ready
+    w.querySelectorAll('img[data-src]').forEach(img => {
+      if (img.dataset.src) {
+        // use actual src already set or fallback
+        img.onload = () => img.classList.add('loaded');
+        if (img.complete) img.classList.add('loaded');
+      }
+    });
+  });
+
+  function goTo(index, withTransition = true) {
+    if (isAnimating) return;
+    const total = slides.length;
+    index = (index + total) % total;
+    current = index;
+    if (!withTransition) track.style.transition = 'none';
+    else track.style.transition = '';
+    track.style.transform = `translateX(-${index * 100}%)`;
+    updateDots();
+    // re-enable transition after frame if disabled
+    if (!withTransition) requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        track.style.transition = '';
+      });
+    });
+  }
+
+  function next() { goTo(current + 1); }
+  function prev() { goTo(current - 1); }
+
+  function updateDots() {
+    dots.forEach((d, i) => {
+      d.classList.toggle('active', i === current);
+      // a11y label
+      d.setAttribute('aria-pressed', i === current ? 'true' : 'false');
+    });
+  }
+
+  // init dots click
+  dots.forEach((d, i) => d.addEventListener('click', () => {
+    goTo(i);
+    restartAutoplay();
+  }));
+
+  // prev/next click
+  prevBtn?.addEventListener('click', () => { prev(); restartAutoplay(); });
+  nextBtn?.addEventListener('click', () => { next(); restartAutoplay(); });
+
+  // autoplay
+  function startAutoplay() {
+    stopAutoplay();
+    autoplayTimer = setInterval(() => {
+      if (!isPaused) next();
+    }, autoplayInterval);
+  }
+  function stopAutoplay() { if (autoplayTimer) clearInterval(autoplayTimer); autoplayTimer = null; }
+  function restartAutoplay() { stopAutoplay(); startAutoplay(); }
+
+  // pause on hover / focus
+  const container = document.getElementById('ultra-carousel');
+  container?.addEventListener('mouseenter', () => { isPaused = true; });
+  container?.addEventListener('mouseleave', () => { isPaused = false; });
+
+  // touch / swipe support
+  let startX = 0, deltaX = 0, isDown = false;
+  track.addEventListener('pointerdown', (e) => {
+    isDown = true;
+    startX = e.clientX;
+    track.style.transition = 'none';
+  });
+  window.addEventListener('pointermove', (e) => {
+    if (!isDown) return;
+    deltaX = e.clientX - startX;
+    track.style.transform = `translateX(calc(-${current * 100}% + ${deltaX}px))`;
+  });
+  window.addEventListener('pointerup', (e) => {
+    if (!isDown) return;
+    isDown = false;
+    track.style.transition = '';
+    if (Math.abs(deltaX) > 80) {
+      if (deltaX < 0) next(); else prev();
+    } else {
+      goTo(current);
+    }
+    deltaX = 0;
+  });
+  // keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (modal.classList.contains('hidden') === false) {
+      if (e.key === 'ArrowLeft') modalPrev.click();
+      if (e.key === 'ArrowRight') modalNext.click();
+      if (e.key === 'Escape') modalClose.click();
+    } else {
+      if (e.key === 'ArrowLeft') prev();
+      if (e.key === 'ArrowRight') next();
+    }
+  });
+
+  // hover zoom subtle parallax & movement
+  slides.forEach((slide, idx) => {
+    const img = slide.querySelector('.uc-img');
+    slide.addEventListener('mousemove', (ev) => {
+      const rect = slide.getBoundingClientRect();
+      const px = (ev.clientX - rect.left) / rect.width - 0.5;
+      const py = (ev.clientY - rect.top) / rect.height - 0.5;
+      img.style.transform = `translate3d(${px * 10}px, ${py * 8}px, 0) scale(1.04)`;
+      slide.querySelector('.uc-overlay').style.transform = `translate3d(${px * 6}px, ${py * 4}px, 0)`;
+    });
+    slide.addEventListener('mouseleave', () => {
+      img.style.transform = '';
+      slide.querySelector('.uc-overlay').style.transform = '';
+    });
+
+    // lazy load pattern: mark loaded when image is ready
+    const realImg = img;
+    if (realImg && realImg.dataset.src) {
+      realImg.addEventListener('load', () => realImg.classList.add('loaded'));
+      if (realImg.complete) realImg.classList.add('loaded');
+    }
+  });
+
+  // preview modal
+  function openModal(index) {
+    index = (index + slides.length) % slides.length;
+    modal.classList.remove('hidden');
+    modal.classList.add('show');
+    modalImg.src = slides[index].querySelector('img').src || slides[index].querySelector('img').dataset.src;
+    modalCaption.textContent = `Slide ${index + 1} / ${slides.length}`;
+    current = index;
+    restartAutoplay();
+  }
+  function closeModal() {
+    modal.classList.add('hidden');
+    modal.classList.remove('show');
+  }
+  previewBtn.addEventListener('click', () => openModal(current));
+  slides.forEach((s, i) => {
+    // click image to preview
+    s.addEventListener('click', () => openModal(i));
+  });
+
+  modalClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+  modalPrev.addEventListener('click', () => {
+    current = (current - 1 + slides.length) % slides.length;
+    modalImg.src = slides[current].querySelector('img').src;
+    modalCaption.textContent = `Slide ${current + 1} / ${slides.length}`;
+  });
+  modalNext.addEventListener('click', () => {
+    current = (current + 1) % slides.length;
+    modalImg.src = slides[current].querySelector('img').src;
+    modalCaption.textContent = `Slide ${current + 1} / ${slides.length}`;
+  });
+
+  // swipe inside modal
+  (function modalSwipe() {
+    let sx=0, dx=0, dragging=false;
+    const modalInner = modal.querySelector('#ucModalContent');
+    modalInner.addEventListener('pointerdown', e => { dragging=true; sx=e.clientX; });
+    window.addEventListener('pointermove', e => { if(!dragging) return; dx=e.clientX-sx; modalInner.style.transform = `translateX(${dx}px)`; });
+    window.addEventListener('pointerup', e => {
+      if(!dragging) return;
+      dragging=false;
+      modalInner.style.transform = '';
+      if (dx > 80) modalPrev.click();
+      else if (dx < -80) modalNext.click();
+      dx=0;
+    });
+  })();
+
+  // start
+  goTo(0, false);
+  startAutoplay();
+
+  // expose for debugging if needed
+  window.uc = { goTo, next, prev, openModal, closeModal };
+
+})();
+</script>
+<script>
+  const shareBtn = document.getElementById('shareBtn');
+  const shareModal = document.getElementById('shareModal');
+  const modalContent = document.getElementById('modalContent');
+  const closeShare = document.getElementById('closeShare');
+  const toast = document.getElementById('toast');
+
+  // Open Modal
+  shareBtn.addEventListener('click', () => {
+    shareModal.classList.remove('hidden');
+    setTimeout(() => {
+      modalContent.classList.remove('opacity-0','scale-95','translate-y-full');
+      modalContent.classList.add('opacity-100','scale-100','translate-y-0');
+    }, 10);
+  });
+
+  // Close Modal
+  function closeModal() {
+    modalContent.classList.remove('opacity-100','scale-100','translate-y-0');
+    modalContent.classList.add('opacity-0','scale-95','translate-y-full');
+    setTimeout(() => shareModal.classList.add('hidden'), 400);
+  }
+  closeShare.addEventListener('click', closeModal);
+  shareModal.addEventListener('click', (e) => { if (e.target === shareModal) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+  // Copy link + toast
+  function copyLink() {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.remove('translate-y-4','opacity-0');
+        toast.classList.add('translate-y-0','opacity-100');
+      }, 10);
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0','opacity-100');
+        toast.classList.add('translate-y-4','opacity-0');
+        setTimeout(() => toast.classList.add('hidden'), 300);
+      }, 2000);
+    });
+  }
+</script>
+    <script src="script.js"></script>
+</body>
+</html>

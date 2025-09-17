@@ -1,0 +1,56 @@
+[
+  {
+    "title": "Advanced Web Development Certification",
+    "org": "Google Developers",
+    "date": "2025-09-14",
+    "id": "GDC-AWD-2025-09142",
+    "verification": "verify.google.dev/certificates/GDC-AWD-2025-09142",
+    "img": "https://readdy.ai/api/search-image?query=web%20development%20certificate&width=800&height=600&seq=cert001&orientation=landscape",
+    "skills": ["HTML5", "CSS3", "JavaScript", "React", "Node.js"]
+  },
+  {
+    "title": "Data Analytics Professional Certificate",
+    "org": "Coursera",
+    "date": "2025-06-01",
+    "id": "COU-DAPC-2025-0601",
+    "verification": "coursera.org/verify/COU-DAPC-2025-0601",
+    "img": "https://readdy.ai/api/search-image?query=data%20analytics%20certificate&width=800&height=600&seq=cert002&orientation=landscape",
+    "skills": ["SQL", "Spreadsheets", "Data Visualization", "Dashboards"]
+  },
+  {
+    "title": "AWS Certified Cloud Practitioner",
+    "org": "Amazon Web Services",
+    "date": "2025-04-20",
+    "id": "AWS-CLF-C01-042025",
+    "verification": "aws.amazon.com/verification",
+    "img": "https://readdy.ai/api/search-image?query=cloud%20certificate&width=800&height=600&seq=cert003&orientation=landscape",
+    "skills": ["AWS Basics", "Cloud Security", "Billing", "Architectural Principles"]
+  },
+  {
+    "title": "UI/UX Design Fundamentals",
+    "org": "Interaction Design Foundation",
+    "date": "2025-03-10",
+    "id": "IDF-UIUX-2025-0310",
+    "verification": "interaction-design.org/verify/IDF-UIUX-2025-0310",
+    "img": "https://readdy.ai/api/search-image?query=ux%20design%20certificate&width=800&height=600&seq=cert004&orientation=landscape",
+    "skills": ["User Research", "Wireframing", "Prototyping", "Usability Testing"]
+  },
+  {
+    "title": "Python for Everybody",
+    "org": "University of Michigan",
+    "date": "2024-12-02",
+    "id": "UoM-P4E-2024-1202",
+    "verification": "coursera.org/verify/UoM-P4E-2024-1202",
+    "img": "https://readdy.ai/api/search-image?query=python%20certificate&width=800&height=600&seq=cert005&orientation=landscape",
+    "skills": ["Python", "APIs", "Data Structures"]
+  },
+  {
+    "title": "Machine Learning",
+    "org": "Stanford Online",
+    "date": "2024-10-15",
+    "id": "STF-ML-2024-1015",
+    "verification": "coursera.org/verify/STF-ML-2024-1015",
+    "img": "https://readdy.ai/api/search-image?query=machine%20learning%20certificate&width=800&height=600&seq=cert006&orientation=landscape",
+    "skills": ["Supervised Learning", "Unsupervised Learning", "Model Evaluation"]
+  }
+]

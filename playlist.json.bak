@@ -1,0 +1,47 @@
+[
+  {
+    "id": "t1",
+    "title": "Shake It To The Max",
+    "artist": "Moliy",
+    "album": "-",
+    "duration": "-",
+    "src": "assets/music/sample1.mp3",
+    "cover": "assets/music/covers/c1.png"
+  },
+  {
+    "id": "t2",
+    "title": "Confes Your Love Song",
+    "artist": "Jiandro",
+    "album": "-",
+    "duration": "-",
+    "src": "assets/music/sample2.mp3",
+    "cover": "assets/music/covers/c2.png"
+  },
+  {
+    "id": "t3",
+    "title": "SHAMELESS",
+    "artist": "Camila Cabello",
+    "album": "-",
+    "duration": "-",
+    "src": "assets/music/sample3.mp3",
+    "cover": "assets/music/covers/c3.png"
+  },
+  {
+    "id": "t4",
+    "title": "From The Star",
+    "artist": "Laufey",
+    "album": "-",
+    "duration": "-",
+    "src": "assets/music/sample4.mp3",
+    "cover": "assets/music/covers/c4.png"
+  },
+  {
+    "id": "t5",
+    "title": "MONTAGEM DE VÔOS",
+    "artist": "Nueki & Tolchonov",
+    "album": "-",
+    "duration": "-",
+    "src": "assets/music/sample5.mp3",
+    "cover": "assets/music/covers/c5.png"
+  }
+]

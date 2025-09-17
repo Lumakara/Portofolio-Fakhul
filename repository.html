@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>repository fatkul - project whatsapp-bot</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-white text-gray-900">
+
+<header class="border-b border-gray-200 bg-white sticky top-0 z-50">
+<div class="px-6 py-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-4">
+<a href="https://readdy.ai/home/a30ccfb0-8eb6-4d91-8bc1-71a8ff52d7b2/68be3c0b-bbc2-4311-a79c-d54c8ee72d0a" data-readdy="true" class="w-8 h-8 flex items-center justify-center rounded hover:bg-gray-100 transition-colors">
+<i class="ri-arrow-left-line text-lg"></i>
+</a>
+<div class="flex items-center space-x-2">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-github-fill text-xl"></i>
+</div>
+<span class="text-blue-600 font-medium">Lumakara</span>
+<span class="text-gray-400">/</span>
+<span class="font-semibold">Whatsapp-Bot</span>
+</div>
+</div>
+<div class="flex items-center space-x-3">
+<button class="flex items-center space-x-1 px-3 py-1 border border-gray-300 !rounded-button text-sm hover:bg-gray-50 whitespace-nowrap">
+<i class="ri-eye-line text-sm"></i>
+<span>Watch</span>
+<span class="bg-gray-100 px-1 rounded text-xs">12</span>
+</button>
+<button class="flex items-center space-x-1 px-3 py-1 border border-gray-300 !rounded-button text-sm hover:bg-gray-50 whitespace-nowrap">
+<i class="ri-star-line text-sm"></i>
+<span>Star</span>
+<span class="bg-gray-100 px-1 rounded text-xs">247</span>
+</button>
+<button class="flex items-center space-x-1 px-3 py-1 border border-gray-300 !rounded-button text-sm hover:bg-gray-50 whitespace-nowrap">
+<i class="ri-git-fork-line text-sm"></i>
+<span>Fork</span>
+<span class="bg-gray-100 px-1 rounded text-xs">58</span>
+</button>
+</div>
+</div>
+</div>
+
+<div class="border-t border-gray-200">
+<div class="px-6">
+<nav class="flex space-x-8">
+<a href="#" class="nav-tab active py-3 text-sm font-medium border-b-2 border-transparent">
+<i class="ri-code-line mr-1"></i>
+Code
+</a>
+<a href="#" class="nav-tab py-3 text-sm font-medium border-b-2 border-transparent">
+<i class="ri-error-warning-line mr-1"></i>
+Issues
+<span class="bg-gray-200 text-gray-700 px-1 rounded-full text-xs ml-1">3</span>
+</a>
+<a href="#" class="nav-tab py-3 text-sm font-medium border-b-2 border-transparent">
+<i class="ri-git-pull-request-line mr-1"></i>
+Pull requests
+<span class="bg-gray-200 text-gray-700 px-1 rounded-full text-xs ml-1">1</span>
+</a>
+<a href="#" class="nav-tab py-3 text-sm font-medium border-b-2 border-transparent">
+<i class="ri-play-line mr-1"></i>
+Actions
+</a>
+<a href="#" class="nav-tab py-3 text-sm font-medium border-b-2 border-transparent">
+<i class="ri-shield-check-line mr-1"></i>
+Security
+</a>
+<a href="#" class="nav-tab py-3 text-sm font-medium border-b-2 border-transparent">
+<i class="ri-bar-chart-line mr-1"></i>
+Insights
+</a>
+</nav>
+</div>
+</div>
+</header>
+
+<main class="max-w-7xl mx-auto px-6 py-6">
+<div class="grid lg:grid-cols-4 gap-6">
+<div class="lg:col-span-3">
+<div class="mb-6">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center space-x-4">
+<button id="branchBtn" class="flex items-center space-x-2 px-3 py-1 border border-gray-300 !rounded-button text-sm hover:bg-gray-50 whitespace-nowrap">
+<i class="ri-git-branch-line"></i>
+<span>main</span>
+<i class="ri-arrow-down-s-line"></i>
+</button>
+<div class="text-sm text-gray-600">
+<span class="font-medium">3</span> branches
+<span class="mx-2">•</span>
+<span class="font-medium">2</span> tags
+</div>
+</div>
+<div class="flex items-center space-x-2">
+<button class="bg-green-600 text-white px-4 py-2 !rounded-button text-sm font-medium hover:bg-green-700 whitespace-nowrap">
+<i class="ri-download-line mr-1"></i>
+Code
+</button>
+</div>
+</div>
+
+<div class="border border-gray-200 rounded-lg overflow-hidden">
+<div class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<img src="https://readdy.ai/api/search-image?query=professional%20developer%20avatar%20profile%20picture%2C%20clean%20minimalist%20portrait%2C%20software%20engineer%20headshot%2C%20modern%20professional%20photo%2C%20neutral%20background%2C%20confident%20expression&width=40&height=40&seq=avatar001&orientation=squarish" alt="Alex Johnson" class="w-6 h-6 rounded-full">
+<span class="text-sm font-medium">alexjohnson</span>
+<span class="text-sm text-gray-600">Initial commit with complete e-commerce platform</span>
+</div>
+<div class="flex items-center space-x-4 text-sm text-gray-600">
+<span>Latest commit</span>
+<span class="mono">a7b3f2c</span>
+<span>2 days ago</span>
+</div>
+</div>
+
+<div class="divide-y divide-gray-100">
+<div class="file-item px-4 py-2 flex items-center justify-between cursor-pointer">
+<div class="flex items-center space-x-3">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-folder-line text-blue-600"></i>
+</div>
+<span class="text-sm font-medium">.github</span>
+</div>
+<div class="flex items-center space-x-4 text-xs text-gray-500">
+<span>Add GitHub workflows</span>
+<span>3 days ago</span>
+</div>
+</div>
+
+<div class="file-item px-4 py-2 flex items-center justify-between cursor-pointer">
+<div class="flex items-center space-x-3">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-folder-line text-blue-600"></i>
+</div>
+<span class="text-sm font-medium">public</span>
+</div>
+<div class="flex items-center space-x-4 text-xs text-gray-500">
+<span>Update favicon and manifest</span>
+<span>5 days ago</span>
+</div>
+</div>
+
+<div class="file-item px-4 py-2 flex items-center justify-between cursor-pointer">
+<div class="flex items-center space-x-3">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-folder-line text-blue-600"></i>
+</div>
+<span class="text-sm font-medium">src</span>
+</div>
+<div class="flex items-center space-x-4 text-xs text-gray-500">
+<span>Implement product catalog and shopping cart</span>
+<span>2 days ago</span>
+</div>
+</div>
+
+<div class="file-item px-4 py-2 flex items-center justify-between cursor-pointer">
+<div class="flex items-center space-x-3">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-file-line text-gray-600"></i>
+</div>
+<span class="text-sm font-medium">.gitignore</span>
+</div>
+<div class="flex items-center space-x-4 text-xs text-gray-500">
+<span>Add node_modules and build to gitignore</span>
+<span>1 week ago</span>
+</div>
+</div>
+
+<div class="file-item px-4 py-2 flex items-center justify-between cursor-pointer">
+<div class="flex items-center space-x-3">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-file-line text-gray-600"></i>
+</div>
+<span class="text-sm font-medium">package.json</span>
+</div>
+<div class="flex items-center space-x-4 text-xs text-gray-500">
+<span>Update dependencies and scripts</span>
+<span>3 days ago</span>
+</div>
+</div>
+
+<div class="file-item px-4 py-2 flex items-center justify-between cursor-pointer">
+<div class="flex items-center space-x-3">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-file-text-line text-gray-600"></i>
+</div>
+<span class="text-sm font-medium">README.md</span>
+</div>
+<div class="flex items-center space-x-4 text-xs text-gray-500">
+<span>Update installation and usage instructions</span>
+<span>2 days ago</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="border border-gray-200 rounded-lg overflow-hidden">
+<div class="bg-gray-50 px-4 py-3 border-b border-gray-200">
+<div class="flex items-center space-x-2">
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-file-text-line"></i>
+</div>
+<span class="font-medium">README.md</span>
+</div>
+</div>
+<div class="p-6">
+<div class="prose max-w-none">
+<h1 class="text-2xl font-bold mb-4">E-commerce Platform</h1>
+<p class="text-gray-600 mb-6">A modern, full-stack e-commerce platform built with React, Node.js, and MongoDB. Features include user authentication, product catalog, shopping cart, payment processing, and admin dashboard.</p>
+
+<h2 class="text-xl font-semibold mb-3 mt-8">🚀 Features</h2>
+<ul class="list-disc list-inside space-y-1 text-gray-700 mb-6">
+<li>User registration and authentication</li>
+<li>Product browsing with search and filters</li>
+<li>Shopping cart functionality</li>
+<li>Secure payment processing with Stripe</li>
+<li>Order management and tracking</li>
+<li>Admin dashboard for inventory management</li>
+<li>Responsive design for mobile and desktop</li>
+<li>Real-time notifications</li>
+</ul>
+
+<h2 class="text-xl font-semibold mb-3 mt-8">🛠️ Tech Stack</h2>
+<div class="grid md:grid-cols-2 gap-4 mb-6">
+<div>
+<h3 class="font-medium mb-2">Frontend</h3>
+<ul class="text-sm text-gray-600 space-y-1">
+<li>React 18</li>
+<li>Redux Toolkit</li>
+<li>React Router</li>
+<li>Tailwind CSS</li>
+<li>Axios</li>
+</ul>
+</div>
+<div>
+<h3 class="font-medium mb-2">Backend</h3>
+<ul class="text-sm text-gray-600 space-y-1">
+<li>Node.js</li>
+<li>Express.js</li>
+<li>MongoDB</li>
+<li>Mongoose</li>
+<li>JWT Authentication</li>
+</ul>
+</div>
+</div>
+
+<h2 class="text-xl font-semibold mb-3 mt-8">📦 Installation</h2>
+<div class="code-block p-4 rounded-lg mb-4">
+<pre class="mono text-sm"><code># Clone the repository
+git clone https://github.com/alexjohnson/e-commerce-platform.git
+
+# Navigate to project directory
+cd e-commerce-platform
+
+# Install dependencies
+npm install
+
+# Install client dependencies
+cd client && npm install
+
+# Return to root directory
+cd ..</code></pre>
+</div>
+
+<h2 class="text-xl font-semibold mb-3 mt-8">⚙️ Environment Setup</h2>
+<p class="text-gray-600 mb-3">Create a <code class="bg-gray-100 px-2 py-1 rounded text-sm">.env</code> file in the root directory:</p>
+<div class="code-block p-4 rounded-lg mb-6">
+<pre class="mono text-sm"><code>NODE_ENV=development
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+STRIPE_SECRET_KEY=your_stripe_secret_key
+CLOUDINARY_NAME=your_cloudinary_name
+CLOUDINARY_API_KEY=your_cloudinary_api_key
+CLOUDINARY_API_SECRET=your_cloudinary_api_secret</code></pre>
+</div>
+
+<h2 class="text-xl font-semibold mb-3 mt-8">🚀 Running the Application</h2>
+<div class="code-block p-4 rounded-lg mb-6">
+<pre class="mono text-sm"><code># Run backend and frontend concurrently
+npm run dev
+
+# Run backend only
+npm run server
+
+# Run frontend only
+npm run client</code></pre>
+</div>
+
+<h2 class="text-xl font-semibold mb-3 mt-8">📱 API Endpoints</h2>
+<div class="space-y-2 mb-6 text-sm">
+<div class="flex items-center space-x-3">
+<span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-mono">GET</span>
+<span class="font-mono">/api/products</span>
+<span class="text-gray-600">Get all products</span>
+</div>
+<div class="flex items-center space-x-3">
+<span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs font-mono">POST</span>
+<span class="font-mono">/api/auth/login</span>
+<span class="text-gray-600">User login</span>
+</div>
+<div class="flex items-center space-x-3">
+<span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs font-mono">POST</span>
+<span class="font-mono">/api/orders</span>
+<span class="text-gray-600">Create new order</span>
+</div>
+<div class="flex items-center space-x-3">
+<span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs font-mono">PUT</span>
+<span class="font-mono">/api/products/:id</span>
+<span class="text-gray-600">Update product</span>
+</div>
+</div>
+
+<h2 class="text-xl font-semibold mb-3 mt-8">🤝 Contributing</h2>
+<p class="text-gray-600 mb-4">Contributions are welcome! Please feel free to submit a Pull Request.</p>
+<ol class="list-decimal list-inside space-y-1 text-gray-700 mb-6">
+<li>Fork the project</li>
+<li>Create your feature branch (<code class="bg-gray-100 px-2 py-1 rounded text-sm">git checkout -b feature/AmazingFeature</code>)</li>
+<li>Commit your changes (<code class="bg-gray-100 px-2 py-1 rounded text-sm">git commit -m 'Add some AmazingFeature'</code>)</li>
+<li>Push to the branch (<code class="bg-gray-100 px-2 py-1 rounded text-sm">git push origin feature/AmazingFeature</code>)</li>
+<li>Open a Pull Request</li>
+</ol>
+
+<h2 class="text-xl font-semibold mb-3 mt-8">📄 License</h2>
+<p class="text-gray-600">This project is licensed under the MIT License - see the <a href="#" class="text-blue-600 hover:underline">LICENSE</a> file for details.</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="lg:col-span-1">
+<div class="space-y-6">
+<div class="border border-gray-200 rounded-lg p-4">
+<h3 class="font-semibold mb-3">About</h3>
+<p class="text-sm text-gray-600 mb-4">Modern e-commerce platform with React frontend and Node.js backend</p>
+<div class="space-y-2 text-sm">
+<div class="flex items-center space-x-2">
+<i class="ri-link text-gray-400"></i>
+<a href="#" class="text-blue-600 hover:underline">https://ecommerce-demo.vercel.app</a>
+</div>
+<div class="flex items-center space-x-2">
+<i class="ri-price-tag-3-line text-gray-400"></i>
+<div class="flex flex-wrap gap-1">
+<span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs">react</span>
+<span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs">nodejs</span>
+<span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs">mongodb</span>
+<span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs">ecommerce</span>
+</div>
+</div>
+</div>
+</div>
+
+<div class="border border-gray-200 rounded-lg p-4">
+<h3 class="font-semibold mb-3">Releases</h3>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<div class="w-2 h-2 bg-green-500 rounded-full"></div>
+<span class="text-sm font-medium">v2.1.0</span>
+</div>
+<span class="text-xs text-gray-500">Latest</span>
+</div>
+<p class="text-xs text-gray-600 mt-1">Payment integration and order tracking</p>
+<a href="#" class="text-xs text-blue-600 hover:underline mt-2 block">View all releases</a>
+</div>
+
+<div class="border border-gray-200 rounded-lg p-4">
+<h3 class="font-semibold mb-3">Contributors</h3>
+<div class="flex items-center space-x-2 mb-2">
+<img src="https://readdy.ai/api/search-image?query=professional%20developer%20avatar%20profile%20picture%2C%20clean%20minimalist%20portrait%2C%20software%20engineer%20headshot%2C%20modern%20professional%20photo%2C%20neutral%20background%2C%20confident%20expression&width=32&height=32&seq=avatar002&orientation=squarish" alt="Alex Johnson" class="w-8 h-8 rounded-full">
+<div>
+<div class="text-sm font-medium">Alex Johnson</div>
+<div class="text-xs text-gray-500">247 commits</div>
+</div>
+</div>
+<div class="flex items-center space-x-2 mb-2">
+<img src="https://readdy.ai/api/search-image?query=female%20software%20developer%20avatar%20profile%20picture%2C%20professional%20headshot%2C%20clean%20portrait%2C%20modern%20tech%20professional%2C%20neutral%20background%2C%20friendly%20expression&width=32&height=32&seq=avatar003&orientation=squarish" alt="Sarah Chen" class="w-8 h-8 rounded-full">
+<div>
+<div class="text-sm font-medium">Sarah Chen</div>
+<div class="text-xs text-gray-500">89 commits</div>
+</div>
+</div>
+<div class="flex items-center space-x-2">
+<img src="https://readdy.ai/api/search-image?query=male%20programmer%20avatar%20profile%20picture%2C%20developer%20headshot%2C%20professional%20portrait%2C%20software%20engineer%20photo%2C%20clean%20background%2C%20tech%20professional&width=32&height=32&seq=avatar004&orientation=squarish" alt="Mike Rodriguez" class="w-8 h-8 rounded-full">
+<div>
+<div class="text-sm font-medium">Mike Rodriguez</div>
+<div class="text-xs text-gray-500">34 commits</div>
+</div>
+</div>
+</div>
+
+<div class="border border-gray-200 rounded-lg p-4">
+<h3 class="font-semibold mb-3">Languages</h3>
+<div class="space-y-2">
+<div class="language-bar bg-gray-200">
+<div class="flex h-full">
+<div class="bg-yellow-400" style="width: 45%"></div>
+<div class="bg-blue-500" style="width: 32%"></div>
+<div class="bg-red-500" style="width: 15%"></div>
+<div class="bg-green-500" style="width: 8%"></div>
+</div>
+</div>
+<div class="space-y-1 text-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
+<span>JavaScript</span>
+</div>
+<span class="text-gray-500">45.2%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+<span>TypeScript</span>
+</div>
+<span class="text-gray-500">32.1%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<div class="w-3 h-3 bg-red-500 rounded-full"></div>
+<span>CSS</span>
+</div>
+<span class="text-gray-500">15.3%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<div class="w-3 h-3 bg-green-500 rounded-full"></div>
+<span>HTML</span>
+</div>
+<span class="text-gray-500">7.4%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+
+<div id="branchDropdown" class="fixed inset-0 bg-black/20 flex items-start justify-center pt-20 z-50 hidden">
+<div class="bg-white border border-gray-200 rounded-lg shadow-lg w-80 max-h-96 overflow-y-auto">
+<div class="p-3 border-b border-gray-200">
+<h3 class="font-medium">Switch branches/tags</h3>
+</div>
+<div class="p-2">
+<div class="mb-3">
+<h4 class="text-sm font-medium text-gray-700 mb-2">Branches</h4>
+<div class="space-y-1">
+<div class="flex items-center justify-between px-2 py-1 rounded hover:bg-gray-50 cursor-pointer">
+<div class="flex items-center space-x-2">
+<i class="ri-git-branch-line text-sm text-gray-400"></i>
+<span class="text-sm">main</span>
+</div>
+<i class="ri-check-line text-green-600"></i>
+</div>
+<div class="flex items-center space-x-2 px-2 py-1 rounded hover:bg-gray-50 cursor-pointer">
+<i class="ri-git-branch-line text-sm text-gray-400"></i>
+<span class="text-sm">development</span>
+</div>
+<div class="flex items-center space-x-2 px-2 py-1 rounded hover:bg-gray-50 cursor-pointer">
+<i class="ri-git-branch-line text-sm text-gray-400"></i>
+<span class="text-sm">feature/payment-integration</span>
+</div>
+</div>
+</div>
+<div>
+<h4 class="text-sm font-medium text-gray-700 mb-2">Tags</h4>
+<div class="space-y-1">
+<div class="flex items-center space-x-2 px-2 py-1 rounded hover:bg-gray-50 cursor-pointer">
+<i class="ri-price-tag-3-line text-sm text-gray-400"></i>
+<span class="text-sm">v2.1.0</span>
+</div>
+<div class="flex items-center space-x-2 px-2 py-1 rounded hover:bg-gray-50 cursor-pointer">
+<i class="ri-price-tag-3-line text-sm text-gray-400"></i>
+<span class="text-sm">v2.0.0</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>

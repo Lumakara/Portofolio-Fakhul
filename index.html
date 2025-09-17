@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Fatkul</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<!-- Tambahkan di HEAD -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="mp-player.js" defer></script>
+</head>
+<body class="bg-gray-50 text-gray-900 transition-colors duration-300">
+  <div id="progressBar" style="
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, #3b82f6, #06b6d4, #3b82f6);
+  z-index: 9999;
+  transition: width 0.3s ease;
+"></div>
+<div class="particle-bg" id="particleContainer"></div>
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 transition-colors duration-300">
+<div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+<a href="index.html" class="flex items-center space-x-2">
+  <img src="assets/icons/ic.png" alt="Alex Logo" class="h-8 w-auto" />
+  <span class="logo-font text-2xl font-bold text-primary">Fatkul</span>
+</a>
+<nav class="hidden md:flex items-center space-x-8">
+<a href="#welcome" class="text-gray-700 hover:text-primary transition-colors">Home</a>
+<a href="#about" class="text-gray-700 hover:text-primary transition-colors">About</a>
+<a href="#journey" class="text-gray-700 hover:text-primary transition-colors">Journey</a>
+<a href="#gallery" class="text-gray-700 hover:text-primary transition-colors">Gallery</a>
+<a href="#contact" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
+</nav>
+<div class="flex items-center space-x-2">
+<!-- From Uiverse.io by vinodjangid07 --> 
+<button id="settingsBtn" class="setting-btn w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10">
+  <span class="bar bar1"></span>
+  <span class="bar bar2"></span>
+  <span class="bar bar1"></span>
+</button>
+<button id="hamburgerBtn" 
+  class="setting-btn w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10"">
+  <span class="w-5 h-0.5 bg-white"></span>
+  <span class="w-5 h-0.5 bg-white"></span>
+  <span class="w-5 h-0.5 bg-white"></span>
+</button>
+</div>
+</div>
+</header>
+<!-- Drawer Panel (Light Theme + Icons) -->
+<div id="mobileNav"
+  class="fixed top-0 left-0 h-full w-[280px] bg-white/80 backdrop-blur-xl border-r border-gray-200 shadow-2xl transform -translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.77,0,0.18,1)] z-50 md:hidden">
+  
+  <!-- Header Drawer -->
+  <div class="p-6 flex justify-between items-center border-b border-gray-200">
+    <h2 class="text-xl font-bold text-gray-800">Menu</h2>
+    <button id="closeMobileNav" class="text-2xl text-gray-500 hover:text-primary transition">&times;</button>
+  </div>
+
+  <!-- Links with Icons -->
+  <nav class="p-6 flex flex-col space-y-6">
+    <a href="#welcome" class="drawer-link flex items-center gap-3 text-lg font-semibold text-gray-700 hover:text-primary active">
+      <i class="ri-home-4-line text-xl"></i> Home
+    </a>
+    <a href="#about" class="drawer-link flex items-center gap-3 text-lg font-semibold text-gray-700 hover:text-primary">
+      <i class="ri-user-line text-xl"></i> About
+    </a>
+    <a href="#gallery" class="drawer-link flex items-center gap-3 text-lg font-semibold text-gray-700 hover:text-primary">
+      <i class="ri-image-line text-xl"></i> Gallery
+    </a>
+    <a href="#journey" class="drawer-link flex items-center gap-3 text-lg font-semibold text-gray-700 hover:text-primary">
+      <i class="ri-road-map-line text-xl"></i> Journey
+    </a>
+    <a href="#contact" class="drawer-link flex items-center gap-3 text-lg font-semibold text-gray-700 hover:text-primary">
+      <i class="ri-mail-line text-xl"></i> Contact
+    </a>
+  </nav>
+</div>
+<main>
+<section id="welcome" class="min-h-screen flex items-center justify-center relative overflow-hidden" style="background-image: url('https://files.catbox.moe/tyv2mq.webp'); background-size: cover; background-position: center;">
+<div class="absolute inset-0 bg-white/70"></div>
+<div class="relative z-10 text-center max-w-4xl mx-auto px-6">
+<div class="mb-8">
+<div class="w-24 h-24 mx-auto mb-6 bg-primary/20 rounded-full flex items-center justify-center animate-pulse">
+<i class="ri-code-s-slash-line text-4xl text-primary"></i>
+</div>
+</div>
+<h1 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+Welcome To My Portofolio
+</h1>
+<p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto">
+Tanpa batas untuk berkarya, tanpa henti untuk terus berkembang
+</p>
+<div class="flex flex-wrap justify-center gap-4 mb-12">
+<div class="skill-icon w-16 h-16 bg-white rounded-xl shadow-lg flex items-center justify-center cursor-pointer">
+<i class="ri-nodejs-line text-2xl text-green-500"></i>
+</div>
+<div class="skill-icon w-16 h-16 bg-white rounded-xl shadow-lg flex items-center justify-center cursor-pointer">
+<i class="ri-html5-line text-2xl text-orange-500"></i>
+</div>
+<div class="skill-icon w-16 h-16 bg-white rounded-xl shadow-lg flex items-center justify-center cursor-pointer">
+<i class="ri-css3-line text-2xl text-blue-600"></i>
+</div>
+<div class="skill-icon w-16 h-16 bg-white rounded-xl shadow-lg flex items-center justify-center cursor-pointer">
+<i class="ri-javascript-line text-2xl text-yellow-500"></i>
+</div>
+</div>
+<div class="flex flex-wrap justify-center gap-4">
+<button id="downloadCvBtn" class="glow-button bg-primary text-white px-8 py-4 !rounded-button font-semibold flex items-center space-x-2 whitespace-nowrap">
+<i class="ri-download-line"></i>
+<span>Download CV</span>
+</button>
+<div id="downloadToast" class="fixed bottom-4 right-4 bg-gray-800 text-white px-6 py-3 rounded-lg shadow-lg transform translate-y-full opacity-0 transition-all duration-300 flex items-center space-x-2">
+<i class="ri-checkbox-circle-line"></i>
+<span>CV downloaded successfully</span>
+</div>
+<button id="contactMeBtn" class="glow-button bg-secondary text-white px-8 py-4 !rounded-button font-semibold flex items-center space-x-2 whitespace-nowrap">
+<i class="ri-mail-line"></i>
+<span>Contact Me</span>
+</button>
+<a href="game.html" data-readdy="true" class="glow-button bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 !rounded-button font-semibold flex items-center space-x-2 whitespace-nowrap">
+<i class="ri-gamepad-line"></i>
+<span>Play Game</span>
+</a>
+</div>
+</div>
+</section>
+<section id="about" class="bg-white">
+<svg class="section-top" viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="transform: scale(1,-1);">
+  <path fill="#F5FBFF" d="M0,60 Q720,120 1440,60 L1440,120 L0,120 Z"/>
+</svg>
+<div class="max-w-6xl mx-auto px-6">
+<div class="text-center mb-16">
+<div class="w-32 h-32 mx-auto mb-8 rounded-full overflow-hidden cursor-pointer card-hover" id="profilePhoto">
+<img src="assets/profile/p.webp" alt="Profile" class="w-full h-full object-cover object-top">
+</div>
+<h2 class="text-4xl font-bold mb-4">About Me</h2>
+<p class="text-xl text-gray-600 max-w-2xl mx-auto">
+Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang besar, saya terbuka pada hal-hal baru serta tantangan yang mendukung pengembangan diri.
+</p>
+</div>
+<div class="flex justify-center mb-8">
+<div class="bg-gray-100 p-2 rounded-xl flex space-x-2">
+<button class="about-filter px-6 py-3 !rounded-button font-medium transition-all active bg-primary text-white" data-filter="overview">Overview</button>
+<button class="about-filter px-6 py-3 !rounded-button font-medium transition-all text-gray-600 hover:text-primary" data-filter="skills">Skills</button>
+<button class="about-filter px-6 py-3 !rounded-button font-medium transition-all text-gray-600 hover:text-primary" data-filter="funfact">Fun Facts</button>
+</div>
+</div>
+<div id="aboutContent" class="min-h-[1px]">
+<div id="overview" class="about-content">
+<div class="max-w-3xl mx-auto text-center">
+<p class="text-lg leading-relaxed typing-text" id="typingText">Portofolio ini adalah jejak langkah dari imajinasi yang tumbuh menjadi karya, setiap detailnya bercerita tentang dedikasi dan cinta pada proses berkarya. Di dalamnya tersimpan percikan rasa ingin tahu, keberanian untuk mencoba, dan keyakinan bahwa setiap langkah kecil dapat meninggalkan jejak yang bermakna.
+</p>
+</div>
+</div>
+<div id="skills" class="about-content hidden">
+  <div class="scroll-container">
+    <div class="scroll-content space-x-8">
+      <!-- Set 1 -->
+      <div class="flex items-center space-x-3 bg-white rounded-xl px-6 py-4 shadow-lg">
+        <i class="ri-reactjs-line text-2xl text-blue-500"></i>
+        <span class="font-semibold">React</span>
+      </div>
+      <div class="flex items-center space-x-3 bg-white rounded-xl px-6 py-4 shadow-lg">
+        <i class="ri-vuejs-line text-2xl text-green-500"></i>
+        <span class="font-semibold">Vue.js</span>
+      </div>
+      <div class="flex items-center space-x-3 bg-white rounded-xl px-6 py-4 shadow-lg">
+        <i class="ri-nodejs-line text-2xl text-green-600"></i>
+        <span class="font-semibold">Node.js</span>
+      </div>
+      <div class="flex items-center space-x-3 bg-white rounded-xl px-6 py-4 shadow-lg">
+        <i class="ri-database-line text-2xl text-blue-600"></i>
+        <span class="font-semibold">MongoDB</span>
+      </div>
+      <div class="flex items-center space-x-3 bg-white rounded-xl px-6 py-4 shadow-lg">
+        <i class="ri-javascript-line text-2xl text-yellow-500"></i>
+        <span class="font-semibold">JavaScript</span>
+      </div>
+
+      <!-- Set 2 (duplikat untuk seamless loop) -->
+      <div class="flex items-center space-x-3 bg-white rounded-xl px-6 py-4 shadow-lg">
+        <i class="ri-reactjs-line text-2xl text-blue-500"></i>
+        <span class="font-semibold">React</span>
+      </div>
+      <div class="flex items-center space-x-3 bg-white rounded-xl px-6 py-4 shadow-lg">
+        <i class="ri-vuejs-line text-2xl text-green-500"></i>
+        <span class="font-semibold">Vue.js</span>
+      </div>
+      <div class="flex items-center space-x-3 bg-white rounded-xl px-6 py-4 shadow-lg">
+        <i class="ri-nodejs-line text-2xl text-green-600"></i>
+        <span class="font-semibold">Node.js</span>
+      </div>
+      <div class="flex items-center space-x-3 bg-white rounded-xl px-6 py-4 shadow-lg">
+        <i class="ri-database-line text-2xl text-blue-600"></i>
+        <span class="font-semibold">MongoDB</span>
+      </div>
+      <div class="flex items-center space-x-3 bg-white rounded-xl px-6 py-4 shadow-lg">
+        <i class="ri-javascript-line text-2xl text-yellow-500"></i>
+        <span class="font-semibold">JavaScript</span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div id="funfact" class="about-content hidden">
+<div class="grid md:grid-cols-3 gap-6">
+<div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl text-center card-hover">
+<i class="ri-coffee-line text-4xl text-blue-500 mb-4"></i>
+<h3 class="text-2xl font-bold text-blue-600">77+</h3>
+<p class="text-blue-700">Cups of Coffee</p>
+</div>
+<div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl text-center card-hover">
+<i class="ri-code-line text-4xl text-green-500 mb-4"></i>
+<h3 class="text-2xl font-bold text-green-600">25+</h3>
+<p class="text-green-700">Projects Completed</p>
+</div>
+<div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl text-center card-hover">
+<i class="ri-team-line text-4xl text-purple-500 mb-4"></i>
+<h3 class="text-2xl font-bold text-purple-600">17+</h3>
+<p class="text-purple-700">Organization joined</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="journey" class="relative">
+<svg viewBox="0 0 1440 180" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform="scale(1,-1) translate(0,-180)">
+    <path fill="#E8F8FF" d="M0,60 Q180,20 360,70 T720,60 T1080,100 T1440,60 L1440,180 L0,180 Z"/>
+    <path fill="#FFF5FF" d="M0,110 Q240,70 480,120 T960,100 T1440,130 L1440,180 L0,180 Z"/>
+    <path fill="#FFFFFF" d="M0,150 Q300,120 600,160 T1200,140 T1440,170 L1440,180 L0,180 Z"/>
+  </g>
+</svg>
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-5xl font-bold text-center mb-16">My Journey</h2>
+
+    <!-- Filter -->
+    <div class="flex justify-center mb-12">
+      <div class="bg-white p-2 rounded-xl flex space-x-2 shadow-lg">
+        <button class="journey-filter px-6 py-3 !rounded-button font-medium transition-all active bg-primary text-white" data-filter="education">Education</button>
+        <button class="journey-filter px-6 py-3 !rounded-button font-medium transition-all text-gray-600 hover:text-primary" data-filter="experience">Experience</button>
+        <button class="journey-filter px-6 py-3 !rounded-button font-medium transition-all text-gray-600 hover:text-primary" data-filter="hobbies">Hobbies</button>
+      </div>
+    </div>
+
+    <div id="journeyContent">
+
+<!-- === EDUCATION TIMELINE === -->
+<div id="education" class="journey-content">
+  <div class="max-w-3xl mx-auto relative">
+    <div class="progress-bar absolute left-1/2 transform -translate-x-1/2 top-0 w-1 bg-gray-200 h-full">
+      <div id="progressFill" class="bg-primary w-1 rounded-full transition-all duration-300" style="height:0"></div>
+    </div>
+    <div class="space-y-12 relative z-10">
+      
+      <!-- Item kiri -->
+      <div class="timeline-item-left" data-modal="edu1">
+        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl cursor-pointer">
+          <span class="text-primary font-semibold">2013 - 2019</span>
+          <h3 class="text-xl font-bold">MI HAYATUL ISLAMIYAH</h3>
+          <p class="text-gray-600">Madrasah Ibtidaiyah <b>(MI)</b></p>
+        </div>
+      </div>
+
+      <!-- Item kanan -->
+      <div class="timeline-item-right" data-modal="edu2">
+        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl cursor-pointer">
+          <span class="text-primary font-semibold">2019 - 2022</span>
+          <h3 class="text-xl font-bold">SMP ISLAM YAPKUM</h3>
+          <p class="text-gray-600">Sekolah Menengah Pertama <b>(SMP)</b></p>
+        </div>
+      </div>
+
+      <!-- Item kiri -->
+      <div class="timeline-item-left" data-modal="edu3">
+        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl cursor-pointer">
+          <span class="text-primary font-semibold">2022 - 2025</span>
+          <h3 class="text-xl font-bold">SMK AL-HIDAYAH</h3>
+          <p class="text-gray-600">Sekolah Menengah Kejuruan <b>(SMK) AKUNTANSI</b></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- === EXPERIENCE === -->
+<div id="experience" class="journey-content hidden">
+  <div class="grid md:grid-cols-2 gap-6">
+
+    <div class="exp-item" data-modal="exp1">
+      <div class="bg-white p-6 rounded-xl shadow-lg card-hover cursor-pointer">
+        <span class="text-primary font-semibold">2023 - 2025</span>
+        <h3 class="text-xl font-bold mb-3">Pramuka</h3>
+        <p class="text-gray-600">Sebagai Ketua Pramuka Selama 2 Periode</p>
+      </div>
+    </div>
+
+    <div class="exp-item" data-modal="exp2">
+      <div class="bg-white p-6 rounded-xl shadow-lg card-hover cursor-pointer">
+        <span class="text-primary font-semibold">2024 - 2025</span>
+        <h3 class="text-xl font-bold mb-3">OSIS</h3>
+        <p class="text-gray-600">Sebagai Bendahara Pria</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- === HOBBIES === -->
+<div id="hobbies" class="journey-content hidden">
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+
+    <!-- Photography -->
+    <div class="text-center hobby-item cursor-pointer"
+         data-title="Photography"
+         data-desc='[
+           "Landscape & portrait photography",
+           "Editing with Lightroom & Photoshop",
+           "Experienced with DSLR & mirrorless cameras"
+         ]'>
+      <div class="hobby-icon w-20 h-20 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center">
+        <i class="ri-camera-line text-3xl text-blue-500"></i>
+      </div>
+      <p class="font-semibold">Photography</p>
+    </div>
+
+    <!-- Traveling -->
+    <div class="text-center hobby-item cursor-pointer"
+         data-title="Traveling"
+         data-desc='[
+           "Exploring mountains, beaches, and cultural destinations",
+           "Solo backpacking and group trips",
+           "Passionate about nature photography while traveling"
+         ]'>
+      <div class="hobby-icon w-20 h-20 mx-auto mb-4 bg-green-100 rounded-full flex items-center justify-center">
+        <i class="ri-map-line text-3xl text-green-500"></i>
+      </div>
+      <p class="font-semibold">Traveling</p>
+    </div>
+
+    <!-- Music -->
+    <div class="text-center hobby-item cursor-pointer"
+         data-title="Music"
+         data-desc='[
+           "Playing acoustic & electric guitar",
+           "Listening to indie and jazz music",
+           "Composing simple melodies and lyrics"
+         ]'>
+      <div class="hobby-icon w-20 h-20 mx-auto mb-4 bg-purple-100 rounded-full flex items-center justify-center">
+        <i class="ri-music-line text-3xl text-purple-500"></i>
+      </div>
+      <p class="font-semibold">Music</p>
+    </div>
+
+    <!-- Gaming -->
+    <div class="text-center hobby-item cursor-pointer"
+         data-title="Gaming"
+         data-desc='[
+           "Enjoying RPG, strategy, and FPS games",
+           "Playing online multiplayer with friends",
+           "Streaming gameplay casually on weekends"
+         ]'>
+      <div class="hobby-icon w-20 h-20 mx-auto mb-4 bg-red-100 rounded-full flex items-center justify-center">
+        <i class="ri-gamepad-line text-3xl text-red-500"></i>
+      </div>
+      <p class="font-semibold">Gaming</p>
+    </div>
+
+  </div>
+</div>
+    </div>
+  </div>
+  
+</section>
+<!-- === MODALS EXPERIENCE === -->
+<!-- === MODAL EXP 1 === -->
+<div id="exp1Modal" class="journey-modal hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+  <div class="modal-content bg-white rounded-xl p-8 max-w-2xl mx-4 relative transform opacity-0 scale-95 transition-all duration-300 ease-out">
+
+    <!-- Tombol Close -->
+    <button class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100"
+            onclick="closeJourneyModal('exp1Modal')">
+      <i class="ri-close-line text-xl"></i>
+    </button>
+
+    <!-- Konten -->
+    <h2 class="text-2xl font-bold mb-4">Pramuka</h2>
+    <ul class="list-disc pl-5 space-y-2 text-gray-600">
+      <li>Ketua Pramuka 2 periode</li>
+      <li>Menyelenggarakan 5+ kegiatan perkemahan</li>
+      <li>Meningkatkan keaktifan anggota hingga 40%</li>
+    </ul>
+
+    <!-- Navigasi -->
+    <div class="flex justify-between mt-6">
+      <button class="px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200"
+              data-prev="exp2Modal">← Prev</button>
+      <button class="px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary/90"
+              data-next="exp2Modal">Next →</button>
+    </div>
+  </div>
+</div>
+
+<!-- === MODAL EXP 2 === -->
+<div id="exp2Modal" class="journey-modal hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+  <div class="modal-content bg-white rounded-xl p-8 max-w-2xl mx-4 relative transform opacity-0 scale-95 transition-all duration-300 ease-out">
+
+    <button class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100"
+            onclick="closeJourneyModal('exp2Modal')">
+      <i class="ri-close-line text-xl"></i>
+    </button>
+
+    <h2 class="text-2xl font-bold mb-4">OSIS</h2>
+    <p class="text-gray-600">Bendahara Pria, mengatur keuangan kegiatan OSIS dan memastikan laporan transparan.</p>
+
+    <div class="flex justify-between mt-6">
+      <button class="px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200"
+              data-prev="exp1Modal">← Prev</button>
+      <button class="px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary/90"
+              data-next="exp1Modal">Next →</button>
+    </div>
+  </div>
+</div>
+<!-- === HOBBY MODAL === -->
+<div id="hobbyModal"
+     class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden"
+     role="dialog" aria-modal="true">
+  <div id="hobbyContent"
+       class="bg-white rounded-xl p-6 max-w-md mx-4 relative transform scale-95 opacity-0 transition-all duration-300 ease-out">
+    
+    <!-- Close -->
+    <button id="closeHobbyModal"
+            class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100">
+      <i class="ri-close-line text-xl"></i>
+    </button>
+
+    <!-- Title with icon -->
+    <div class="flex items-center gap-3 mb-4">
+      <i id="hobbyIcon" class="text-2xl"></i>
+      <h2 id="hobbyTitle" class="text-2xl font-bold"></h2>
+    </div>
+
+    <!-- Bullet list -->
+    <ul id="hobbyDesc" class="list-none space-y-2 text-gray-600"></ul>
+
+    <!-- Navigation -->
+    <div class="flex justify-between mt-6">
+      <button id="prevHobby"
+              class="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-100 flex items-center gap-2">
+        <i class="ri-arrow-left-s-line"></i> Prev
+      </button>
+      <button id="nextHobby"
+              class="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-100 flex items-center gap-2">
+        Next <i class="ri-arrow-right-s-line"></i>
+      </button>
+    </div>
+  </div>
+</div>
+<svg viewBox="0 0 1440 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="glow-ripple" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="18" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="grad-ripple" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#DFF6FF"/>
+      <stop offset="100%" stop-color="#FFF0FA"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#grad-ripple)" filter="url(#glow-ripple)" d="M0,120 Q240,80 480,120 T960,120 T1440,100 L1440,200 L0,200 Z"/>
+  <path fill="#FFFFFF" opacity="0.5" d="M0,160 Q300,140 600,160 T1200,160 T1440,150 L1440,200 L0,200 Z"/>
+</svg>
+<section id="gallery" class="bg-white">
+<svg viewBox="0 0 1440 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="glow-ripple-top" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="18" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="grad-ripple-top" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#DFF6FF"/>
+      <stop offset="100%" stop-color="#FFF0FA"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#grad-ripple-top)" filter="url(#glow-ripple-top)" d="M0,80 Q240,120 480,80 T960,80 T1440,100 L1440,0 L0,0 Z"/>
+  <path fill="#FFFFFF" opacity="0.5" d="M0,40 Q300,60 600,40 T1200,40 T1440,50 L1440,0 L0,0 Z"/>
+</svg>
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-4xl font-bold text-center mb-16">Gallery & Projects</h2>
+
+    <!-- FILTER BUTTONS -->
+    <div class="flex justify-center mb-12">
+      <div class="bg-gray-100 p-2 rounded-xl flex space-x-2">
+        <button class="gallery-filter px-6 py-3 !rounded-button font-medium transition-all active bg-primary text-white"
+          data-filter="projects" aria-pressed="true">Projects</button>
+        <button class="gallery-filter px-6 py-3 !rounded-button font-medium transition-all text-gray-600 hover:text-primary"
+          data-filter="certificates" aria-pressed="false">Certificates</button>
+        <button class="gallery-filter px-6 py-3 !rounded-button font-medium transition-all text-gray-600 hover:text-primary"
+          data-filter="designs" aria-pressed="false">Designs</button>
+      </div>
+    </div>
+
+    <div id="galleryContent">
+      <!-- PROJECTS -->
+      <div id="projects" class="gallery-content">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <article class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+            <img src="assets/p1/p1.jpg"
+              alt="Screenshot of modern E-commerce Platform" class="w-full h-48 object-cover object-top" loading="lazy">
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Whatsapp Bot</h3>
+              <p class="text-gray-600 mb-4">Lumakara Bot – asisten WhatsApp serbaguna dengan AI, downloader, moderasi, game, dan fitur premium.</p>
+              <div class="flex space-x-3">
+                <a href="preview.html" class="bg-primary text-white px-4 py-2 !rounded-button text-sm whitespace-nowrap inline-block">Preview</a>
+                <a href="#" class="border border-primary text-primary px-4 py-2 !rounded-button text-sm whitespace-nowrap">Demo</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+<!-- CERTIFICATES -->
+<div id="certificates" class="gallery-content hidden">
+  <div id="certificatesGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+  <div class="mt-6 flex justify-center">
+    <button id="loadMoreCertificates"
+      class="px-4 py-2 rounded-lg bg-primary text-white hover:opacity-90 focus:outline-none focus:ring">
+      Load more
+    </button>
+  </div>
+</div>
+
+<!-- MODAL (shared for all certificates) -->
+<div id="certificateModal"
+  class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden"
+  role="dialog" aria-modal="true" aria-labelledby="certificateTitle">
+
+  <div id="certificateContent"
+    class="bg-white rounded-xl p-8 max-w-4xl mx-4 relative transform scale-95 opacity-0 transition-all duration-300 ease-out">
+
+    <!-- Close Button -->
+    <button id="closeCertificateModal"
+      class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100" aria-label="Close">
+      <i class="ri-close-line text-xl"></i>
+    </button>
+
+    <!-- Navigation -->
+    <div class="absolute inset-y-0 left-0 flex items-center">
+      <button id="prevCertificate" class="p-2 bg-white/70 rounded-full shadow hover:bg-white" aria-label="Previous">
+        <i class="ri-arrow-left-s-line text-2xl"></i>
+      </button>
+    </div>
+    <div class="absolute inset-y-0 right-0 flex items-center">
+      <button id="nextCertificate" class="p-2 bg-white/70 rounded-full shadow hover:bg-white" aria-label="Next">
+        <i class="ri-arrow-right-s-line text-2xl"></i>
+      </button>
+    </div>
+
+    <!-- Modal Body -->
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="flex items-center">
+        <img id="certificateImage" src="assets/project/p1.webp" alt="Certificate Image"
+          class="w-full rounded-lg shadow-lg cursor-zoom-in transition duration-300 ease-in-out" loading="lazy">
+      </div>
+      <div>
+        <h2 id="certificateTitle" class="text-2xl font-bold mb-4"></h2>
+        <div class="space-y-4">
+          <div>
+            <h4 class="font-semibold text-gray-700">Issuing Organization</h4>
+            <p id="certificateOrg" class="text-gray-600"></p>
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-700">Completion Date</h4>
+            <p id="certificateDate" class="text-gray-600"></p>
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-700">Skills Covered</h4>
+            <div id="certificateSkills" class="flex flex-wrap gap-2 mt-1"></div>
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-700">Certificate ID</h4>
+            <p id="certificateID" class="text-gray-600"></p>
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-700">Verification</h4>
+            <p id="certificateVerification" class="text-gray-600"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Lightbox Zoom -->
+<div id="lightboxZoom" 
+     class="fixed inset-0 bg-black/90 flex items-center justify-center z-50 hidden cursor-zoom-out">
+  <img id="lightboxImage" src="assets/project/p1.webp" alt="Zoomed Certificate" class="max-h-[90vh] max-w-[90vw] rounded-lg shadow-xl">
+</div>
+
+      <!-- DESIGNS -->
+      <div id="designs" class="gallery-content hidden">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <article class="bg-white rounded-xl shadow-lg overflow-hidden gallery-item card-hover">
+            <img src="https://readdy.ai/api/search-image?query=modern%20logo%20design%20showcase%2C%20creative%20branding%2C%20minimalist%20logo%20collection%2C%20professional%20graphic%20design%2C%20clean%20presentation%2C%20design%20portfolio%20piece&width=400&height=300&seq=design001&orientation=landscape"
+              alt="Logo Design showcase" class="w-full h-48 object-cover object-top" loading="lazy">
+            <div class="p-6">
+              <h3 class="text-lg font-bold">Brand Identity Design</h3>
+              <p class="text-gray-600">Logo and branding package</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <svg viewBox="0 0 1440 220" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="glow-soft1" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="20" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="grad-soft1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFDEE9"/>
+      <stop offset="100%" stop-color="#B5FFFC"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#grad-soft1)" filter="url(#glow-soft1)" d="M0,120 C300,80 500,150 800,120 C1100,90 1300,140 1440,100 L1440,220 L0,220 Z"/>
+  <path fill="#FFFFFF" opacity="0.6" d="M0,180 C400,140 900,200 1440,150 L1440,220 L0,220 Z"/>
+</svg>
+</section>
+<section id="contact" class="relative bg-gradient-to-br from-blue-50 via-white to-indigo-50 overflow-hidden">
+
+  <div class="relative max-w-6xl mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <!-- TEXT -->
+      <div data-aos="fade-right">
+        <h2 class="text-5xl font-extrabold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          Let’s Work Together
+        </h2>
+        <p class="text-lg text-gray-600 mb-8">
+          Ready to bring your ideas to life? Let’s discuss your project and create something amazing together.
+        </p>
+
+        <!-- Contact Info -->
+<!-- Contact Info -->
+<div class="space-y-4 mb-8">
+<div class="flex items-center space-x-4 hover:translate-x-1 transition-transform">
+  <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center float-icon glow-blue">
+    <i class="ri-mail-line text-primary"></i>
+  </div>
+  <span class="text-gray-700">fakhulrohman2@gmail.com</span>
+</div>
+
+<div class="flex items-center space-x-4 hover:translate-x-1 transition-transform">
+  <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center float-icon glow-green">
+    <i class="ri-phone-line text-primary"></i>
+  </div>
+  <span class="text-gray-700">+62 851-8351-8016</span>
+</div>
+
+<div class="flex items-center space-x-4 hover:translate-x-1 transition-transform">
+  <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center float-icon glow-purple">
+    <i class="ri-map-pin-line text-primary"></i>
+  </div>
+  <span class="text-gray-700">Indonesia, Jawa Barat, Depok</span>
+</div>
+</div>
+
+      <!-- FORM -->
+      <div data-aos="fade-left">
+        <div class="bg-white/80 backdrop-blur-lg p-8 rounded-2xl shadow-2xl relative">
+          <form id="contactForm" class="space-y-6">
+<!-- Title Contact Me -->
+<div class="text-center mb-10">
+  <h3
+    class="text-3xl font-bold mb-3 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent tracking-wide">
+    Contact Me
+  </h3>
+  <!-- Underline -->
+  <div id="contact-underline"
+       class="mx-auto h-1 w-24 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 shadow-[0_0_15px_rgba(59,130,246,0.8)]">
+  </div>
+</div>
+            <div class="relative stagger">
+              <input type="text" name="name" required
+                class="peer w-full px-4 pt-5 pb-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                placeholder="" />
+              <label
+                class="absolute left-4 top-2.5 text-gray-500 text-sm transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:top-2.5 peer-focus:text-sm peer-focus:text-primary">
+                Name
+              </label>
+            </div>
+            <div class="relative stagger">
+              <input type="email" name="email" required
+                class="peer w-full px-4 pt-5 pb-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                placeholder=" " />
+              <label
+                class="absolute left-4 top-2.5 text-gray-500 text-sm transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:top-2.5 peer-focus:text-sm peer-focus:text-primary">
+                Email
+              </label>
+            </div>
+            <div class="relative stagger">
+              <input type="text" name="subject" required
+                class="peer w-full px-4 pt-5 pb-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                placeholder=" " />
+              <label
+                class="absolute left-4 top-2.5 text-gray-500 text-sm transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:top-2.5 peer-focus:text-sm peer-focus:text-primary">
+                Subject
+              </label>
+            </div>
+            <div class="relative stagger">
+              <textarea rows="4" name="message" required
+                class="peer w-full px-4 pt-5 pb-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                placeholder=" "></textarea>
+              <label
+                class="absolute left-4 top-2.5 text-gray-500 text-sm transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:top-2.5 peer-focus:text-sm peer-focus:text-primary">
+                Message
+              </label>
+            </div>
+            <div class="stagger">
+              <button type="submit"
+                class="group relative w-full bg-primary text-white py-3 rounded-lg font-semibold overflow-hidden ripple">
+                <span
+                  class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 transition-transform scale-x-0 group-hover:scale-x-100 origin-left"></span>
+                <span class="relative">Send Message</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+<!-- From Uiverse.io by vinodjangid07 --> 
+<a href="#welcome" class="left-1/2 transform -translate-x-1/2 top-1/2 transform-translate-y-1/2 top-6 bottom-10 right-4">
+  <svg class="svgIcon1" viewBox="0 0 384 512">
+  </svg>
+</a>
+
+  </div>
+  
+</section>
+<footer class="bg-gray-900 text-gray-300 pb-16">
+<svg viewBox="0 0 1440 220" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="glow-soft1-top" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="20" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="grad-soft1-top" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFDEE9"/>
+      <stop offset="100%" stop-color="#B5FFFC"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#grad-soft1-top)" filter="url(#glow-soft1-top)" d="M0,100 C200,150 500,80 900,130 C1200,170 1400,120 1440,150 L1440,0 L0,0 Z"/>
+  <path fill="#FFFFFF" opacity="0.5" d="M0,40 C400,80 800,20 1440,60 L1440,0 L0,0 Z"/>
+</svg>
+  <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+    <!-- Logo / Nama -->
+    <div class="text-center md:text-left">
+      <h2 class="text-lg font-bold text-white">Fakhul Rohman</h2>
+      <p class="text-sm text-gray-400">Frontend Developer & UI/UX Enthusiast</p>
+    </div>
+
+    <!-- Navigation Links -->
+    <div class="flex space-x-6">
+      <a href="#about" class="hover:text-white transition">About</a>
+      <a href="#projects" class="hover:text-white transition">Projects</a>
+      <a href="#contact" class="hover:text-white transition">Contact</a>
+    </div>
+
+    <!-- Sosmed -->
+    <div class="flex space-x-4">
+      <a href="https://www.linkedin.com/in/luma-kara"
+        class="w-10 h-10 flex items-center justify-center rounded-full bg-blue-600 hover:bg-blue-700 transition">
+        <i class="ri-linkedin-fill text-white text-lg"></i>
+      </a>
+      <a href="https://github.com/Lumakara"
+        class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition">
+        <i class="ri-github-fill text-white text-lg"></i>
+      </a>
+      <a href="https://www.instagram.com/fatkulxc"
+        class="w-10 h-10 flex items-center justify-center rounded-full bg-pink-500 hover:bg-pink-600 transition">
+        <i class="ri-instagram-fill text-white text-lg"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- Bottom -->
+  <div class="mt-6 border-t border-gray-700 pt-4 text-center text-sm text-gray-400">
+    © 2025 Fakhul Rohman. All rights reserved.
+  </div>
+</footer>
+</main>
+<div id="settingsPanel" class="settings-panel fixed top-0 right-0 h-full w-80 bg-white shadow-2xl z-50 p-6 overflow-y-auto">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-xl font-bold">Settings</h3>
+<button id="closeSettings" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100">
+<i class="ri-close-line"></i>
+</button>
+</div>
+<div class="space-y-6">
+<div>
+<h4 class="font-semibold mb-3">Language</h4>
+<select class="w-full p-3 border border-gray-300 rounded-lg text-sm">
+<option>English</option>
+<option>Spanish</option>
+<option>French</option>
+</select>
+</div>
+<div>
+<h4 class="font-semibold mb-3">Theme</h4>
+<div class="flex space-x-3">
+<button class="theme-btn flex-1 p-3 border-2 border-primary bg-primary/10 rounded-lg text-sm font-medium" data-theme="light">Light</button>
+<button class="theme-btn flex-1 p-3 border-2 border-gray-300 rounded-lg text-sm font-medium" data-theme="dark">Dark</button>
+</div>
+</div>
+<div>
+<h4 class="font-semibold mb-3">Particles</h4>
+<div class="flex items-center justify-between">
+<span class="text-sm">Enable Particles</span>
+<div class="relative">
+<input type="checkbox" id="particleToggle" class="sr-only" checked>
+<div class="toggle-bg w-12 h-6 bg-primary rounded-full cursor-pointer">
+<div class="toggle-dot w-5 h-5 bg-white rounded-full shadow-md transform translate-x-6 transition-transform"></div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<h4 class="font-semibold mb-3">Performance</h4>
+<div class="space-y-2">
+<label class="flex items-center space-x-3">
+<input type="radio" name="performance" value="low" class="sr-only">
+<div class="w-4 h-4 border-2 border-gray-300 rounded-full"></div>
+<span class="text-sm">Low</span>
+</label>
+<label class="flex items-center space-x-3">
+<input type="radio" name="performance" value="medium" class="sr-only" checked>
+<div class="w-4 h-4 border-2 border-primary bg-primary rounded-full"></div>
+<span class="text-sm">Medium</span>
+</label>
+<label class="flex items-center space-x-3">
+<input type="radio" name="performance" value="high" class="sr-only">
+<div class="w-4 h-4 border-2 border-gray-300 rounded-full"></div>
+<span class="text-sm">High</span>
+</label>
+</div>
+</div>
+<div>
+<h4 class="font-semibold mb-3">Music Playlist</h4>
+<div class="space-y-2">
+<div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+<span class="text-sm">Chill Vibes</span>
+<button class="text-primary text-sm">Edit</button>
+</div>
+<div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+<span class="text-sm">Focus Mode</span>
+<button class="text-primary text-sm">Edit</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="profileModal" class="modal fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+<div class="bg-white rounded-xl p-8 max-w-md mx-4">
+<div class="text-center">
+<img src="assets/profile/p.webp" alt="Profile" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover object-top">
+<h3 class="text-2xl font-bold mb-4">Fakhul Rohman N.</h3>
+<p class="text-gray-600 leading-relaxed">
+Perkenalkan, saya Fakhul Rohman Nurokhim. Dengan rasa ingin tahu yang besar, saya terbuka pada hal-hal baru serta tantangan yang mendukung pengembangan diri. Setiap karya bagi saya adalah ruang untuk bertanya, menganalisis, dan menemukan makna, hingga lahirlah portofolio ini sebagai cermin perjalanan berpikir kritis dan berkarya.
+</p>
+<button id="closeModal" class="mt-6 bg-primary text-white px-6 py-2 !rounded-button whitespace-nowrap">Close</button>
+</div>
+</div>
+</div>
+<!-- ===== MINI SPOTIFY-LIKE PLAYER (UPDATED) ===== -->
+<div id="miniPlayer" class="fixed left-0 right-0 bottom-4 z-60 flex justify-center">
+  <div id="mpCard" class="w-[94%] max-w-3xl rounded-2xl bg-white/95 overflow-hidden transition-all duration-300 transform translate-y-0">
+
+    <!-- Compact (mini) -->
+    <div id="mpMini" class="flex items-center gap-3 px-4 py-2 cursor-grab">
+      <img id="mpMiniCover" src="assets/music/covers/sunrise.jpg" alt="cover" class="w-12 h-12 rounded-md object-cover shadow-sm">
+      <div class="flex-1 min-w-0">
+        <div id="mpMiniTitle" class="text-sm font-semibold truncate">Title</div>
+        <div id="mpMiniArtist" class="text-xs text-gray-500 truncate">Artist</div>
+        <div id="mpProgressMiniFill" class="h-1 rounded-full mt-2 overflow-hidden bg-[var(--mp-bg-muted,#eee)]">
+          <div id="mpProgressMiniFill" class="h-full bg-[linear-gradient(90deg,var(--mp-primary),var(--mp-accent))] w-0"></div>
+        </div>
+      </div>
+      <div class="flex items-center space-x-2 ml-3">
+        <button id="prevBtnMini" class="p-2 rounded-full control-btn"><i class="ri-skip-back-mini-line"></i></button>
+        <button id="playPauseBtnMini" class="p-2 rounded-full control-btn"><i class="ri-play-line"></i></button>
+        <button id="nextBtnMini" class="p-2 rounded-full control-btn"><i class="ri-skip-forward-mini-line"></i></button>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+<!-- END MINI PLAYER -->
+<!-- DETAIL PLAYER -->
+<div id="mpDetailWrapper_ux9" class="fixed inset-0 z-[9998]">
+  <!-- backdrop -->
+  <div id="mpBackdrop_ux9"
+       class="absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-300"></div>
+
+  <!-- detail card -->
+  <div id="mpDetailCard_ux9"
+       class="absolute bottom-0 left-0 right-0 w-full max-w-3xl mx-auto bg-white/95 backdrop-blur-2xl shadow-lg transform translate-y-full transition-transform duration-300 flex flex-col">
+    
+    <!-- Close Button -->
+    <button id="mpClose_ux9"
+            class="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-100 z-10">
+      <i class="ri-close-line text-2xl"></i>
+    </button>
+
+    <!-- drag handle -->
+    <div id="mpDragHandle_ux9" class="w-full py-3 flex justify-center cursor-grab">
+      <div class="w-14 h-1.5 bg-gray-300 rounded-full"></div>
+    </div>
+
+    <!-- content -->
+    <div class="flex-1 overflow-y-auto px-6 pb-6 flex flex-col items-center text-center">
+      <!-- Cover -->
+      <img id="mpCover_ux9"
+           src=""
+           alt="cover"
+           class="w-64 h-64 max-w-[80%] rounded-2xl object-cover shadow-lg mb-6">
+
+      <!-- Title + Artist -->
+      <h3 id="mpTitle_ux9" class="text-xl font-bold truncate w-full">Title</h3>
+      <p id="mpArtist_ux9" class="text-sm text-gray-500 mb-4">Artist</p>
+
+      <!-- Seekbar -->
+      <div id="seekBar_ux9" class="relative w-full h-2 bg-gray-200 rounded-full cursor-pointer my-4">
+        <div id="seekFill_ux9"
+             class="absolute left-0 top-0 h-full w-0 rounded-full bg-gradient-to-r from-indigo-500 to-pink-500"></div>
+        <div id="seekHandle_ux9"
+             class="absolute top-1/2 -translate-y-1/2 left-0 w-4 h-4 rounded-full bg-white border shadow"></div>
+      </div>
+      <div class="flex justify-between w-full text-xs text-gray-500 mb-6">
+        <div id="currentTime_ux9">0:00</div>
+        <div id="duration_ux9">0:00</div>
+      </div>
+
+      <!-- Controls -->
+      <div class="flex items-center justify-center gap-6 mb-6">
+        <button id="shuffleBtn_ux9" class="control-btn"><i class="ri-shuffle-line"></i></button>
+        <button id="prevBtn_ux9" class="control-btn"><i class="ri-skip-back-mini-line"></i></button>
+        <button id="playPauseBtn_ux9" class="play-btn1"><i class="ri-play-line"></i></button>
+        <button id="nextBtn_ux9" class="control-btn"><i class="ri-skip-forward-mini-line"></i></button>
+        <button id="repeatBtn_ux9" class="control-btn"><i class="ri-repeat-line"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END DETAIL PLAYER -->
+<!-- ==== Gallery Preview Modal (unik: _x9) ==== -->
+<div id="galleryPreview_x9" class="fixed inset-0 z-[99999] bg-black/80 hidden items-center justify-center">
+  <button id="galleryClose_x9" class="absolute top-4 right-4 text-white text-3xl">&times;</button>
+  
+  <button id="galleryPrev_x9" class="absolute left-4 text-white text-4xl">&#10094;</button>
+  <button id="galleryNext_x9" class="absolute right-4 text-white text-4xl">&#10095;</button>
+  
+  <div class="max-w-3xl w-[90%] bg-white rounded-xl overflow-hidden shadow-xl">
+    <img id="galleryImg_x9" src="" alt="Preview" class="w-full max-h-[70vh] object-contain bg-black">
+    <div class="p-4">
+      <h3 id="galleryTitle_x9" class="text-lg font-bold"></h3>
+      <p id="galleryDesc_x9" class="text-gray-600"></p>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<script>
+  (function(){
+    emailjs.init("nsZxZ1AosHAB-Vyo-"); // ganti dengan Public Key kamu
+  })();
+</script>
+<script src="script.js"></script>
+</body>
+</html>
