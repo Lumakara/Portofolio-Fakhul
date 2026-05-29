@@ -960,7 +960,7 @@ section > svg:first-child {
 /* ---------- Settings Panel ---------- */
 .settings-panel {
   transform: translateX(100%);
-  transition: transform 0.4s var(--ease-out-expo);
+  transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
   background: var(--bg-surface);
   border-left: 1px solid var(--border-color);
 }
@@ -968,6 +968,21 @@ section > svg:first-child {
 .settings-panel.open {
   transform: translateX(0);
 }
+
+.settings-panel .settings-block {
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+}
+.settings-panel.open .settings-block {
+  opacity: 1;
+  transform: translateX(0);
+}
+.settings-panel.open .settings-block:nth-child(1) { transition-delay: 0.1s; }
+.settings-panel.open .settings-block:nth-child(2) { transition-delay: 0.2s; }
+.settings-panel.open .settings-block:nth-child(3) { transition-delay: 0.3s; }
+.settings-panel.open .settings-block:nth-child(4) { transition-delay: 0.4s; }
+.settings-panel.open .settings-block:nth-child(5) { transition-delay: 0.5s; }
 
 .dark .settings-panel {
   background: var(--bg-surface);
@@ -1481,7 +1496,42 @@ footer .flex a[class*="rounded-full"]:hover {
 
 /* Dark mode for gradient text */
 .dark .bg-gradient-to-r.from-blue-600.to-purple-600 {
-  background: var(--gradient-primary) !important;
+  background-image: linear-gradient(to right, var(--primary-color), var(--secondary-color)) !important;
+}
+
+.dark section svg path[fill="#F5FBFF"],
+.dark section svg path[fill="#E8F8FF"],
+.dark section svg path[fill="#FFF5FF"],
+.dark section svg path[fill="#FFFFFF"] {
+  fill: var(--bg-body) !important;
+}
+
+/* Particle variants styles */
+.particle.v2 {
+  border-radius: 50%;
+  background: var(--primary-color);
+  box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--secondary-color);
+  animation-name: float-v2;
+}
+.particle.v3 {
+  border-radius: 0;
+  width: 2px !important;
+  height: 20px !important;
+  background: linear-gradient(to bottom, transparent, var(--secondary-color), transparent);
+  box-shadow: 0 0 15px var(--secondary-color);
+  animation-name: rain-v3;
+}
+
+@keyframes float-v2 {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  50% { transform: translateY(-50px) scale(1.5); opacity: 1; }
+  100% { transform: translateY(-100px) scale(1); opacity: 0; }
+}
+@keyframes rain-v3 {
+  0% { transform: translateY(-100vh); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
 }
 
 /* Footer in dark */

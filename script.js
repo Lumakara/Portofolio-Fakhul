@@ -40,15 +40,15 @@ document.addEventListener('DOMContentLoaded', function() {
   // 2b. Particles (single optimized instance)
   // ──────────────────────────────────────
   const particleContainer = document.getElementById('particleContainer');
-  let particlesEnabled = true;
+  let particleVariant = 'v2';
   const MAX_PARTICLES = 20;
 
   function createParticle() {
-    if (!particlesEnabled || !particleContainer) return;
+    if (particleVariant === 'none' || !particleContainer) return;
     if (particleContainer.children.length >= MAX_PARTICLES) return;
 
     const particle = document.createElement('div');
-    particle.className = 'particle';
+    particle.className = `particle ${particleVariant}`;
     const size = Math.random() * 4 + 2;
     particle.style.cssText = `
       width: ${size}px; height: ${size}px;
@@ -117,12 +117,16 @@ document.addEventListener('DOMContentLoaded', function() {
   const settingsManager = {
     state: {
       theme: localStorage.getItem('pref_theme') || 'light',
-      particles: localStorage.getItem('pref_particles') !== 'false',
+      particles: localStorage.getItem('pref_particles') || 'v2',
       perf: localStorage.getItem('pref_perf') || 'medium',
       lang: localStorage.getItem('pref_lang') || 'en'
     },
     
     init() {
+      // Migrate old boolean particle state
+      if (this.state.particles === 'true') this.state.particles = 'v2';
+      if (this.state.particles === 'false') this.state.particles = 'none';
+
       this.bindEvents();
       this.applyTheme(this.state.theme);
       this.applyParticles(this.state.particles);
@@ -140,15 +144,12 @@ document.addEventListener('DOMContentLoaded', function() {
       });
       
       // Particles
-      const particleToggle = document.getElementById('particleToggle');
-      if (particleToggle) {
-        const toggleBg = particleToggle.nextElementSibling;
-        if (toggleBg) {
-          toggleBg.addEventListener('click', () => {
-            this.applyParticles(!this.state.particles);
-          });
-        }
-      }
+      const particleBtns = document.querySelectorAll('.particle-btn');
+      particleBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          this.applyParticles(btn.dataset.particle);
+        });
+      });
       
       // Performance
       const perfRadios = document.querySelectorAll('input[name="performance"]');
@@ -164,12 +165,12 @@ document.addEventListener('DOMContentLoaded', function() {
       });
       
       // Language
-      const langSelect = document.getElementById('languageSelect');
-      if (langSelect) {
-        langSelect.addEventListener('change', (e) => {
-          this.applyLanguage(e.target.value);
+      const langBtns = document.querySelectorAll('.lang-btn');
+      langBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          this.applyLanguage(btn.dataset.lang);
         });
-      }
+      });
     },
     
     applyTheme(theme) {
@@ -187,46 +188,36 @@ document.addEventListener('DOMContentLoaded', function() {
       document.querySelectorAll('.theme-btn').forEach(b => {
         if (b.dataset.theme === theme) {
           b.classList.add('border-primary', 'bg-primary/10');
-          b.classList.remove('border-gray-300');
+          b.classList.remove('border-gray-300', 'dark:border-gray-700');
         } else {
           b.classList.remove('border-primary', 'bg-primary/10');
-          b.classList.add('border-gray-300');
+          b.classList.add('border-gray-300', 'dark:border-gray-700');
         }
       });
     },
     
-    applyParticles(enabled) {
-      this.state.particles = enabled;
-      localStorage.setItem('pref_particles', enabled);
-      particlesEnabled = enabled; // Global var for the loop
+    applyParticles(variant) {
+      this.state.particles = variant;
+      localStorage.setItem('pref_particles', variant);
+      particleVariant = variant;
       
-      const particleToggle = document.getElementById('particleToggle');
-      if (particleToggle) {
-        particleToggle.checked = enabled;
-        const toggleBg = particleToggle.nextElementSibling;
-        const toggleDot = toggleBg ? toggleBg.querySelector('.toggle-dot') : null;
-        if (toggleBg && toggleDot) {
-          if (enabled) {
-            toggleBg.classList.add('bg-primary');
-            toggleBg.classList.remove('bg-gray-300');
-            toggleDot.classList.add('translate-x-6');
-            toggleDot.classList.remove('translate-x-0');
-          } else {
-            toggleBg.classList.remove('bg-primary');
-            toggleBg.classList.add('bg-gray-300');
-            toggleDot.classList.remove('translate-x-6');
-            toggleDot.classList.add('translate-x-0');
-            if (particleContainer) particleContainer.innerHTML = '';
-          }
+      if (particleContainer) particleContainer.innerHTML = '';
+
+      document.querySelectorAll('.particle-btn').forEach(b => {
+        if (b.dataset.particle === variant) {
+          b.classList.add('border-primary', 'bg-primary/10');
+          b.classList.remove('border-gray-300', 'dark:border-gray-700');
+        } else {
+          b.classList.remove('border-primary', 'bg-primary/10');
+          b.classList.add('border-gray-300', 'dark:border-gray-700');
         }
-      }
+      });
     },
     
     applyPerformance(level) {
       this.state.perf = level;
       localStorage.setItem('pref_perf', level);
       
-      // UI update
       document.querySelectorAll('input[name="performance"]').forEach(radio => {
         const dot = radio.nextElementSibling;
         if (radio.value === level) {
@@ -239,11 +230,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       });
       
-      // Logic
       document.body.classList.remove('perf-low', 'perf-high');
       if (level === 'low') {
         document.body.classList.add('perf-low');
-        this.applyParticles(false); // Disable particles on low
+        this.applyParticles('none');
       } else if (level === 'high') {
         document.body.classList.add('perf-high');
       }
@@ -253,8 +243,15 @@ document.addEventListener('DOMContentLoaded', function() {
       this.state.lang = lang;
       localStorage.setItem('pref_lang', lang);
       
-      const langSelect = document.getElementById('languageSelect');
-      if (langSelect) langSelect.value = lang;
+      document.querySelectorAll('.lang-btn').forEach(b => {
+        if (b.dataset.lang === lang) {
+          b.classList.add('border-primary', 'bg-primary/10');
+          b.classList.remove('border-gray-300', 'dark:border-gray-700');
+        } else {
+          b.classList.remove('border-primary', 'bg-primary/10');
+          b.classList.add('border-gray-300', 'dark:border-gray-700');
+        }
+      });
       
       const dict = {
         en: {
@@ -263,7 +260,7 @@ document.addEventListener('DOMContentLoaded', function() {
           welcome_desc: "No limits to create, no stopping to keep growing",
           about_title: "About Me",
           journey_title: "My Journey",
-          gallery_title: "Gallery & Achievements",
+          gallery_title: "Gallery & Projects",
           contact_title: "Let’s Work Together",
           contact_desc: "Ready to bring your ideas to life? Let’s discuss your project and create something amazing together."
         },
@@ -284,13 +281,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (t[key]) {
-          if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-            el.placeholder = t[key];
-          } else {
-            el.innerText = t[key];
-          }
-        }
+        if (t[key]) el.innerText = t[key];
       });
     }
   };
