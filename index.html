@@ -3,31 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio Fatkul</title>
+<meta name="description" content="Portfolio of Fakhul Rohman Nurokhim — Frontend Developer & UI/UX Enthusiast. Explore projects, certificates, and creative works.">
+<meta name="theme-color" content="#6366f1">
+<meta name="author" content="Fakhul Rohman Nurokhim">
+<title>Fakhul Rohman — Developer Portfolio</title>
+<link rel="icon" href="assets/icons/ic.png" type="image/png">
 <script src="https://cdn.tailwindcss.com/3.4.16"></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
-<!-- Tambahkan di HEAD -->
 <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <link rel="stylesheet" href="style.css">
 <script src="mp-player.js" defer></script>
 </head>
 <body class="bg-gray-50 text-gray-900 transition-colors duration-300">
-  <div id="progressBar" style="
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  width: 0%;
-  background: linear-gradient(90deg, #3b82f6, #06b6d4, #3b82f6);
-  z-index: 9999;
-  transition: width 0.3s ease;
-"></div>
-<div class="particle-bg" id="particleContainer"></div>
+<a href="#welcome" class="skip-link">Skip to content</a>
+  <div id="progressBar"></div>
+<div class="particle-bg" id="particleContainer" aria-hidden="true"></div>
 <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 transition-colors duration-300">
 <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 <a href="index.html" class="flex items-center space-x-2">
@@ -35,11 +30,11 @@
   <span class="logo-font text-2xl font-bold text-primary">Fatkul</span>
 </a>
 <nav class="hidden md:flex items-center space-x-8">
-<a href="#welcome" class="text-gray-700 hover:text-primary transition-colors">Home</a>
-<a href="#about" class="text-gray-700 hover:text-primary transition-colors">About</a>
-<a href="#journey" class="text-gray-700 hover:text-primary transition-colors">Journey</a>
-<a href="#gallery" class="text-gray-700 hover:text-primary transition-colors">klm</a>
-<a href="#contact" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
+<a href="#welcome" data-i18n="nav_home" class="text-gray-700 hover:text-primary transition-colors">Home</a>
+<a href="#about" data-i18n="nav_about" class="text-gray-700 hover:text-primary transition-colors">About</a>
+<a href="#journey" data-i18n="nav_journey" class="text-gray-700 hover:text-primary transition-colors">Journey</a>
+<a href="#gallery" data-i18n="nav_gallery" class="text-gray-700 hover:text-primary transition-colors">Gallery</a>
+<a href="#contact" data-i18n="nav_contact" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
 </nav>
 <div class="flex items-center space-x-2">
 <!-- From Uiverse.io by vinodjangid07 --> 
@@ -49,7 +44,7 @@
   <span class="bar bar1"></span>
 </button>
 <button id="hamburgerBtn" 
-  class="setting-btn w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10"">
+  class="setting-btn w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10" aria-label="Menu">
   <span class="w-5 h-0.5 bg-white"></span>
   <span class="w-5 h-0.5 bg-white"></span>
   <span class="w-5 h-0.5 bg-white"></span>
@@ -87,18 +82,18 @@
   </nav>
 </div>
 <main>
-<section id="welcome" class="min-h-screen flex items-center justify-center relative overflow-hidden" style="background-image: url('https://files.catbox.moe/tyv2mq.webp'); background-size: cover; background-position: center;">
-<div class="absolute inset-0 bg-white/70"></div>
+<section id="welcome" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+<div class="absolute inset-0" aria-hidden="true"></div>
 <div class="relative z-10 text-center max-w-4xl mx-auto px-6">
 <div class="mb-8">
 <div class="w-24 h-24 mx-auto mb-6 bg-primary/20 rounded-full flex items-center justify-center animate-pulse">
 <i class="ri-code-s-slash-line text-4xl text-primary"></i>
 </div>
 </div>
-<h1 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-Welcome To My Portofolio
+<h1 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent" data-i18n="welcome_title">
+Welcome To My Portfolio
 </h1>
-<p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto">
+<p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto" data-i18n="welcome_desc">
 Tanpa batas untuk berkarya, tanpa henti untuk terus berkembang
 </p>
 <div class="flex flex-wrap justify-center gap-4 mb-12">
@@ -136,7 +131,7 @@ Tanpa batas untuk berkarya, tanpa henti untuk terus berkembang
 </div>
 </section>
 <section id="about" class="bg-white">
-<svg class="section-top" viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="transform: scale(1,-1);">
+<svg class="section-top" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" style="transform: scale(1,-1);">
   <path fill="#F5FBFF" d="M0,60 Q720,120 1440,60 L1440,120 L0,120 Z"/>
 </svg>
 <div class="max-w-6xl mx-auto px-6">
@@ -144,7 +139,7 @@ Tanpa batas untuk berkarya, tanpa henti untuk terus berkembang
 <div class="w-32 h-32 mx-auto mb-8 rounded-full overflow-hidden cursor-pointer card-hover" id="profilePhoto">
 <img src="assets/profile/p.webp" alt="Profile" class="w-full h-full object-cover object-top">
 </div>
-<h2 class="text-4xl font-bold mb-4">About Me</h2>
+<h2 class="text-4xl font-bold mb-4" data-i18n="about_title">About Me</h2>
 <p class="text-xl text-gray-600 max-w-2xl mx-auto">
 Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang besar, saya terbuka pada hal-hal baru serta tantangan yang mendukung pengembangan diri.
 </p>
@@ -236,7 +231,7 @@ Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang bes
 </div>
 </section>
 <section id="journey" class="relative">
-<svg viewBox="0 0 1440 180" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 1440 180" preserveAspectRatio="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
   <g transform="scale(1,-1) translate(0,-180)">
     <path fill="#E8F8FF" d="M0,60 Q180,20 360,70 T720,60 T1080,100 T1440,60 L1440,180 L0,180 Z"/>
     <path fill="#FFF5FF" d="M0,110 Q240,70 480,120 T960,100 T1440,130 L1440,180 L0,180 Z"/>
@@ -244,7 +239,7 @@ Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang bes
   </g>
 </svg>
   <div class="max-w-6xl mx-auto px-6">
-    <h2 class="text-5xl font-bold text-center mb-16">My Journey</h2>
+    <h2 class="text-5xl font-bold text-center mb-16" data-i18n="journey_title">My Journey</h2>
 
     <!-- Filter -->
     <div class="flex justify-center mb-12">
@@ -468,7 +463,7 @@ Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang bes
     </div>
   </div>
 </div>
-<svg viewBox="0 0 1440 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 1440 200" preserveAspectRatio="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <filter id="glow-ripple" x="-50%" y="-50%" width="200%" height="200%">
       <feGaussianBlur stdDeviation="18" result="blur"/>
@@ -486,7 +481,7 @@ Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang bes
   <path fill="#FFFFFF" opacity="0.5" d="M0,160 Q300,140 600,160 T1200,160 T1440,150 L1440,200 L0,200 Z"/>
 </svg>
 <section id="gallery" class="bg-white">
-<svg viewBox="0 0 1440 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 1440 200" preserveAspectRatio="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <filter id="glow-ripple-top" x="-50%" y="-50%" width="200%" height="200%">
       <feGaussianBlur stdDeviation="18" result="blur"/>
@@ -504,7 +499,7 @@ Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang bes
   <path fill="#FFFFFF" opacity="0.5" d="M0,40 Q300,60 600,40 T1200,40 T1440,50 L1440,0 L0,0 Z"/>
 </svg>
   <div class="max-w-6xl mx-auto px-6">
-    <h2 class="text-4xl font-bold text-center mb-16">Gallery & Projects</h2>
+    <h2 class="text-4xl font-bold text-center mb-16" data-i18n="gallery_title">Gallery & Projects</h2>
 
     <!-- FILTER BUTTONS -->
     <div class="flex justify-center mb-12">
@@ -635,7 +630,7 @@ Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang bes
       </div>
     </div>
   </div>
-  <svg viewBox="0 0 1440 220" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <filter id="glow-soft1" x="-50%" y="-50%" width="200%" height="200%">
       <feGaussianBlur stdDeviation="20" result="blur"/>
@@ -659,15 +654,14 @@ Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang bes
     <div class="grid lg:grid-cols-2 gap-12 items-center">
       <!-- TEXT -->
       <div data-aos="fade-right">
-        <h2 class="text-5xl font-extrabold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+        <h2 class="text-5xl font-extrabold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent" data-i18n="contact_title">
           Let’s Work Together
         </h2>
-        <p class="text-lg text-gray-600 mb-8">
+        <p class="text-lg text-gray-600 mb-8" data-i18n="contact_desc">
           Ready to bring your ideas to life? Let’s discuss your project and create something amazing together.
         </p>
 
         <!-- Contact Info -->
-<!-- Contact Info -->
 <div class="space-y-4 mb-8">
 <div class="flex items-center space-x-4 hover:translate-x-1 transition-transform">
   <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center float-icon glow-blue">
@@ -690,6 +684,7 @@ Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang bes
   <span class="text-gray-700">Indonesia, Jawa Barat, Depok</span>
 </div>
 </div>
+</div>
 
       <!-- FORM -->
       <div data-aos="fade-left">
@@ -709,7 +704,7 @@ Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang bes
             <div class="relative stagger">
               <input type="text" name="name" required
                 class="peer w-full px-4 pt-5 pb-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                placeholder="" />
+                placeholder=" " />
               <label
                 class="absolute left-4 top-2.5 text-gray-500 text-sm transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:top-2.5 peer-focus:text-sm peer-focus:text-primary">
                 Name
@@ -764,7 +759,7 @@ Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang bes
   
 </section>
 <footer class="bg-gray-900 text-gray-300 pb-16">
-<svg viewBox="0 0 1440 220" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <filter id="glow-soft1-top" x="-50%" y="-50%" width="200%" height="200%">
       <feGaussianBlur stdDeviation="20" result="blur"/>
@@ -828,10 +823,9 @@ Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang bes
 <div class="space-y-6">
 <div>
 <h4 class="font-semibold mb-3">Language</h4>
-<select class="w-full p-3 border border-gray-300 rounded-lg text-sm">
-<option>English</option>
-<option>Spanish</option>
-<option>French</option>
+<select id="languageSelect" class="w-full p-3 border border-gray-300 rounded-lg text-sm">
+<option value="en">English</option>
+<option value="id">Indonesia</option>
 </select>
 </div>
 <div>
@@ -875,15 +869,8 @@ Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang bes
 </div>
 <div>
 <h4 class="font-semibold mb-3">Music Playlist</h4>
-<div class="space-y-2">
-<div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-<span class="text-sm">Chill Vibes</span>
-<button class="text-primary text-sm">Edit</button>
-</div>
-<div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-<span class="text-sm">Focus Mode</span>
-<button class="text-primary text-sm">Edit</button>
-</div>
+<div id="settingsPlaylistContainer" class="space-y-2">
+<div class="flex items-center justify-center p-3 text-sm text-gray-500">Loading playlist...</div>
 </div>
 </div>
 </div>
@@ -911,7 +898,7 @@ Perkenalkan, saya Fakhul Rohman Nurokhim. Dengan rasa ingin tahu yang besar, say
       <div class="flex-1 min-w-0">
         <div id="mpMiniTitle" class="text-sm font-semibold truncate">Title</div>
         <div id="mpMiniArtist" class="text-xs text-gray-500 truncate">Artist</div>
-        <div id="mpProgressMiniFill" class="h-1 rounded-full mt-2 overflow-hidden bg-[var(--mp-bg-muted,#eee)]">
+        <div class="h-1 rounded-full mt-2 overflow-hidden bg-[var(--mp-bg-muted,#eee)]">
           <div id="mpProgressMiniFill" class="h-full bg-[linear-gradient(90deg,var(--mp-primary),var(--mp-accent))] w-0"></div>
         </div>
       </div>
@@ -920,7 +907,6 @@ Perkenalkan, saya Fakhul Rohman Nurokhim. Dengan rasa ingin tahu yang besar, say
         <button id="playPauseBtnMini" class="p-2 rounded-full control-btn"><i class="ri-play-line"></i></button>
         <button id="nextBtnMini" class="p-2 rounded-full control-btn"><i class="ri-skip-forward-mini-line"></i></button>
       </div>
-    </div>
     </div>
   </div>
 </div>

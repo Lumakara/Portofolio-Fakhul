@@ -100,29 +100,57 @@ const queueClose = document.getElementById('queueClose_ux9');
   }
 
   function renderQueue(){
-    if (!queueList) return;
-    queueList.innerHTML = '';
-    state.playlist.forEach((t, i) => {
-      const li = document.createElement('li');
-      li.className = 'flex items-center justify-between p-2 rounded';
-      li.innerHTML = `
-        <div class="flex items-center gap-3 min-w-0">
-          <img src="${t.cover||''}" class="w-10 h-10 rounded object-cover flex-shrink-0" />
-          <div class="min-w-0">
-            <div class="text-sm font-medium truncate">${t.title||''}</div>
-            <div class="text-xs text-gray-500 truncate">${t.artist||''}</div>
+    if (queueList) {
+      queueList.innerHTML = '';
+      state.playlist.forEach((t, i) => {
+        const li = document.createElement('li');
+        li.className = 'flex items-center justify-between p-2 rounded';
+        li.innerHTML = `
+          <div class="flex items-center gap-3 min-w-0">
+            <img src="${t.cover||''}" class="w-10 h-10 rounded object-cover flex-shrink-0" />
+            <div class="min-w-0">
+              <div class="text-sm font-medium truncate text-[var(--mp-text)]">${t.title||''}</div>
+              <div class="text-xs text-gray-500 truncate">${t.artist||''}</div>
+            </div>
           </div>
-        </div>
-        <button data-index="${i}" class="text-sm px-2 py-1 rounded play-track">Play</button>
-      `;
-      queueList.appendChild(li);
-    });
-    queueList.querySelectorAll('.play-track').forEach(b => {
-      b.addEventListener('click', (ev) => {
-        const idx = Number(ev.currentTarget.dataset.index);
-        loadTrack(idx, true);
+          <button data-index="${i}" class="text-sm px-2 py-1 rounded play-track bg-[var(--mp-bg-muted,#eee)] text-[var(--mp-text)]">Play</button>
+        `;
+        queueList.appendChild(li);
       });
-    });
+      queueList.querySelectorAll('.play-track').forEach(b => {
+        b.addEventListener('click', (ev) => {
+          const idx = Number(ev.currentTarget.dataset.index);
+          loadTrack(idx, true);
+        });
+      });
+    }
+
+    // Also populate settings panel playlist if it exists
+    const settingsPlaylist = document.getElementById('settingsPlaylistContainer');
+    if (settingsPlaylist) {
+      settingsPlaylist.innerHTML = '';
+      // Only show up to 3 tracks in settings panel
+      state.playlist.slice(0, 3).forEach((t, i) => {
+        const div = document.createElement('div');
+        div.className = 'flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors';
+        div.innerHTML = `
+          <div class="flex items-center gap-3 min-w-0">
+            <img src="${t.cover||''}" class="w-8 h-8 rounded object-cover flex-shrink-0" />
+            <span class="text-sm font-medium truncate dark:text-gray-200">${t.title||''}</span>
+          </div>
+          <button class="text-primary text-sm font-medium">Play</button>
+        `;
+        div.addEventListener('click', () => {
+          loadTrack(i, true);
+          // Auto-open mini player if not already showing
+          const mpCard = document.getElementById('mpCard');
+          if (mpCard && !mpCard.classList.contains('translate-y-0')) {
+             // If there's an API to show it, call it. Otherwise it's always fixed at bottom.
+          }
+        });
+        settingsPlaylist.appendChild(div);
+      });
+    }
   }
 
   async function loadTrack(index, autoplay = true){
@@ -204,11 +232,11 @@ const queueClose = document.getElementById('queueClose_ux9');
 
   // ---------- EVENT BINDINGS ----------
   safeAdd(playPauseBtn, 'click', ()=> state.isPlaying ? pause() : play());
-  safeAdd(playPauseBtnMini, 'click', ()=> state.isPlaying ? pause() : play());
+  safeAdd(playPauseBtnMini, 'click', (e)=> { e.stopPropagation(); state.isPlaying ? pause() : play(); });
   safeAdd(nextBtn, 'click', nextTrack);
   safeAdd(prevBtn, 'click', prevTrack);
-  safeAdd(nextBtnMini, 'click', nextTrack);
-  safeAdd(prevBtnMini, 'click', prevTrack);
+  safeAdd(nextBtnMini, 'click', (e)=> { e.stopPropagation(); nextTrack(); });
+  safeAdd(prevBtnMini, 'click', (e)=> { e.stopPropagation(); prevTrack(); });
 
   safeAdd(likeBtn, 'click', () => {
     const track = state.playlist[state.index]; if (!track) return;
@@ -394,13 +422,33 @@ const queueClose = document.getElementById('queueClose_ux9');
     loadPlaylist().catch(()=>{});
   }
 
+  // ---------- Shuffle / Repeat / Queue panel ----------
+  const shuffleBtn = $('shuffleBtn_ux9');
+  const repeatBtn = $('repeatBtn_ux9');
+
+  // Shuffle
+  safeAdd(shuffleBtn, 'click', () => {
+    state.shuffle = !state.shuffle;
+    if (shuffleBtn) shuffleBtn.classList.toggle('active', state.shuffle);
+  });
+
+  // Repeat
+  safeAdd(repeatBtn, 'click', () => {
+    state.repeat = state.repeat === 'off' ? 'all' : (state.repeat === 'all' ? 'one' : 'off');
+    if (repeatBtn) repeatBtn.classList.toggle('active', state.repeat !== 'off');
+  });
+
+  // Queue toggle
+  safeAdd(queueBtn, 'click', () => {
+    if (queuePanel) queuePanel.classList.add('open');
+  });
+  safeAdd(queueClose, 'click', () => {
+    if (queuePanel) queuePanel.classList.remove('open');
+  });
+
   init();
 
   // ---------- small UI helpers ----------
-  safeAdd(queueBtn, 'click', () => {
-    const qPanel = $('queuePanel');
-    if (qPanel) qPanel.classList.toggle('hidden');
-  });
 
   // keyboard Escape closes detail
   document.addEventListener('keydown', (e) => {
@@ -414,52 +462,3 @@ const queueClose = document.getElementById('queueClose_ux9');
   window.__mp_showDetail = showDetail;
   window.__mp_hideDetail = hideDetail;
 });
-const shuffleBtn = document.getElementById('shuffleBtn_ux9');
-const repeatBtn = document.getElementById('repeatBtn_ux9');
-const queuePanel = document.getElementById('queuePanel_ux9');
-const queueClose = document.getElementById('queueClose_ux9');
-
-// Shuffle
-safeAdd(shuffleBtn, 'click', () => {
-  state.shuffle = !state.shuffle;
-  shuffleBtn.classList.toggle('active', state.shuffle);
-});
-
-// Repeat
-safeAdd(repeatBtn, 'click', () => {
-  state.repeat = state.repeat === 'off' ? 'all' : (state.repeat === 'all' ? 'one' : 'off');
-  repeatBtn.classList.toggle('active', state.repeat !== 'off');
-});
-
-// Queue toggle
-safeAdd(queueBtn, 'click', () => {
-  queuePanel.classList.add('open');
-});
-safeAdd(queueClose, 'click', () => {
-  queuePanel.classList.remove('open');
-});
-
-function renderQueue() {
-  if (!queueList) return;
-  queueList.innerHTML = '';
-  state.playlist.forEach((track, i) => {
-    const li = document.createElement('li');
-    li.className = "flex items-center gap-3 cursor-pointer hover:bg-gray-50 p-2 rounded";
-    li.innerHTML = `
-      <img src="${track.cover}" alt="" class="w-12 h-12 rounded object-cover">
-      <div class="flex-1 min-w-0">
-        <div class="font-medium truncate">${track.title}</div>
-        <div class="text-xs text-gray-500 truncate">${track.artist}</div>
-      </div>
-    `;
-    li.addEventListener('click', () => loadTrack(i, true));
-    queueList.appendChild(li);
-  });
-}
-safeAdd(queueBtn, 'click', () => {
-  queuePanel.classList.add('open');
-});
-safeAdd(queueClose, 'click', () => {
-  queuePanel.classList.remove('open');
-});
-renderQueue();
