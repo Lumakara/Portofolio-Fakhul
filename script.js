@@ -1205,95 +1205,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // 3. 3D Skills Orbital Sphere (HTML elements version)
-  const skills = [
-    { name: 'Node.js', icon: 'ri-nodejs-line', color: '#339933' },
-    { name: 'HTML5', icon: 'ri-html5-fill', color: '#e34f26' },
-    { name: 'CSS3', icon: 'ri-css3-fill', color: '#1572b6' },
-    { name: 'JavaScript', icon: 'ri-javascript-fill', color: '#f7df1e' },
-    { name: 'React', icon: 'ri-reactjs-line', color: '#61dafb' },
-    { name: 'Tailwind', icon: 'ri-css3-line', color: '#38bdf8' },
-    { name: 'Git', icon: 'ri-git-branch-line', color: '#f05032' },
-    { name: 'Figma', icon: 'ri-pencil-ruler-2-line', color: '#f24e1e' },
-    { name: 'PHP', icon: 'ri-braces-line', color: '#777bb4' },
-    { name: 'Laravel', icon: 'ri-code-box-line', color: '#ff2d20' },
-    { name: 'MySQL', icon: 'ri-database-2-line', color: '#00758f' },
-    { name: 'Next.js', icon: 'ri-code-line', color: '#000000' }
-  ];
-
-  const sphereContainer = document.getElementById('skills-sphere');
-  if (sphereContainer) {
-    const tags = [];
-    const sphereRadius = window.innerWidth < 640 ? 110 : 150;
-    const totalSkills = skills.length;
-
-    skills.forEach((skill, i) => {
-      const phi = Math.acos(-1 + (2 * i) / totalSkills);
-      const theta = Math.sqrt(totalSkills * Math.PI) * phi;
-
-      const x = sphereRadius * Math.sin(phi) * Math.cos(theta);
-      const y = sphereRadius * Math.sin(phi) * Math.sin(theta);
-      const z = sphereRadius * Math.cos(phi);
-
-      const tagEl = document.createElement('div');
-      tagEl.className = 'skill-tag-3d';
-      tagEl.innerHTML = `
-        <div class="skill-tag-inner">
-          <i class="${skill.icon}" style="color: ${skill.color}"></i>
-          <span>${skill.name}</span>
-        </div>
-      `;
-      sphereContainer.appendChild(tagEl);
-
-      tags.push({ el: tagEl, x, y, z, phi, theta });
-    });
-
-    let rotX = 0.003;
-    let rotY = 0.003;
-
-    window.addEventListener('mousemove', (e) => {
-      const rect = sphereContainer.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2;
-      const cy = rect.top + rect.height / 2;
-      
-      const mx = (e.clientX - cx) / 200;
-      const my = (e.clientY - cy) / 200;
-      
-      rotY = mx * 0.015;
-      rotX = -my * 0.015;
-    });
-
-    function updateSphere() {
-      const cosX = Math.cos(rotX);
-      const sinX = Math.sin(rotX);
-      const cosY = Math.cos(rotY);
-      const sinY = Math.sin(rotY);
-
-      tags.forEach(tag => {
-        let y1 = tag.y * cosX - tag.z * sinX;
-        let z1 = tag.z * cosX + tag.y * sinX;
-
-        let x2 = tag.x * cosY - z1 * sinY;
-        let z2 = z1 * cosY + tag.x * sinY;
-
-        tag.x = x2;
-        tag.y = y1;
-        tag.z = z2;
-
-        const depth = 2 * sphereRadius;
-        const scale = depth / (depth - tag.z);
-        const opacity = (tag.z + sphereRadius) / (2 * sphereRadius) + 0.2;
-
-        tag.el.style.transform = `translate3d(calc(-50% + ${tag.x}px), calc(-50% + ${tag.y}px), ${tag.z}px) scale(${scale})`;
-        tag.el.style.opacity = opacity;
-        tag.el.style.zIndex = Math.round(scale * 100);
-      });
-
-      requestAnimationFrame(updateSphere);
-    }
-
-    updateSphere();
   }
+
+
 
   // 4. Web Audio API Sound Effects Synthesizer
   class UI_SFX {
