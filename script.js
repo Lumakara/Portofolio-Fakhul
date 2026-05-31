@@ -1205,10 +1205,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  }
-
-
-
   // 4. Web Audio API Sound Effects Synthesizer
   class UI_SFX {
     constructor() {
