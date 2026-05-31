@@ -1385,6 +1385,539 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
+  // ============================================================
+  // DYNAMIC PORTFOLIO & CRUD ADMIN SYSTEM (PRD COMPLIANT)
+  // ============================================================
+
+  const defaultPortfolioData = {
+    profile: {
+      name: "Fakhul Rohman Nurokhim",
+      bio: "Perkenalkan, saya Fakhul Rohman Nurokhim. Dengan rasa ingin tahu yang besar, saya terbuka pada hal-hal baru serta tantangan yang mendukung pengembangan diri."
+    },
+    education: [
+      { year: "2013 - 2019", title: "MI HAYATUL ISLAMIYAH", desc: "Madrasah Ibtidaiyah <b>(MI)</b>", icon: "ri-school-line", iconBg: "bg-blue-100 dark:bg-blue-900", iconColor: "text-blue-600 dark:text-blue-400" },
+      { year: "2019 - 2022", title: "SMP ISLAM YAPKUM", desc: "Sekolah Menengah Pertama <b>(SMP)</b>", icon: "ri-book-open-line", iconBg: "bg-green-100 dark:bg-green-900", iconColor: "text-green-600 dark:text-green-400" },
+      { year: "2022 - 2025", title: "SMK AL-HIDAYAH", desc: "Sekolah Menengah Kejuruan <b>(SMK) AKUNTANSI</b>", icon: "ri-bank-line", iconBg: "bg-purple-100 dark:bg-purple-900", iconColor: "text-purple-600 dark:text-purple-400" }
+    ],
+    experience: [
+      { id: "expWork1", year: "2024 - Present", title: "Frontend Developer", desc: "Membangun antarmuka interaktif dan responsif menggunakan teknologi modern seperti React dan TailwindCSS.", icon: "ri-code-box-line", color: "blue", details: ["Membangun antarmuka interaktif dan responsif menggunakan React, Vue.js, dan Tailwind CSS.", "Mengoptimalkan performa rendering halaman dan aksesibilitas untuk memberikan pengalaman pengguna yang lebih baik.", "Berkolaborasi dengan desainer UI/UX untuk mengimplementasikan desain pixel-perfect."] },
+      { id: "expWork2", year: "2023 - 2024", title: "UI/UX Designer", desc: "Merancang prototipe aplikasi dan website yang berpusat pada pengalaman pengguna menggunakan Figma.", icon: "ri-brush-line", color: "purple", details: ["Merancang wireframe, mockup, dan prototipe interaktif menggunakan Figma.", "Melakukan riset pengguna untuk mengidentifikasi pain points.", "Memastikan konsistensi design system di seluruh produk digital."] },
+      { id: "expWork3", year: "2022 - 2023", title: "Backend Intern", desc: "Membantu pengembangan RESTful API dan manajemen database menggunakan Node.js dan MongoDB.", icon: "ri-server-line", color: "green", details: ["Membantu pengembangan RESTful API menggunakan Node.js dan Express.", "Mengintegrasikan database NoSQL (MongoDB) dan relasional.", "Menulis unit test dan berpartisipasi dalam proses code review."] }
+    ],
+    organization: [
+      { title: "OSIS", role: "Bendahara Pria (2024-2025)", desc: "Mengelola keuangan kegiatan siswa, memastikan laporan transparan, dan mendukung kelancaran program sekolah.", icon: "ri-team-line", color: "indigo" },
+      { title: "Pramuka", role: "Ketua (2 Periode)", desc: "Memimpin berbagai kegiatan perkemahan, melatih kedisiplinan anggota, dan meningkatkan partisipasi aktif hingga 40%.", icon: "ri-fire-line", color: "orange" },
+      { title: "IT Club", role: "Koordinator Web (2023-2024)", desc: "Mengadakan workshop pemrograman dasar, mengelola website komunitas, dan memfasilitasi diskusi teknologi terbaru.", icon: "ri-code-s-slash-line", color: "emerald" }
+    ]
+  };
+
+  let portfolioData = JSON.parse(localStorage.getItem('portfolio_data_v2')) || defaultPortfolioData;
+
+  function saveToLocalStorage() {
+    localStorage.setItem('portfolio_data_v2', JSON.stringify(portfolioData));
+  }
+
+  function renderProfile() {
+    const bios = document.querySelectorAll('.text-xl.text-gray-600.dark\\:text-gray-300');
+    
+    // Update Profile Name globally
+    const nameHeaders = document.querySelectorAll('h3.text-2xl.font-bold.mb-4, h2.text-3xl.font-bold.mb-4');
+    nameHeaders.forEach(el => {
+      if(el.textContent.includes("Fakhul Rohman") || el.textContent.includes("Fatkul")) {
+        el.textContent = portfolioData.profile.name;
+      }
+    });
+
+    bios.forEach(el => {
+      if (el.innerHTML.includes("Perkenalkan") || el.innerHTML.includes("saya")) {
+        el.innerHTML = `Perkenalkan, saya <b>${portfolioData.profile.name}</b>. ${portfolioData.profile.bio.replace("Perkenalkan, saya Fakhul Rohman Nurokhim.", "")}`;
+      }
+    });
+  }
+
+  function renderEducation() {
+    const container = document.getElementById('educationContainer');
+    if (!container) return;
+    container.innerHTML = '';
+    
+    portfolioData.education.forEach((edu, index) => {
+      const isLeft = index % 2 === 0;
+      const alignClass = isLeft ? 'timeline-item-left' : 'timeline-item-right';
+      const animClass = isLeft ? 'fade-right' : 'fade-left';
+      const gapClass = isLeft ? 'justify-end' : 'justify-start';
+      
+      const eduHtml = `
+        <div class="${alignClass}" data-aos="${animClass}">
+          <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl cursor-pointer transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-700">
+            <div class="flex items-center ${gapClass} gap-3 mb-2">
+              ${isLeft ? `<span class="text-primary font-bold bg-primary/10 px-3 py-1 rounded-full text-sm">${edu.year}</span>` : ''}
+              <div class="w-10 h-10 rounded-full ${edu.iconBg || 'bg-blue-100 dark:bg-blue-900'} flex items-center justify-center">
+                <i class="${edu.icon} ${edu.iconColor || 'text-blue-600 dark:text-blue-400'}"></i>
+              </div>
+              ${!isLeft ? `<span class="text-primary font-bold bg-primary/10 px-3 py-1 rounded-full text-sm">${edu.year}</span>` : ''}
+            </div>
+            <h3 class="text-xl font-bold dark:text-white">${edu.title}</h3>
+            <p class="text-gray-600 dark:text-gray-400 mt-2">${edu.desc}</p>
+          </div>
+        </div>
+      `;
+      container.insertAdjacentHTML('beforeend', eduHtml);
+    });
+  }
+
+  function renderExperience() {
+    const cardContainer = document.getElementById('experienceContainer');
+    const modalContainer = document.getElementById('dynamicExperienceModals');
+    if (!cardContainer || !modalContainer) return;
+    
+    cardContainer.innerHTML = '';
+    modalContainer.innerHTML = '';
+    
+    portfolioData.experience.forEach(exp => {
+      const cardColor = exp.color || 'blue';
+      const cardHtml = `
+        <div class="exp-card group relative bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden border border-gray-100 dark:border-gray-700" data-modal="${exp.id}">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-${cardColor}-500/10 rounded-bl-full -z-10 transition-transform group-hover:scale-150"></div>
+          <div class="w-14 h-14 bg-${cardColor}-100 dark:bg-${cardColor}-900/40 rounded-xl flex items-center justify-center mb-6 transform group-hover:rotate-6 transition-transform duration-300">
+            <i class="${exp.icon} text-3xl text-${cardColor}-600 dark:text-${cardColor}-400"></i>
+          </div>
+          <span class="text-sm font-bold text-${cardColor}-500 mb-2 block">${exp.year}</span>
+          <h3 class="text-xl font-bold mb-2 dark:text-white group-hover:text-${cardColor}-500 transition-colors">${exp.title}</h3>
+          <p class="text-gray-600 dark:text-gray-400 text-sm line-clamp-2">${exp.desc}</p>
+          <div class="mt-4 flex items-center text-${cardColor}-500 text-sm font-semibold opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+            Lihat Detail <i class="ri-arrow-right-line ml-1"></i>
+          </div>
+        </div>
+      `;
+      cardContainer.insertAdjacentHTML('beforeend', cardHtml);
+
+      // Modal render
+      const detailItems = exp.details ? exp.details.map(d => `<li>${d}</li>`).join('') : `<li>${exp.desc}</li>`;
+      const modalHtml = `
+        <div id="${exp.id}Modal" class="journey-modal hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div class="modal-content bg-white dark:bg-gray-800 rounded-xl p-8 max-w-2xl mx-4 relative transform opacity-0 scale-95 transition-all duration-300 ease-out border border-gray-100 dark:border-gray-700">
+            <button class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200" onclick="document.getElementById('${exp.id}Modal').classList.remove('show'); setTimeout(() => document.getElementById('${exp.id}Modal').classList.add('hidden'), 300)">
+              <i class="ri-close-line text-xl"></i>
+            </button>
+            <h2 class="text-2xl font-bold mb-4 dark:text-white flex items-center gap-2">
+              <i class="${exp.icon} text-${cardColor}-500"></i> ${exp.title}
+            </h2>
+            <p class="text-sm text-${cardColor}-500 font-semibold mb-4">${exp.year}</p>
+            <ul class="list-disc pl-5 space-y-2 text-gray-600 dark:text-gray-300">
+              ${detailItems}
+            </ul>
+            <div class="flex justify-end mt-6">
+              <button class="px-6 py-2 rounded-lg bg-${cardColor}-500 hover:bg-${cardColor}-600 text-white transition-colors" onclick="document.getElementById('${exp.id}Modal').classList.remove('show'); setTimeout(() => document.getElementById('${exp.id}Modal').classList.add('hidden'), 300)">Tutup</button>
+            </div>
+          </div>
+        </div>
+      `;
+      modalContainer.insertAdjacentHTML('beforeend', modalHtml);
+    });
+  }
+
+  function renderOrganization() {
+    const container = document.getElementById('orgContainer');
+    if (!container) return;
+    container.innerHTML = '';
+    
+    portfolioData.organization.forEach(org => {
+      const color = org.color || 'indigo';
+      const orgHtml = `
+        <div class="org-card bg-gradient-to-br from-${color}-50 to-${color}-100/50 dark:from-gray-800 dark:to-${color}-950/20 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-${color}-100 dark:border-gray-700">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-12 h-12 bg-${color}-500 text-white rounded-full flex items-center justify-center shadow-md">
+              <i class="${org.icon || 'ri-team-line'} text-xl"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg dark:text-white leading-tight">${org.title}</h3>
+              <span class="text-${color}-500 dark:text-${color}-400 text-sm font-medium">${org.role}</span>
+            </div>
+          </div>
+          <p class="text-gray-600 dark:text-gray-300 text-sm">${org.desc}</p>
+        </div>
+      `;
+      container.insertAdjacentHTML('beforeend', orgHtml);
+    });
+  }
+
+  function renderAll() {
+    renderProfile();
+    renderEducation();
+    renderExperience();
+    renderOrganization();
+    
+    if (typeof VanillaTilt !== 'undefined') {
+      VanillaTilt.init(document.querySelectorAll('.exp-card, .org-card'), {
+        max: 12,
+        speed: 600,
+        glare: true,
+        'max-glare': 0.3,
+        scale: 1.02,
+        perspective: 1000,
+        gyroscope: true
+      });
+    }
+
+    document.querySelectorAll('[data-modal]').forEach(item => {
+      // Recreate event listener safely
+      const clickHandler = () => {
+        const modalId = item.dataset.modal + 'Modal';
+        const modal = document.getElementById(modalId);
+        if (modal) {
+          modal.classList.remove('hidden');
+          setTimeout(() => modal.classList.add('show'), 50);
+          sfx.playOpenModal();
+        }
+      };
+      
+      item.removeEventListener('click', clickHandler);
+      item.addEventListener('click', clickHandler);
+    });
+
+    document.querySelectorAll('.exp-card, .org-card').forEach(btn => {
+      btn.addEventListener('mouseenter', () => sfx.playHover());
+    });
+  }
+
+  // Initial Render call
+  renderAll();
+
+  // Admin Dashboard open/close
+  const openAdminBtn = document.getElementById('openAdminBtn');
+  const adminModal = document.getElementById('adminModal');
+  const closeAdminModal = document.getElementById('closeAdminModal');
+  const cancelAdminBtn = document.getElementById('cancelAdminBtn');
+  const saveAdminBtn = document.getElementById('saveAdminBtn');
+
+  if (openAdminBtn && adminModal) {
+    openAdminBtn.addEventListener('click', () => {
+      document.getElementById('adminProfileName').value = portfolioData.profile.name;
+      document.getElementById('adminProfileBio').value = portfolioData.profile.bio;
+      
+      populateAdminEducation();
+      populateAdminExperiences();
+      populateAdminOrgs();
+
+      adminModal.classList.remove('hidden');
+      setTimeout(() => {
+        adminModal.querySelector('.bg-white, .bg-gray-900').classList.remove('scale-95', 'opacity-0');
+        adminModal.querySelector('.bg-white, .bg-gray-900').classList.add('scale-100', 'opacity-100');
+      }, 50);
+      sfx.playOpenModal();
+    });
+  }
+
+  function closeAdmin() {
+    if (adminModal) {
+      const inner = adminModal.querySelector('.bg-white, .bg-gray-900');
+      if (inner) {
+        inner.classList.remove('scale-100', 'opacity-100');
+        inner.classList.add('scale-95', 'opacity-0');
+      }
+      setTimeout(() => adminModal.classList.add('hidden'), 300);
+    }
+  }
+
+  if (closeAdminModal) closeAdminModal.addEventListener('click', closeAdmin);
+  if (cancelAdminBtn) cancelAdminBtn.addEventListener('click', closeAdmin);
+
+  // Admin tab switching
+  const adminTabBtns = document.querySelectorAll('.admin-tab-btn');
+  const adminTabContents = document.querySelectorAll('.admin-tab-content');
+
+  adminTabBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const targetTab = this.dataset.tab;
+      
+      adminTabBtns.forEach(b => {
+        b.classList.remove('active', 'bg-white', 'dark:bg-gray-700', 'dark:text-white', 'shadow');
+        b.classList.add('text-gray-600', 'dark:text-gray-400');
+      });
+      this.classList.add('active', 'bg-white', 'dark:bg-gray-700', 'dark:text-white', 'shadow');
+      this.classList.remove('text-gray-600', 'dark:text-gray-400');
+
+      adminTabContents.forEach(c => {
+        c.classList.add('hidden');
+        c.classList.remove('block');
+      });
+      document.getElementById(targetTab).classList.remove('hidden');
+      document.getElementById(targetTab).classList.add('block');
+      
+      sfx.playTab();
+    });
+  });
+
+  // Admin lists population
+  function populateAdminEducation() {
+    const list = document.getElementById('adminEducationList');
+    if (!list) return;
+    list.innerHTML = '';
+    
+    portfolioData.education.forEach((edu, i) => {
+      const itemHtml = `
+        <div class="p-4 rounded-2xl bg-gray-50 dark:bg-gray-800/50 border dark:border-gray-800 flex flex-col gap-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-primary px-2 py-0.5 rounded bg-primary/10">Education Item #${i+1}</span>
+            <button class="text-red-500 hover:text-red-600 text-sm font-semibold flex items-center gap-1" onclick="deleteAdminEdu(${i})">
+              <i class="ri-delete-bin-line"></i> Delete
+            </button>
+          </div>
+          <div class="grid sm:grid-cols-3 gap-3">
+            <input type="text" placeholder="Year (e.g. 2019-2022)" value="${edu.year}" class="edu-input-year px-3 py-1.5 rounded-lg border dark:bg-gray-900 dark:border-gray-800 text-sm bg-transparent text-gray-800 dark:text-white">
+            <input type="text" placeholder="Title/School" value="${edu.title}" class="edu-input-title px-3 py-1.5 rounded-lg border dark:bg-gray-900 dark:border-gray-800 text-sm sm:col-span-2 bg-transparent text-gray-800 dark:text-white">
+          </div>
+          <input type="text" placeholder="Description/Degree" value="${edu.desc}" class="edu-input-desc px-3 py-1.5 rounded-lg border dark:bg-gray-900 dark:border-gray-800 text-sm bg-transparent text-gray-800 dark:text-white">
+        </div>
+      `;
+      list.insertAdjacentHTML('beforeend', itemHtml);
+    });
+  }
+
+  function populateAdminExperiences() {
+    const list = document.getElementById('adminExperienceList');
+    if (!list) return;
+    list.innerHTML = '';
+    
+    portfolioData.experience.forEach((exp, i) => {
+      const detailsText = exp.details ? exp.details.join('\n') : exp.desc;
+      const itemHtml = `
+        <div class="p-4 rounded-2xl bg-gray-50 dark:bg-gray-800/50 border dark:border-gray-800 flex flex-col gap-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-purple-500 px-2 py-0.5 rounded bg-purple-500/10">Experience Card #${i+1}</span>
+            <button class="text-red-500 hover:text-red-600 text-sm font-semibold flex items-center gap-1" onclick="deleteAdminExp(${i})">
+              <i class="ri-delete-bin-line"></i> Delete
+            </button>
+          </div>
+          <div class="grid sm:grid-cols-3 gap-3">
+            <input type="text" placeholder="Year (e.g. 2024 - Present)" value="${exp.year}" class="exp-input-year px-3 py-1.5 rounded-lg border dark:bg-gray-900 dark:border-gray-800 text-sm bg-transparent text-gray-800 dark:text-white">
+            <input type="text" placeholder="Role Title" value="${exp.title}" class="exp-input-title px-3 py-1.5 rounded-lg border dark:bg-gray-900 dark:border-gray-800 text-sm sm:col-span-2 bg-transparent text-gray-800 dark:text-white">
+          </div>
+          <input type="text" placeholder="Short Description" value="${exp.desc}" class="exp-input-desc px-3 py-1.5 rounded-lg border dark:bg-gray-900 dark:border-gray-800 text-sm bg-transparent text-gray-800 dark:text-white">
+          <textarea placeholder="Bullet details (one per line)" rows="3" class="exp-input-details px-3 py-1.5 rounded-lg border dark:bg-gray-900 dark:border-gray-800 text-sm bg-transparent text-gray-800 dark:text-white">${detailsText}</textarea>
+        </div>
+      `;
+      list.insertAdjacentHTML('beforeend', itemHtml);
+    });
+  }
+
+  function populateAdminOrgs() {
+    const list = document.getElementById('adminOrgList');
+    if (!list) return;
+    list.innerHTML = '';
+    
+    portfolioData.organization.forEach((org, i) => {
+      const itemHtml = `
+        <div class="p-4 rounded-2xl bg-gray-50 dark:bg-gray-800/50 border dark:border-gray-800 flex flex-col gap-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-orange-500 px-2 py-0.5 rounded bg-orange-500/10">Org Card #${i+1}</span>
+            <button class="text-red-500 hover:text-red-600 text-sm font-semibold flex items-center gap-1" onclick="deleteAdminOrg(${i})">
+              <i class="ri-delete-bin-line"></i> Delete
+            </button>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-3">
+            <input type="text" placeholder="Organization Title" value="${org.title}" class="org-input-title px-3 py-1.5 rounded-lg border dark:bg-gray-900 dark:border-gray-800 text-sm bg-transparent text-gray-800 dark:text-white">
+            <input type="text" placeholder="Role / Periode" value="${org.role}" class="org-input-role px-3 py-1.5 rounded-lg border dark:bg-gray-900 dark:border-gray-800 text-sm bg-transparent text-gray-800 dark:text-white">
+          </div>
+          <input type="text" placeholder="Description of your contributions" value="${org.desc}" class="org-input-desc px-3 py-1.5 rounded-lg border dark:bg-gray-900 dark:border-gray-800 text-sm bg-transparent text-gray-800 dark:text-white">
+        </div>
+      `;
+      list.insertAdjacentHTML('beforeend', itemHtml);
+    });
+  }
+
+  window.deleteAdminEdu = function(index) {
+    portfolioData.education.splice(index, 1);
+    populateAdminEducation();
+    sfx.playClick();
+  };
+
+  window.deleteAdminExp = function(index) {
+    portfolioData.experience.splice(index, 1);
+    populateAdminExperiences();
+    sfx.playClick();
+  };
+
+  window.deleteAdminOrg = function(index) {
+    portfolioData.organization.splice(index, 1);
+    populateAdminOrgs();
+    sfx.playClick();
+  };
+
+  // Add Item buttons
+  const addEducationBtn = document.getElementById('addEducationBtn');
+  if (addEducationBtn) {
+    addEducationBtn.addEventListener('click', () => {
+      portfolioData.education.push({
+        year: "2025",
+        title: "New Education Title",
+        desc: "Academic Description",
+        icon: "ri-school-line",
+        iconBg: "bg-blue-100 dark:bg-blue-900",
+        iconColor: "text-blue-600 dark:text-blue-400"
+      });
+      populateAdminEducation();
+      sfx.playClick();
+    });
+  }
+
+  const addExperienceBtn = document.getElementById('addExperienceBtn');
+  if (addExperienceBtn) {
+    addExperienceBtn.addEventListener('click', () => {
+      const newId = 'expWork' + (portfolioData.experience.length + 1);
+      portfolioData.experience.push({
+        id: newId,
+        year: "2025",
+        title: "New Professional Title",
+        desc: "Short role overview...",
+        icon: "ri-code-box-line",
+        color: "blue",
+        details: ["Key bullet achievement 1", "Key bullet achievement 2"]
+      });
+      populateAdminExperiences();
+      sfx.playClick();
+    });
+  }
+
+  const addOrgBtn = document.getElementById('addOrgBtn');
+  if (addOrgBtn) {
+    addOrgBtn.addEventListener('click', () => {
+      portfolioData.organization.push({
+        title: "New Organization",
+        role: "Role (2025)",
+        desc: "Brief summary of contributions...",
+        icon: "ri-team-line",
+        color: "indigo"
+      });
+      populateAdminOrgs();
+      sfx.playClick();
+    });
+  }
+
+  // Save changes
+  if (saveAdminBtn) {
+    saveAdminBtn.addEventListener('click', () => {
+      portfolioData.profile.name = document.getElementById('adminProfileName').value;
+      portfolioData.profile.bio = document.getElementById('adminProfileBio').value;
+
+      // Read education blocks
+      const eduBlocks = document.querySelectorAll('#adminEducationList > div');
+      portfolioData.education = [];
+      eduBlocks.forEach((block, index) => {
+        const colors = ['blue', 'green', 'purple', 'indigo', 'orange'];
+        const chosenColor = colors[index % colors.length];
+        portfolioData.education.push({
+          year: block.querySelector('.edu-input-year').value,
+          title: block.querySelector('.edu-input-title').value,
+          desc: block.querySelector('.edu-input-desc').value,
+          icon: index % 2 === 0 ? "ri-school-line" : "ri-book-open-line",
+          iconBg: `bg-${chosenColor}-100 dark:bg-${chosenColor}-900`,
+          iconColor: `text-${chosenColor}-600 dark:text-${chosenColor}-400`
+        });
+      });
+
+      // Read experience blocks
+      const expBlocks = document.querySelectorAll('#adminExperienceList > div');
+      portfolioData.experience = [];
+      expBlocks.forEach((block, index) => {
+        const detailsText = block.querySelector('.exp-input-details').value;
+        const detailsArr = detailsText.split('\n').filter(line => line.trim() !== '');
+        const colors = ['blue', 'purple', 'green', 'indigo', 'pink', 'orange'];
+        const chosenColor = colors[index % colors.length];
+        
+        portfolioData.experience.push({
+          id: 'expWork' + (index + 1),
+          year: block.querySelector('.exp-input-year').value,
+          title: block.querySelector('.exp-input-title').value,
+          desc: block.querySelector('.exp-input-desc').value,
+          icon: index % 3 === 0 ? "ri-code-box-line" : (index % 3 === 1 ? "ri-brush-line" : "ri-server-line"),
+          color: chosenColor,
+          details: detailsArr
+        });
+      });
+
+      // Read organization blocks
+      const orgBlocks = document.querySelectorAll('#adminOrgList > div');
+      portfolioData.organization = [];
+      orgBlocks.forEach((block, index) => {
+        const colors = ['indigo', 'orange', 'emerald', 'blue', 'pink'];
+        const chosenColor = colors[index % colors.length];
+        portfolioData.organization.push({
+          title: block.querySelector('.org-input-title').value,
+          role: block.querySelector('.org-input-role').value,
+          desc: block.querySelector('.org-input-desc').value,
+          icon: index % 3 === 0 ? "ri-team-line" : (index % 3 === 1 ? "ri-fire-line" : "ri-code-s-slash-line"),
+          color: chosenColor
+        });
+      });
+
+      saveToLocalStorage();
+      renderAll();
+      closeAdmin();
+      sfx.playTab();
+      
+      if (typeof confetti !== 'undefined') {
+        confetti({
+          particleCount: 80,
+          spread: 60,
+          origin: { y: 0.8 }
+        });
+      }
+    });
+  }
+
+  // Export JSON
+  const exportBtn = document.getElementById('exportDataBtn');
+  if (exportBtn) {
+    exportBtn.addEventListener('click', () => {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(portfolioData, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", "portfolio_data.json");
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+      sfx.playTab();
+    });
+  }
+
+  // Import JSON
+  const importBtn = document.getElementById('importDataBtn');
+  const importFileInput = document.getElementById('importFileInput');
+  if (importBtn && importFileInput) {
+    importBtn.addEventListener('click', () => {
+      importFileInput.click();
+    });
+    
+    importFileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        try {
+          const parsed = JSON.parse(evt.target.result);
+          if (parsed.profile && parsed.education && parsed.experience) {
+            portfolioData = parsed;
+            saveToLocalStorage();
+            renderAll();
+            closeAdmin();
+            sfx.playTab();
+            
+            if (typeof confetti !== 'undefined') {
+              confetti({ particleCount: 120, spread: 80 });
+            }
+          } else {
+            alert("Format JSON tidak valid!");
+          }
+        } catch (err) {
+          alert("Gagal membaca file JSON!");
+        }
+      };
+      reader.readAsText(file);
+    });
+  }
+
 }); // end DOMContentLoaded
 
 
