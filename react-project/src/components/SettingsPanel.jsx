@@ -1,4 +1,3 @@
-import React from 'react';
 import { sfx } from './SoundEffects';
 import { useTheme } from './ThemeContext';
 

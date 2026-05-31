@@ -49,10 +49,10 @@
   <span class="bar bar1"></span>
 </button>
 <button id="hamburgerBtn" 
-  class="setting-btn w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10" aria-label="Menu">
-  <span class="w-5 h-0.5 bg-white dark:bg-gray-900"></span>
-  <span class="w-5 h-0.5 bg-white dark:bg-gray-900"></span>
-  <span class="w-5 h-0.5 bg-white dark:bg-gray-900"></span>
+  class="setting-btn w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 flex flex-col justify-center items-center gap-1" aria-label="Menu">
+  <span class="w-5 h-0.5 bg-gray-800 dark:bg-gray-200 transition-colors"></span>
+  <span class="w-5 h-0.5 bg-gray-800 dark:bg-gray-200 transition-colors"></span>
+  <span class="w-5 h-0.5 bg-gray-800 dark:bg-gray-200 transition-colors"></span>
 </button>
 </div>
 </div>
@@ -74,12 +74,6 @@
     </a>
     <a href="#about" class="drawer-link flex items-center gap-3 text-lg font-semibold text-gray-700 dark:text-gray-300 hover:text-primary">
       <i class="ri-user-line text-xl"></i> About
-    </a>
-    <a href="#gallery" class="drawer-link flex items-center gap-3 text-lg font-semibold text-gray-700 dark:text-gray-300 hover:text-primary">
-      <i class="ri-image-line text-xl"></i> Gallery
-    </a>
-    <a href="#journey" class="drawer-link flex items-center gap-3 text-lg font-semibold text-gray-700 dark:text-gray-300 hover:text-primary">
-      <i class="ri-road-map-line text-xl"></i> Journey
     </a>
     <a href="#contact" class="drawer-link flex items-center gap-3 text-lg font-semibold text-gray-700 dark:text-gray-300 hover:text-primary">
       <i class="ri-mail-line text-xl"></i> Contact
@@ -124,15 +118,19 @@ Tanpa batas untuk berkarya, tanpa henti untuk terus berkembang
 <svg class="section-top" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" style="transform: scale(1,-1);">
   <path fill="#F5FBFF" d="M0,60 Q720,120 1440,60 L1440,120 L0,120 Z"/>
 </svg>
-<div class="max-w-6xl mx-auto px-6">
-<div class="text-center mb-16">
-<div class="w-32 h-32 mx-auto mb-8 rounded-full overflow-hidden cursor-pointer card-hover" id="profilePhoto">
+<div class="max-w-6xl mx-auto px-6 relative z-10">
+<div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+<div class="relative" data-aos="fade-right">
+<div class="w-full aspect-square rounded-2xl overflow-hidden shadow-2xl relative group border-4 border-white dark:border-gray-800">
 <img src="assets/profile/p.webp" alt="Profile" class="w-full h-full object-cover object-top">
 </div>
+</div>
+<div>
 <h2 class="text-4xl font-bold mb-4 text-gray-900 dark:text-white" data-i18n="about_title" data-gsap-reveal="char">About Me</h2>
 <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
 Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang besar, saya terbuka pada hal-hal baru serta tantangan yang mendukung pengembangan diri.
 </p>
+</div>
 </div>
 <div class="flex justify-center mb-12 relative z-10 w-full max-w-2xl mx-auto" data-aos="fade-up">
   <div class="ios-tabs-container relative flex w-full p-1 bg-gray-200 dark:bg-gray-800 rounded-full shadow-inner overflow-hidden border border-gray-300 dark:border-gray-700">
@@ -182,20 +180,20 @@ Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang bes
 </div>
 <div id="funfact" class="about-content hidden">
 <div class="grid md:grid-cols-3 gap-6">
-<div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl text-center card-hover">
+<div class="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/30 dark:to-blue-900/10 p-6 rounded-xl text-center card-hover border border-blue-100 dark:border-blue-900/40">
 <i class="ri-coffee-line text-4xl text-blue-500 mb-4"></i>
-<h3 class="text-2xl font-bold text-blue-600">77+</h3>
-<p class="text-blue-700">Cups of Coffee</p>
+<h3 class="text-2xl font-bold text-blue-600 dark:text-blue-400">77+</h3>
+<p class="text-blue-700 dark:text-blue-300">Cups of Coffee</p>
 </div>
-<div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl text-center card-hover">
+<div class="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-950/30 dark:to-green-900/10 p-6 rounded-xl text-center card-hover border border-green-100 dark:border-green-900/40">
 <i class="ri-code-line text-4xl text-green-500 mb-4"></i>
-<h3 class="text-2xl font-bold text-green-600">25+</h3>
-<p class="text-green-700">Projects Completed</p>
+<h3 class="text-2xl font-bold text-green-600 dark:text-green-400">25+</h3>
+<p class="text-green-700 dark:text-green-300">Projects Completed</p>
 </div>
-<div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl text-center card-hover">
+<div class="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950/30 dark:to-purple-900/10 p-6 rounded-xl text-center card-hover border border-purple-100 dark:border-purple-900/40">
 <i class="ri-team-line text-4xl text-purple-500 mb-4"></i>
-<h3 class="text-2xl font-bold text-purple-600">17+</h3>
-<p class="text-purple-700">Organization joined</p>
+<h3 class="text-2xl font-bold text-purple-600 dark:text-purple-400">17+</h3>
+<p class="text-purple-700 dark:text-purple-300">Organization joined</p>
 </div>
 </div>
 </div>

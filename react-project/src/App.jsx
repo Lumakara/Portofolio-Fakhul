@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
 
-import { ThemeProvider, useTheme } from './components/ThemeContext';
+import { ThemeProvider } from './components/ThemeContext';
 import { sfx } from './components/SoundEffects';
 import MeshGradient from './components/MeshGradient';
 import ClickRipple from './components/ClickRipple';
 import PageTransition from './components/PageTransition';
 import SettingsPanel from './components/SettingsPanel';
-import MusicPlayer from './components/MusicPlayer';
+import MusicPlayer, { playlist } from './components/MusicPlayer';
 import AdminDashboard from './components/AdminDashboard';
 
 // EN/ID Dictionary for Dynamic Translations
@@ -486,12 +486,14 @@ function AppContent() {
       />
 
       {/* CRUD ADMIN modal */}
-      <AdminDashboard
-        isOpen={isAdminOpen}
-        onClose={() => setIsAdminOpen(false)}
-        portfolioData={portfolioData}
-        onSave={handleSaveData}
-      />
+      {isAdminOpen && (
+        <AdminDashboard
+          isOpen={isAdminOpen}
+          onClose={() => setIsAdminOpen(false)}
+          portfolioData={portfolioData}
+          onSave={handleSaveData}
+        />
+      )}
 
       {/* DYNAMIC MODALS FOR EXP WORK */}
       <AnimatePresence>

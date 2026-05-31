@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { sfx } from './SoundEffects';
 
 export default function AdminDashboard({
@@ -7,23 +7,14 @@ export default function AdminDashboard({
   portfolioData,
   onSave
 }) {
-  const [activeTab, setActiveTab] = useState('admin-profile');
-  const [profile, setProfile] = useState({ name: '', bio: '' });
-  const [education, setEducation] = useState([]);
-  const [experience, setExperience] = useState([]);
-  const [organization, setOrganization] = useState([]);
-
-  useEffect(() => {
-    if (portfolioData) {
-      setProfile({
-        name: portfolioData.profile?.name || '',
-        bio: portfolioData.profile?.bio || ''
-      });
-      setEducation(portfolioData.education || []);
-      setExperience(portfolioData.experience || []);
-      setOrganization(portfolioData.organization || []);
-    }
-  }, [portfolioData, isOpen]);
+  const [activeTab, setActiveTab] = useState('admin-prof');
+  const [profile, setProfile] = useState({
+    name: portfolioData?.profile?.name || '',
+    bio: portfolioData?.profile?.bio || ''
+  });
+  const [education, setEducation] = useState(portfolioData?.education || []);
+  const [experience, setExperience] = useState(portfolioData?.experience || []);
+  const [organization, setOrganization] = useState(portfolioData?.organization || []);
 
   if (!isOpen) return null;
 
@@ -159,7 +150,7 @@ export default function AdminDashboard({
         } else {
           alert("Format JSON tidak valid!");
         }
-      } catch (err) {
+      } catch {
         alert("Gagal membaca file JSON!");
       }
     };
@@ -202,7 +193,6 @@ export default function AdminDashboard({
         <div className="flex space-x-2 mb-6 bg-gray-100 dark:bg-gray-800 p-1 rounded-xl">
           {['Profile', 'Education', 'Experience', 'Organization'].map(tab => {
             const tabId = `admin-${tab.toLowerCase().substring(0, 4)}`;
-            const isTabActive = activeTab === tabId || (activeTab === 'admin-orga' && tab === 'Organization');
             const targetTab = tab === 'Organization' ? 'admin-orgs' : tabId;
             return (
               <button
@@ -238,7 +228,7 @@ export default function AdminDashboard({
                 />
               </div>
               <div>
-                <label class="block text-sm font-semibold mb-2 text-gray-700 dark:text-gray-300">Short Bio</label>
+                <label className="block text-sm font-semibold mb-2 text-gray-700 dark:text-gray-300">Short Bio</label>
                 <textarea
                   value={profile.bio}
                   onChange={e => setProfile({ ...profile, bio: e.target.value })}
@@ -270,7 +260,7 @@ export default function AdminDashboard({
                         onClick={() => handleDeleteEdu(idx)}
                         className="text-red-500 hover:text-red-600 text-xs font-bold flex items-center gap-0.5"
                       >
-                        <i class="ri-delete-bin-line"></i> Delete
+                        <i className="ri-delete-bin-line"></i> Delete
                       </button>
                     </div>
                     <div className="grid sm:grid-cols-3 gap-3">
@@ -323,7 +313,7 @@ export default function AdminDashboard({
                         onClick={() => handleDeleteExp(idx)}
                         className="text-red-500 hover:text-red-600 text-xs font-bold flex items-center gap-0.5"
                       >
-                        <i class="ri-delete-bin-line"></i> Delete
+                        <i className="ri-delete-bin-line"></i> Delete
                       </button>
                     </div>
                     <div className="grid sm:grid-cols-3 gap-3">
@@ -383,7 +373,7 @@ export default function AdminDashboard({
                         onClick={() => handleDeleteOrg(idx)}
                         className="text-red-500 hover:text-red-600 text-xs font-bold flex items-center gap-0.5"
                       >
-                        <i class="ri-delete-bin-line"></i> Delete
+                        <i className="ri-delete-bin-line"></i> Delete
                       </button>
                     </div>
                     <div className="grid sm:grid-cols-2 gap-3">

@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+/* eslint-disable react-refresh/only-export-components */
+import { useState, useEffect, useRef } from 'react';
 import { sfx } from './SoundEffects';
 
-const playlist = [
+export const playlist = [
   {
     id: "t1",
     title: "Shake It To The Max",
@@ -57,6 +58,7 @@ export default function MusicPlayer({ currentTrackIdx, setTrackIdx }) {
         audioRef.current.play().catch(() => setIsPlaying(false));
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentTrackIdx]);
 
   const handlePlayPause = (e) => {

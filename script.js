@@ -179,9 +179,11 @@ document.addEventListener('DOMContentLoaded', function() {
       localStorage.setItem('pref_theme', theme);
       
       if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
         document.body.classList.add('dark');
         document.body.classList.remove('bg-gray-50');
       } else {
+        document.documentElement.classList.remove('dark');
         document.body.classList.remove('dark');
         document.body.classList.add('bg-gray-50');
       }
@@ -303,7 +305,9 @@ document.addEventListener('DOMContentLoaded', function() {
       
       // Move indicator
       if(tabIndicator) {
-        tabIndicator.style.transform = `translateX(${index * 100}%)`;
+        tabIndicator.style.left = `calc(${index * 33.333}% + 4px)`;
+        tabIndicator.style.width = 'calc(33.333% - 8px)';
+        tabIndicator.style.transform = 'none';
       }
 
       // Update button styles
@@ -373,24 +377,40 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Journey modal open/close
-  document.querySelectorAll('[data-modal]').forEach(item => {
-    item.addEventListener('click', () => {
-      const modalId = item.dataset.modal + 'Modal';
+  // Global close helper for journey modals
+  window.closeJourneyModal = function(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+      modal.classList.remove('show');
+      setTimeout(() => modal.classList.add('hidden'), 300);
+      if (typeof sfx !== 'undefined') sfx.playClick();
+    }
+  };
+
+  // Event delegation to open journey modals dynamically
+  document.body.addEventListener('click', (e) => {
+    const trigger = e.target.closest('[data-modal]');
+    if (trigger) {
+      // Don't intercept if it's an about filter
+      if (trigger.classList.contains('about-filter')) return;
+      const modalId = trigger.dataset.modal + 'Modal';
       const modal = document.getElementById(modalId);
       if (modal) {
-        modal.classList.add('show');
         modal.classList.remove('hidden');
+        setTimeout(() => modal.classList.add('show'), 50);
+        if (typeof sfx !== 'undefined') sfx.playOpenModal();
       }
-    });
+    }
   });
 
-  document.querySelectorAll('.journey-modal').forEach(modal => {
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.classList.remove('show');
-        setTimeout(() => modal.classList.add('hidden'), 300);
-      }
-    });
+  // Event delegation to close modals on backdrop click
+  document.body.addEventListener('click', (e) => {
+    if (e.target.classList.contains('journey-modal')) {
+      const modal = e.target;
+      modal.classList.remove('show');
+      setTimeout(() => modal.classList.add('hidden'), 300);
+      if (typeof sfx !== 'undefined') sfx.playClick();
+    }
   });
 
   // ──────────────────────────────────────
@@ -1465,6 +1485,109 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // Mapped Tailwind classes helper to avoid string interpolation (Tailwind dynamic classes bug)
+  function getColorClasses(color) {
+    const maps = {
+      blue: {
+        cardBgDeco: 'bg-blue-500/10',
+        iconBg: 'bg-blue-100 dark:bg-blue-900/40',
+        iconText: 'text-blue-600 dark:text-blue-400',
+        yearText: 'text-blue-500',
+        titleHover: 'group-hover:text-blue-500',
+        arrowText: 'text-blue-500',
+        buttonBg: 'bg-blue-500 hover:bg-blue-600',
+        orgBg: 'bg-gradient-to-br from-blue-50 to-blue-100/50 dark:from-gray-800 dark:to-blue-950/20 border-blue-100 dark:border-gray-700',
+        orgIconBg: 'bg-blue-500',
+        orgRoleText: 'text-blue-500 dark:text-blue-400'
+      },
+      purple: {
+        cardBgDeco: 'bg-purple-500/10',
+        iconBg: 'bg-purple-100 dark:bg-purple-900/40',
+        iconText: 'text-purple-600 dark:text-purple-400',
+        yearText: 'text-purple-500',
+        titleHover: 'group-hover:text-purple-500',
+        arrowText: 'text-purple-500',
+        buttonBg: 'bg-purple-500 hover:bg-purple-600',
+        orgBg: 'bg-gradient-to-br from-purple-50 to-purple-100/50 dark:from-gray-800 dark:to-purple-950/20 border-purple-100 dark:border-gray-700',
+        orgIconBg: 'bg-purple-500',
+        orgRoleText: 'text-purple-500 dark:text-purple-400'
+      },
+      green: {
+        cardBgDeco: 'bg-green-500/10',
+        iconBg: 'bg-green-100 dark:bg-green-900/40',
+        iconText: 'text-green-600 dark:text-green-400',
+        yearText: 'text-green-500',
+        titleHover: 'group-hover:text-green-500',
+        arrowText: 'text-green-500',
+        buttonBg: 'bg-green-500 hover:bg-green-600',
+        orgBg: 'bg-gradient-to-br from-green-50 to-green-100/50 dark:from-gray-800 dark:to-green-950/20 border-green-100 dark:border-gray-700',
+        orgIconBg: 'bg-green-500',
+        orgRoleText: 'text-green-500 dark:text-green-400'
+      },
+      indigo: {
+        cardBgDeco: 'bg-indigo-500/10',
+        iconBg: 'bg-indigo-100 dark:bg-indigo-900/40',
+        iconText: 'text-indigo-600 dark:text-indigo-400',
+        yearText: 'text-indigo-500',
+        titleHover: 'group-hover:text-indigo-500',
+        arrowText: 'text-indigo-500',
+        buttonBg: 'bg-indigo-500 hover:bg-indigo-600',
+        orgBg: 'bg-gradient-to-br from-indigo-50 to-indigo-100/50 dark:from-gray-800 dark:to-indigo-950/20 border-indigo-100 dark:border-gray-700',
+        orgIconBg: 'bg-indigo-500',
+        orgRoleText: 'text-indigo-500 dark:text-indigo-400'
+      },
+      orange: {
+        cardBgDeco: 'bg-orange-500/10',
+        iconBg: 'bg-orange-100 dark:bg-orange-900/40',
+        iconText: 'text-orange-600 dark:text-orange-400',
+        yearText: 'text-orange-500',
+        titleHover: 'group-hover:text-orange-500',
+        arrowText: 'text-orange-500',
+        buttonBg: 'bg-orange-500 hover:bg-orange-600',
+        orgBg: 'bg-gradient-to-br from-orange-50 to-orange-100/50 dark:from-gray-800 dark:to-orange-950/20 border-orange-100 dark:border-gray-700',
+        orgIconBg: 'bg-orange-500',
+        orgRoleText: 'text-orange-500 dark:text-orange-400'
+      },
+      emerald: {
+        cardBgDeco: 'bg-emerald-500/10',
+        iconBg: 'bg-emerald-100 dark:bg-emerald-900/40',
+        iconText: 'text-emerald-600 dark:text-emerald-400',
+        yearText: 'text-emerald-500',
+        titleHover: 'group-hover:text-emerald-500',
+        arrowText: 'text-emerald-500',
+        buttonBg: 'bg-emerald-500 hover:bg-emerald-600',
+        orgBg: 'bg-gradient-to-br from-emerald-50 to-emerald-100/50 dark:from-gray-800 dark:to-emerald-950/20 border-emerald-100 dark:border-gray-700',
+        orgIconBg: 'bg-emerald-500',
+        orgRoleText: 'text-emerald-500 dark:text-emerald-400'
+      },
+      pink: {
+        cardBgDeco: 'bg-pink-500/10',
+        iconBg: 'bg-pink-100 dark:bg-pink-900/40',
+        iconText: 'text-pink-600 dark:text-pink-400',
+        yearText: 'text-pink-500',
+        titleHover: 'group-hover:text-pink-500',
+        arrowText: 'text-pink-500',
+        buttonBg: 'bg-pink-500 hover:bg-pink-600',
+        orgBg: 'bg-gradient-to-br from-pink-50 to-pink-100/50 dark:from-gray-800 dark:to-pink-950/20 border-pink-100 dark:border-gray-700',
+        orgIconBg: 'bg-pink-500',
+        orgRoleText: 'text-pink-500 dark:text-pink-400'
+      },
+      cyan: {
+        cardBgDeco: 'bg-cyan-500/10',
+        iconBg: 'bg-cyan-100 dark:bg-cyan-900/40',
+        iconText: 'text-cyan-600 dark:text-cyan-400',
+        yearText: 'text-cyan-500',
+        titleHover: 'group-hover:text-cyan-500',
+        arrowText: 'text-cyan-500',
+        buttonBg: 'bg-cyan-500 hover:bg-cyan-600',
+        orgBg: 'bg-gradient-to-br from-cyan-50 to-cyan-100/50 dark:from-gray-800 dark:to-cyan-950/20 border-cyan-100 dark:border-gray-700',
+        orgIconBg: 'bg-cyan-500',
+        orgRoleText: 'text-cyan-500 dark:text-cyan-400'
+      }
+    };
+    return maps[color] || maps.blue;
+  }
+
   function renderExperience() {
     const cardContainer = document.getElementById('experienceContainer');
     const modalContainer = document.getElementById('dynamicExperienceModals');
@@ -1474,17 +1597,17 @@ document.addEventListener('DOMContentLoaded', function() {
     modalContainer.innerHTML = '';
     
     portfolioData.experience.forEach(exp => {
-      const cardColor = exp.color || 'blue';
+      const cls = getColorClasses(exp.color || 'blue');
       const cardHtml = `
         <div class="exp-card group relative bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden border border-gray-100 dark:border-gray-700" data-modal="${exp.id}">
-          <div class="absolute top-0 right-0 w-24 h-24 bg-${cardColor}-500/10 rounded-bl-full -z-10 transition-transform group-hover:scale-150"></div>
-          <div class="w-14 h-14 bg-${cardColor}-100 dark:bg-${cardColor}-900/40 rounded-xl flex items-center justify-center mb-6 transform group-hover:rotate-6 transition-transform duration-300">
-            <i class="${exp.icon} text-3xl text-${cardColor}-600 dark:text-${cardColor}-400"></i>
+          <div class="absolute top-0 right-0 w-24 h-24 ${cls.cardBgDeco} rounded-bl-full -z-10 transition-transform group-hover:scale-150"></div>
+          <div class="w-14 h-14 ${cls.iconBg} rounded-xl flex items-center justify-center mb-6 transform group-hover:rotate-6 transition-transform duration-300">
+            <i class="${exp.icon} text-3xl ${cls.iconText}"></i>
           </div>
-          <span class="text-sm font-bold text-${cardColor}-500 mb-2 block">${exp.year}</span>
-          <h3 class="text-xl font-bold mb-2 dark:text-white group-hover:text-${cardColor}-500 transition-colors">${exp.title}</h3>
+          <span class="text-sm font-bold ${cls.yearText} mb-2 block">${exp.year}</span>
+          <h3 class="text-xl font-bold mb-2 dark:text-white ${cls.titleHover} transition-colors">${exp.title}</h3>
           <p class="text-gray-600 dark:text-gray-400 text-sm line-clamp-2">${exp.desc}</p>
-          <div class="mt-4 flex items-center text-${cardColor}-500 text-sm font-semibold opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+          <div class="mt-4 flex items-center ${cls.arrowText} text-sm font-semibold opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
             Lihat Detail <i class="ri-arrow-right-line ml-1"></i>
           </div>
         </div>
@@ -1496,18 +1619,18 @@ document.addEventListener('DOMContentLoaded', function() {
       const modalHtml = `
         <div id="${exp.id}Modal" class="journey-modal hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div class="modal-content bg-white dark:bg-gray-800 rounded-xl p-8 max-w-2xl mx-4 relative transform opacity-0 scale-95 transition-all duration-300 ease-out border border-gray-100 dark:border-gray-700">
-            <button class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200" onclick="document.getElementById('${exp.id}Modal').classList.remove('show'); setTimeout(() => document.getElementById('${exp.id}Modal').classList.add('hidden'), 300)">
+            <button class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200" onclick="window.closeJourneyModal('${exp.id}Modal')">
               <i class="ri-close-line text-xl"></i>
             </button>
             <h2 class="text-2xl font-bold mb-4 dark:text-white flex items-center gap-2">
-              <i class="${exp.icon} text-${cardColor}-500"></i> ${exp.title}
+              <i class="${exp.icon} ${cls.iconText}"></i> ${exp.title}
             </h2>
-            <p class="text-sm text-${cardColor}-500 font-semibold mb-4">${exp.year}</p>
+            <p class="text-sm ${cls.yearText} font-semibold mb-4">${exp.year}</p>
             <ul class="list-disc pl-5 space-y-2 text-gray-600 dark:text-gray-300">
               ${detailItems}
             </ul>
             <div class="flex justify-end mt-6">
-              <button class="px-6 py-2 rounded-lg bg-${cardColor}-500 hover:bg-${cardColor}-600 text-white transition-colors" onclick="document.getElementById('${exp.id}Modal').classList.remove('show'); setTimeout(() => document.getElementById('${exp.id}Modal').classList.add('hidden'), 300)">Tutup</button>
+              <button class="px-6 py-2 rounded-lg ${cls.buttonBg} text-white transition-colors" onclick="window.closeJourneyModal('${exp.id}Modal')">Tutup</button>
             </div>
           </div>
         </div>
@@ -1522,16 +1645,16 @@ document.addEventListener('DOMContentLoaded', function() {
     container.innerHTML = '';
     
     portfolioData.organization.forEach(org => {
-      const color = org.color || 'indigo';
+      const cls = getColorClasses(org.color || 'indigo');
       const orgHtml = `
-        <div class="org-card bg-gradient-to-br from-${color}-50 to-${color}-100/50 dark:from-gray-800 dark:to-${color}-950/20 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-${color}-100 dark:border-gray-700">
+        <div class="org-card ${cls.orgBg} p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border">
           <div class="flex items-center gap-4 mb-4">
-            <div class="w-12 h-12 bg-${color}-500 text-white rounded-full flex items-center justify-center shadow-md">
+            <div class="w-12 h-12 ${cls.orgIconBg} text-white rounded-full flex items-center justify-center shadow-md">
               <i class="${org.icon || 'ri-team-line'} text-xl"></i>
             </div>
             <div>
               <h3 class="font-bold text-lg dark:text-white leading-tight">${org.title}</h3>
-              <span class="text-${color}-500 dark:text-${color}-400 text-sm font-medium">${org.role}</span>
+              <span class="${cls.orgRoleText} text-sm font-medium">${org.role}</span>
             </div>
           </div>
           <p class="text-gray-600 dark:text-gray-300 text-sm">${org.desc}</p>
@@ -1558,30 +1681,22 @@ document.addEventListener('DOMContentLoaded', function() {
         gyroscope: true
       });
     }
-
-    document.querySelectorAll('[data-modal]').forEach(item => {
-      // Recreate event listener safely
-      const clickHandler = () => {
-        const modalId = item.dataset.modal + 'Modal';
-        const modal = document.getElementById(modalId);
-        if (modal) {
-          modal.classList.remove('hidden');
-          setTimeout(() => modal.classList.add('show'), 50);
-          sfx.playOpenModal();
-        }
-      };
-      
-      item.removeEventListener('click', clickHandler);
-      item.addEventListener('click', clickHandler);
-    });
-
-    document.querySelectorAll('.exp-card, .org-card').forEach(btn => {
-      btn.addEventListener('mouseenter', () => sfx.playHover());
-    });
   }
 
   // Initial Render call
   renderAll();
+
+  // Event delegation to play hover sounds dynamically on all interactive/hoverable items
+  document.body.addEventListener('mouseover', (e) => {
+    const hoverable = e.target.closest('.exp-card, .org-card, .glow-button, .about-filter, .nav-item, .drawer-link, .lang-btn, .theme-btn, .setting-btn, #closeSettings, #closeMobileNav, #downloadCvBtn, #contactMeBtn');
+    if (hoverable && !hoverable.dataset.hoverSoundPlayed) {
+      if (typeof sfx !== 'undefined') sfx.playHover();
+      hoverable.dataset.hoverSoundPlayed = 'true';
+      hoverable.addEventListener('mouseleave', () => {
+        delete hoverable.dataset.hoverSoundPlayed;
+      }, { once: true });
+    }
+  });
 
   // Admin Dashboard open/close
   const openAdminBtn = document.getElementById('openAdminBtn');

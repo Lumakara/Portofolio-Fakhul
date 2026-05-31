@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { sfx } from './SoundEffects';
 
 export default function PageTransition({ trigger, onComplete }) {
@@ -6,7 +6,6 @@ export default function PageTransition({ trigger, onComplete }) {
 
   useEffect(() => {
     // Initial entrance on mount
-    setStatus('exit');
     const timer = setTimeout(() => {
       setStatus('idle');
     }, 750);
@@ -15,14 +14,16 @@ export default function PageTransition({ trigger, onComplete }) {
 
   useEffect(() => {
     if (trigger) {
-      setStatus('active');
+      setTimeout(() => {
+        setStatus('active');
+      }, 0);
       sfx.playOpenModal(); // springy sound sweep
       const timer = setTimeout(() => {
         if (onComplete) onComplete();
       }, 750);
       return () => clearTimeout(timer);
     }
-  }, [trigger]);
+  }, [trigger, onComplete]);
 
   if (status === 'idle') return null;
 

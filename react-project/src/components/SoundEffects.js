@@ -29,7 +29,9 @@ class UI_SFX {
       gain.connect(this.audioCtx.destination);
       osc.start();
       osc.stop(this.audioCtx.currentTime + 0.04);
-    } catch (err) {}
+    } catch {
+      /* Sound effects not supported or AudioContext suspended */
+    }
   }
   
   playClick() {
@@ -49,7 +51,9 @@ class UI_SFX {
       gain.connect(this.audioCtx.destination);
       osc.start();
       osc.stop(this.audioCtx.currentTime + 0.07);
-    } catch (err) {}
+    } catch {
+      /* Sound effects not supported or AudioContext suspended */
+    }
   }
   
   playTab() {
@@ -73,7 +77,9 @@ class UI_SFX {
       };
       playTone(523.25, 0, 0.12); // C5
       playTone(659.25, 0.04, 0.15); // E5
-    } catch (err) {}
+    } catch {
+      /* Sound effects not supported or AudioContext suspended */
+    }
   }
   
   playOpenModal() {
@@ -97,7 +103,9 @@ class UI_SFX {
         osc.stop(now + delay + dur);
       };
       playTone(392.00, 0, 0.22); // G4 -> D5
-    } catch (err) {}
+    } catch {
+      /* Sound effects not supported or AudioContext suspended */
+    }
   }
 }
 
