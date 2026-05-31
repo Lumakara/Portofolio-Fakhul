@@ -19,22 +19,22 @@
 <link rel="stylesheet" href="style.css">
 <script src="mp-player.js" defer></script>
 </head>
-<body class="bg-gray-50 text-gray-900 transition-colors duration-300">
+<body class="bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-300">
 <a href="#welcome" class="skip-link">Skip to content</a>
   <div id="progressBar"></div>
 <div class="particle-bg" id="particleContainer" aria-hidden="true"></div>
-<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 transition-colors duration-300">
+<header class="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
 <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 <a href="index.html" class="flex items-center space-x-2">
   <img src="assets/icons/ic.png" alt="Alex Logo" class="h-8 w-auto" />
   <span class="logo-font text-2xl font-bold text-primary">Fatkul</span>
 </a>
 <nav class="hidden md:flex items-center space-x-8">
-<a href="#welcome" data-i18n="nav_home" class="text-gray-700 hover:text-primary transition-colors">Home</a>
-<a href="#about" data-i18n="nav_about" class="text-gray-700 hover:text-primary transition-colors">About</a>
-<a href="#journey" data-i18n="nav_journey" class="text-gray-700 hover:text-primary transition-colors">Journey</a>
-<a href="#gallery" data-i18n="nav_gallery" class="text-gray-700 hover:text-primary transition-colors">Gallery</a>
-<a href="#contact" data-i18n="nav_contact" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
+<a href="#welcome" data-i18n="nav_home" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Home</a>
+<a href="#about" data-i18n="nav_about" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">About</a>
+<a href="#journey" data-i18n="nav_journey" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Journey</a>
+<a href="#gallery" data-i18n="nav_gallery" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Gallery</a>
+<a href="#contact" data-i18n="nav_contact" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Contact</a>
 </nav>
 <div class="flex items-center space-x-2">
 <!-- From Uiverse.io by vinodjangid07 --> 
@@ -45,38 +45,38 @@
 </button>
 <button id="hamburgerBtn" 
   class="setting-btn w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10" aria-label="Menu">
-  <span class="w-5 h-0.5 bg-white"></span>
-  <span class="w-5 h-0.5 bg-white"></span>
-  <span class="w-5 h-0.5 bg-white"></span>
+  <span class="w-5 h-0.5 bg-white dark:bg-gray-900"></span>
+  <span class="w-5 h-0.5 bg-white dark:bg-gray-900"></span>
+  <span class="w-5 h-0.5 bg-white dark:bg-gray-900"></span>
 </button>
 </div>
 </div>
 </header>
 <!-- Drawer Panel (Light Theme + Icons) -->
 <div id="mobileNav"
-  class="fixed top-0 left-0 h-full w-[280px] bg-white/80 backdrop-blur-xl border-r border-gray-200 shadow-2xl transform -translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.77,0,0.18,1)] z-50 md:hidden">
+  class="fixed top-0 left-0 h-full w-[280px] bg-white dark:bg-gray-900/80 backdrop-blur-xl border-r border-gray-200 dark:border-gray-700 shadow-2xl transform -translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.77,0,0.18,1)] z-50 md:hidden">
   
   <!-- Header Drawer -->
-  <div class="p-6 flex justify-between items-center border-b border-gray-200">
-    <h2 class="text-xl font-bold text-gray-800">Menu</h2>
+  <div class="p-6 flex justify-between items-center border-b border-gray-200 dark:border-gray-700">
+    <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200">Menu</h2>
     <button id="closeMobileNav" class="text-2xl text-gray-500 hover:text-primary transition">&times;</button>
   </div>
 
   <!-- Links with Icons -->
   <nav class="p-6 flex flex-col space-y-6">
-    <a href="#welcome" class="drawer-link flex items-center gap-3 text-lg font-semibold text-gray-700 hover:text-primary active">
+    <a href="#welcome" class="drawer-link flex items-center gap-3 text-lg font-semibold text-gray-700 dark:text-gray-300 hover:text-primary active">
       <i class="ri-home-4-line text-xl"></i> Home
     </a>
-    <a href="#about" class="drawer-link flex items-center gap-3 text-lg font-semibold text-gray-700 hover:text-primary">
+    <a href="#about" class="drawer-link flex items-center gap-3 text-lg font-semibold text-gray-700 dark:text-gray-300 hover:text-primary">
       <i class="ri-user-line text-xl"></i> About
     </a>
-    <a href="#gallery" class="drawer-link flex items-center gap-3 text-lg font-semibold text-gray-700 hover:text-primary">
+    <a href="#gallery" class="drawer-link flex items-center gap-3 text-lg font-semibold text-gray-700 dark:text-gray-300 hover:text-primary">
       <i class="ri-image-line text-xl"></i> Gallery
     </a>
-    <a href="#journey" class="drawer-link flex items-center gap-3 text-lg font-semibold text-gray-700 hover:text-primary">
+    <a href="#journey" class="drawer-link flex items-center gap-3 text-lg font-semibold text-gray-700 dark:text-gray-300 hover:text-primary">
       <i class="ri-road-map-line text-xl"></i> Journey
     </a>
-    <a href="#contact" class="drawer-link flex items-center gap-3 text-lg font-semibold text-gray-700 hover:text-primary">
+    <a href="#contact" class="drawer-link flex items-center gap-3 text-lg font-semibold text-gray-700 dark:text-gray-300 hover:text-primary">
       <i class="ri-mail-line text-xl"></i> Contact
     </a>
   </nav>
@@ -93,20 +93,20 @@
 <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent" data-i18n="welcome_title">
 Welcome To My Portfolio
 </h1>
-<p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto" data-i18n="welcome_desc">
+<p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto" data-i18n="welcome_desc">
 Tanpa batas untuk berkarya, tanpa henti untuk terus berkembang
 </p>
 <div class="flex flex-wrap justify-center gap-4 mb-12">
-<div class="skill-icon w-16 h-16 bg-white rounded-xl shadow-lg flex items-center justify-center cursor-pointer">
+<div class="skill-icon w-16 h-16 bg-white dark:bg-gray-900 rounded-xl shadow-lg flex items-center justify-center cursor-pointer">
 <i class="ri-nodejs-line text-2xl text-green-500"></i>
 </div>
-<div class="skill-icon w-16 h-16 bg-white rounded-xl shadow-lg flex items-center justify-center cursor-pointer">
+<div class="skill-icon w-16 h-16 bg-white dark:bg-gray-900 rounded-xl shadow-lg flex items-center justify-center cursor-pointer">
 <i class="ri-html5-line text-2xl text-orange-500"></i>
 </div>
-<div class="skill-icon w-16 h-16 bg-white rounded-xl shadow-lg flex items-center justify-center cursor-pointer">
+<div class="skill-icon w-16 h-16 bg-white dark:bg-gray-900 rounded-xl shadow-lg flex items-center justify-center cursor-pointer">
 <i class="ri-css3-line text-2xl text-blue-600"></i>
 </div>
-<div class="skill-icon w-16 h-16 bg-white rounded-xl shadow-lg flex items-center justify-center cursor-pointer">
+<div class="skill-icon w-16 h-16 bg-white dark:bg-gray-900 rounded-xl shadow-lg flex items-center justify-center cursor-pointer">
 <i class="ri-javascript-line text-2xl text-yellow-500"></i>
 </div>
 </div>
@@ -130,7 +130,7 @@ Tanpa batas untuk berkarya, tanpa henti untuk terus berkembang
 </div>
 </div>
 </section>
-<section id="about" class="bg-white">
+<section id="about" class="bg-white dark:bg-gray-900">
 <svg class="section-top" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" style="transform: scale(1,-1);">
   <path fill="#F5FBFF" d="M0,60 Q720,120 1440,60 L1440,120 L0,120 Z"/>
 </svg>
@@ -140,71 +140,165 @@ Tanpa batas untuk berkarya, tanpa henti untuk terus berkembang
 <img src="assets/profile/p.webp" alt="Profile" class="w-full h-full object-cover object-top">
 </div>
 <h2 class="text-4xl font-bold mb-4 text-gray-900 dark:text-white" data-i18n="about_title">About Me</h2>
-<p class="text-xl text-gray-600 max-w-2xl mx-auto">
+<p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
 Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang besar, saya terbuka pada hal-hal baru serta tantangan yang mendukung pengembangan diri.
 </p>
 </div>
-<div class="flex justify-center mb-8">
-<div class="bg-gray-100 p-2 rounded-xl flex space-x-2">
-<button class="about-filter px-6 py-3 !rounded-button font-medium transition-all active bg-primary text-white" data-filter="overview">Overview</button>
-<button class="about-filter px-6 py-3 !rounded-button font-medium transition-all text-gray-600 hover:text-primary" data-filter="skills">Skills</button>
-<button class="about-filter px-6 py-3 !rounded-button font-medium transition-all text-gray-600 hover:text-primary" data-filter="funfact">Fun Facts</button>
+<div class="flex justify-center mb-12 relative z-10 w-full max-w-2xl mx-auto" data-aos="fade-up">
+  <div class="ios-tabs-container relative flex w-full p-1 bg-gray-200 dark:bg-gray-800 rounded-full shadow-inner overflow-hidden border border-gray-300 dark:border-gray-700">
+    <div class="ios-tab-indicator absolute top-1 bottom-1 left-1 rounded-full bg-white dark:bg-gray-700 shadow-md transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] w-[calc(33.333%-0.5rem)]" id="aboutTabIndicator"></div>
+    
+    <button class="about-filter flex-1 relative z-10 py-3 text-xs sm:text-sm md:text-base rounded-full font-semibold transition-colors active text-primary dark:text-white flex items-center justify-center whitespace-nowrap" data-filter="about-education">
+      <i class="ri-book-line mr-1 sm:mr-2"></i>Education
+    </button>
+    <button class="about-filter flex-1 relative z-10 py-3 text-xs sm:text-sm md:text-base rounded-full font-semibold transition-colors text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white flex items-center justify-center whitespace-nowrap" data-filter="about-exp">
+      <i class="ri-briefcase-line mr-1 sm:mr-2"></i>Exp Work
+    </button>
+    <button class="about-filter flex-1 relative z-10 py-3 text-xs sm:text-sm md:text-base rounded-full font-semibold transition-colors text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white flex items-center justify-center whitespace-nowrap" data-filter="about-org">
+      <i class="ri-group-line mr-1 sm:mr-2"></i>Organisasi
+    </button>
+  </div>
 </div>
-</div>
-<div id="aboutContent" class="min-h-[1px]">
-<div id="overview" class="about-content">
-<div class="max-w-3xl mx-auto text-center">
-<p class="text-lg leading-relaxed typing-text" id="typingText">Portofolio ini adalah jejak langkah dari imajinasi yang tumbuh menjadi karya, setiap detailnya bercerita tentang dedikasi dan cinta pada proses berkarya. Di dalamnya tersimpan percikan rasa ingin tahu, keberanian untuk mencoba, dan keyakinan bahwa setiap langkah kecil dapat meninggalkan jejak yang bermakna.
-</p>
-</div>
-</div>
-<div id="skills" class="about-content hidden">
-  <div class="scroll-container">
-    <div class="scroll-content space-x-8">
-      <div class="flex items-center space-x-3 bg-white dark:bg-gray-800 rounded-xl px-6 py-4 shadow-lg text-gray-900 dark:text-gray-100">
-        <i class="ri-reactjs-line text-2xl text-blue-500"></i>
-        <span class="font-semibold">React</span>
-      </div>
-      <div class="flex items-center space-x-3 bg-white dark:bg-gray-800 rounded-xl px-6 py-4 shadow-lg text-gray-900 dark:text-gray-100">
-        <i class="ri-vuejs-line text-2xl text-green-500"></i>
-        <span class="font-semibold">Vue.js</span>
-      </div>
-      <div class="flex items-center space-x-3 bg-white dark:bg-gray-800 rounded-xl px-6 py-4 shadow-lg text-gray-900 dark:text-gray-100">
-        <i class="ri-nodejs-line text-2xl text-green-600"></i>
-        <span class="font-semibold">Node.js</span>
-      </div>
-      <div class="flex items-center space-x-3 bg-white dark:bg-gray-800 rounded-xl px-6 py-4 shadow-lg text-gray-900 dark:text-gray-100">
-        <i class="ri-database-line text-2xl text-blue-600"></i>
-        <span class="font-semibold">MongoDB</span>
-      </div>
-      <div class="flex items-center space-x-3 bg-white dark:bg-gray-800 rounded-xl px-6 py-4 shadow-lg text-gray-900 dark:text-gray-100">
-        <i class="ri-javascript-line text-2xl text-yellow-500"></i>
-        <span class="font-semibold">JavaScript</span>
-      </div>
 
-      <!-- Set 2 (duplikat untuk seamless loop) -->
-      <div class="flex items-center space-x-3 bg-white dark:bg-gray-800 rounded-xl px-6 py-4 shadow-lg text-gray-900 dark:text-gray-100">
-        <i class="ri-reactjs-line text-2xl text-blue-500"></i>
-        <span class="font-semibold">React</span>
+<div id="aboutContent" class="min-h-[400px] relative">
+  <!-- EDUCATION -->
+  <div id="about-education" class="about-content absolute inset-0 w-full transition-all duration-500 ease-out transform translate-y-0 opacity-100 z-10">
+    <div class="max-w-3xl mx-auto relative">
+      <div class="progress-bar absolute left-1/2 transform -translate-x-1/2 top-0 w-1 bg-gray-200 dark:bg-gray-700 h-full rounded-full">
+        <div id="aboutProgressFill" class="bg-primary w-1 rounded-full transition-all duration-1000" style="height:100%"></div>
       </div>
-      <div class="flex items-center space-x-3 bg-white dark:bg-gray-800 rounded-xl px-6 py-4 shadow-lg text-gray-900 dark:text-gray-100">
-        <i class="ri-vuejs-line text-2xl text-green-500"></i>
-        <span class="font-semibold">Vue.js</span>
-      </div>
-      <div class="flex items-center space-x-3 bg-white dark:bg-gray-800 rounded-xl px-6 py-4 shadow-lg text-gray-900 dark:text-gray-100">
-        <i class="ri-nodejs-line text-2xl text-green-600"></i>
-        <span class="font-semibold">Node.js</span>
-      </div>
-      <div class="flex items-center space-x-3 bg-white dark:bg-gray-800 rounded-xl px-6 py-4 shadow-lg text-gray-900 dark:text-gray-100">
-        <i class="ri-database-line text-2xl text-blue-600"></i>
-        <span class="font-semibold">MongoDB</span>
-      </div>
-      <div class="flex items-center space-x-3 bg-white dark:bg-gray-800 rounded-xl px-6 py-4 shadow-lg text-gray-900 dark:text-gray-100">
-        <i class="ri-javascript-line text-2xl text-yellow-500"></i>
-        <span class="font-semibold">JavaScript</span>
+      <div class="space-y-12 relative z-10 pt-4">
+        <div class="timeline-item-left" data-aos="fade-right">
+          <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl cursor-pointer transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-700">
+            <div class="flex items-center justify-end gap-3 mb-2">
+              <span class="text-primary font-bold bg-primary/10 px-3 py-1 rounded-full text-sm">2013 - 2019</span>
+              <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center"><i class="ri-school-line text-blue-600 dark:text-blue-400"></i></div>
+            </div>
+            <h3 class="text-xl font-bold dark:text-white">MI HAYATUL ISLAMIYAH</h3>
+            <p class="text-gray-600 dark:text-gray-400 mt-2">Madrasah Ibtidaiyah <b>(MI)</b></p>
+          </div>
+        </div>
+
+        <div class="timeline-item-right" data-aos="fade-left">
+          <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl cursor-pointer transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-700">
+            <div class="flex items-center justify-start gap-3 mb-2">
+              <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center"><i class="ri-book-open-line text-green-600 dark:text-green-400"></i></div>
+              <span class="text-primary font-bold bg-primary/10 px-3 py-1 rounded-full text-sm">2019 - 2022</span>
+            </div>
+            <h3 class="text-xl font-bold dark:text-white">SMP ISLAM YAPKUM</h3>
+            <p class="text-gray-600 dark:text-gray-400 mt-2">Sekolah Menengah Pertama <b>(SMP)</b></p>
+          </div>
+        </div>
+
+        <div class="timeline-item-left" data-aos="fade-right">
+          <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-2xl cursor-pointer transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-700">
+            <div class="flex items-center justify-end gap-3 mb-2">
+              <span class="text-primary font-bold bg-primary/10 px-3 py-1 rounded-full text-sm">2022 - 2025</span>
+              <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center"><i class="ri-bank-line text-purple-600 dark:text-purple-400"></i></div>
+            </div>
+            <h3 class="text-xl font-bold dark:text-white">SMK AL-HIDAYAH</h3>
+            <p class="text-gray-600 dark:text-gray-400 mt-2">Sekolah Menengah Kejuruan <b>(SMK) AKUNTANSI</b></p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- EXP WORK -->
+  <div id="about-exp" class="about-content absolute inset-0 w-full transition-all duration-500 ease-out transform translate-y-8 opacity-0 pointer-events-none z-0">
+    <div class="grid md:grid-cols-3 gap-6 pt-4">
+      <!-- Exp 1 -->
+      <div class="exp-card group relative bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden border border-gray-100 dark:border-gray-700" data-modal="expWork1">
+        <div class="absolute top-0 right-0 w-24 h-24 bg-blue-500/10 rounded-bl-full -z-10 transition-transform group-hover:scale-150"></div>
+        <div class="w-14 h-14 bg-blue-100 dark:bg-blue-900 rounded-xl flex items-center justify-center mb-6 transform group-hover:rotate-6 transition-transform duration-300">
+          <i class="ri-code-box-line text-3xl text-blue-600 dark:text-blue-400"></i>
+        </div>
+        <span class="text-sm font-bold text-blue-500 mb-2 block">2024 - Present</span>
+        <h3 class="text-xl font-bold mb-2 dark:text-white group-hover:text-blue-500 transition-colors">Frontend Developer</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm line-clamp-2">Membangun antarmuka interaktif dan responsif menggunakan teknologi modern seperti React dan TailwindCSS.</p>
+        <div class="mt-4 flex items-center text-blue-500 text-sm font-semibold opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+          Lihat Detail <i class="ri-arrow-right-line ml-1"></i>
+        </div>
+      </div>
+
+      <!-- Exp 2 -->
+      <div class="exp-card group relative bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden border border-gray-100 dark:border-gray-700" data-modal="expWork2">
+        <div class="absolute top-0 right-0 w-24 h-24 bg-purple-500/10 rounded-bl-full -z-10 transition-transform group-hover:scale-150"></div>
+        <div class="w-14 h-14 bg-purple-100 dark:bg-purple-900 rounded-xl flex items-center justify-center mb-6 transform group-hover:rotate-6 transition-transform duration-300">
+          <i class="ri-brush-line text-3xl text-purple-600 dark:text-purple-400"></i>
+        </div>
+        <span class="text-sm font-bold text-purple-500 mb-2 block">2023 - 2024</span>
+        <h3 class="text-xl font-bold mb-2 dark:text-white group-hover:text-purple-500 transition-colors">UI/UX Designer</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm line-clamp-2">Merancang prototipe aplikasi dan website yang berpusat pada pengalaman pengguna menggunakan Figma.</p>
+        <div class="mt-4 flex items-center text-purple-500 text-sm font-semibold opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+          Lihat Detail <i class="ri-arrow-right-line ml-1"></i>
+        </div>
+      </div>
+
+      <!-- Exp 3 -->
+      <div class="exp-card group relative bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden border border-gray-100 dark:border-gray-700" data-modal="expWork3">
+        <div class="absolute top-0 right-0 w-24 h-24 bg-green-500/10 rounded-bl-full -z-10 transition-transform group-hover:scale-150"></div>
+        <div class="w-14 h-14 bg-green-100 dark:bg-green-900 rounded-xl flex items-center justify-center mb-6 transform group-hover:rotate-6 transition-transform duration-300">
+          <i class="ri-server-line text-3xl text-green-600 dark:text-green-400"></i>
+        </div>
+        <span class="text-sm font-bold text-green-500 mb-2 block">2022 - 2023</span>
+        <h3 class="text-xl font-bold mb-2 dark:text-white group-hover:text-green-500 transition-colors">Backend Intern</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm line-clamp-2">Membantu pengembangan RESTful API dan manajemen database menggunakan Node.js dan MongoDB.</p>
+        <div class="mt-4 flex items-center text-green-500 text-sm font-semibold opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+          Lihat Detail <i class="ri-arrow-right-line ml-1"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORGANISASI -->
+  <div id="about-org" class="about-content absolute inset-0 w-full transition-all duration-500 ease-out transform translate-y-8 opacity-0 pointer-events-none z-0">
+    <div class="grid md:grid-cols-3 gap-6 pt-4">
+      <!-- Org 1 -->
+      <div class="org-card bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-gray-800 dark:to-indigo-900/30 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-blue-100 dark:border-gray-700">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 bg-indigo-500 text-white rounded-full flex items-center justify-center shadow-md">
+            <i class="ri-team-line text-xl"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-lg dark:text-white leading-tight">OSIS</h3>
+            <span class="text-indigo-500 dark:text-indigo-400 text-sm font-medium">Bendahara Pria (2024-2025)</span>
+          </div>
+        </div>
+        <p class="text-gray-600 dark:text-gray-300 text-sm">Mengelola keuangan kegiatan siswa, memastikan laporan transparan, dan mendukung kelancaran program sekolah.</p>
+      </div>
+
+      <!-- Org 2 -->
+      <div class="org-card bg-gradient-to-br from-orange-50 to-red-50 dark:from-gray-800 dark:to-orange-900/30 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-orange-100 dark:border-gray-700">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 bg-orange-500 text-white rounded-full flex items-center justify-center shadow-md">
+            <i class="ri-fire-line text-xl"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-lg dark:text-white leading-tight">Pramuka</h3>
+            <span class="text-orange-500 dark:text-orange-400 text-sm font-medium">Ketua (2 Periode)</span>
+          </div>
+        </div>
+        <p class="text-gray-600 dark:text-gray-300 text-sm">Memimpin berbagai kegiatan perkemahan, melatih kedisiplinan anggota, dan meningkatkan partisipasi aktif hingga 40%.</p>
+      </div>
+
+      <!-- Org 3 -->
+      <div class="org-card bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-gray-800 dark:to-emerald-900/30 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-emerald-100 dark:border-gray-700">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 bg-emerald-500 text-white rounded-full flex items-center justify-center shadow-md">
+            <i class="ri-code-s-slash-line text-xl"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-lg dark:text-white leading-tight">IT Club</h3>
+            <span class="text-emerald-500 dark:text-emerald-400 text-sm font-medium">Koordinator Web (2023-2024)</span>
+          </div>
+        </div>
+        <p class="text-gray-600 dark:text-gray-300 text-sm">Mengadakan workshop pemrograman dasar, mengelola website komunitas, dan memfasilitasi diskusi teknologi terbaru.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 </div>
 </div>
 <div id="funfact" class="about-content hidden">
@@ -242,10 +336,10 @@ Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang bes
 
     <!-- Filter -->
     <div class="flex justify-center mb-12">
-      <div class="bg-white p-2 rounded-xl flex space-x-2 shadow-lg">
+      <div class="bg-white dark:bg-gray-900 p-2 rounded-xl flex space-x-2 shadow-lg">
         <button class="journey-filter px-6 py-3 !rounded-button font-medium transition-all active bg-primary text-white" data-filter="education">Education</button>
-        <button class="journey-filter px-6 py-3 !rounded-button font-medium transition-all text-gray-600 hover:text-primary" data-filter="experience">Experience</button>
-        <button class="journey-filter px-6 py-3 !rounded-button font-medium transition-all text-gray-600 hover:text-primary" data-filter="hobbies">Hobbies</button>
+        <button class="journey-filter px-6 py-3 !rounded-button font-medium transition-all text-gray-600 dark:text-gray-300 hover:text-primary" data-filter="experience">Experience</button>
+        <button class="journey-filter px-6 py-3 !rounded-button font-medium transition-all text-gray-600 dark:text-gray-300 hover:text-primary" data-filter="hobbies">Hobbies</button>
       </div>
     </div>
 
@@ -254,35 +348,35 @@ Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang bes
 <!-- === EDUCATION TIMELINE === -->
 <div id="education" class="journey-content">
   <div class="max-w-3xl mx-auto relative">
-    <div class="progress-bar absolute left-1/2 transform -translate-x-1/2 top-0 w-1 bg-gray-200 h-full">
+    <div class="progress-bar absolute left-1/2 transform -translate-x-1/2 top-0 w-1 bg-gray-200 dark:bg-gray-700 h-full">
       <div id="progressFill" class="bg-primary w-1 rounded-full transition-all duration-300" style="height:0"></div>
     </div>
     <div class="space-y-12 relative z-10">
       
       <!-- Item kiri -->
       <div class="timeline-item-left" data-modal="edu1">
-        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl cursor-pointer">
+        <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl cursor-pointer">
           <span class="text-primary font-semibold">2013 - 2019</span>
           <h3 class="text-xl font-bold">MI HAYATUL ISLAMIYAH</h3>
-          <p class="text-gray-600">Madrasah Ibtidaiyah <b>(MI)</b></p>
+          <p class="text-gray-600 dark:text-gray-300">Madrasah Ibtidaiyah <b>(MI)</b></p>
         </div>
       </div>
 
       <!-- Item kanan -->
       <div class="timeline-item-right" data-modal="edu2">
-        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl cursor-pointer">
+        <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl cursor-pointer">
           <span class="text-primary font-semibold">2019 - 2022</span>
           <h3 class="text-xl font-bold">SMP ISLAM YAPKUM</h3>
-          <p class="text-gray-600">Sekolah Menengah Pertama <b>(SMP)</b></p>
+          <p class="text-gray-600 dark:text-gray-300">Sekolah Menengah Pertama <b>(SMP)</b></p>
         </div>
       </div>
 
       <!-- Item kiri -->
       <div class="timeline-item-left" data-modal="edu3">
-        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl cursor-pointer">
+        <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl cursor-pointer">
           <span class="text-primary font-semibold">2022 - 2025</span>
           <h3 class="text-xl font-bold">SMK AL-HIDAYAH</h3>
-          <p class="text-gray-600">Sekolah Menengah Kejuruan <b>(SMK) AKUNTANSI</b></p>
+          <p class="text-gray-600 dark:text-gray-300">Sekolah Menengah Kejuruan <b>(SMK) AKUNTANSI</b></p>
         </div>
       </div>
 
@@ -295,18 +389,18 @@ Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang bes
   <div class="grid md:grid-cols-2 gap-6">
 
     <div class="exp-item" data-modal="exp1">
-      <div class="bg-white p-6 rounded-xl shadow-lg card-hover cursor-pointer">
+      <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg card-hover cursor-pointer">
         <span class="text-primary font-semibold">2023 - 2025</span>
         <h3 class="text-xl font-bold mb-3">Pramuka</h3>
-        <p class="text-gray-600">Sebagai Ketua Pramuka Selama 2 Periode</p>
+        <p class="text-gray-600 dark:text-gray-300">Sebagai Ketua Pramuka Selama 2 Periode</p>
       </div>
     </div>
 
     <div class="exp-item" data-modal="exp2">
-      <div class="bg-white p-6 rounded-xl shadow-lg card-hover cursor-pointer">
+      <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg card-hover cursor-pointer">
         <span class="text-primary font-semibold">2024 - 2025</span>
         <h3 class="text-xl font-bold mb-3">OSIS</h3>
-        <p class="text-gray-600">Sebagai Bendahara Pria</p>
+        <p class="text-gray-600 dark:text-gray-300">Sebagai Bendahara Pria</p>
       </div>
     </div>
 
@@ -381,17 +475,17 @@ Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang bes
 <!-- === MODALS EXPERIENCE === -->
 <!-- === MODAL EXP 1 === -->
 <div id="exp1Modal" class="journey-modal hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-  <div class="modal-content bg-white rounded-xl p-8 max-w-2xl mx-4 relative transform opacity-0 scale-95 transition-all duration-300 ease-out">
+  <div class="modal-content bg-white dark:bg-gray-900 rounded-xl p-8 max-w-2xl mx-4 relative transform opacity-0 scale-95 transition-all duration-300 ease-out">
 
     <!-- Tombol Close -->
-    <button class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100"
+    <button class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 dark:bg-gray-800"
             onclick="closeJourneyModal('exp1Modal')">
       <i class="ri-close-line text-xl"></i>
     </button>
 
     <!-- Konten -->
     <h2 class="text-2xl font-bold mb-4">Pramuka</h2>
-    <ul class="list-disc pl-5 space-y-2 text-gray-600">
+    <ul class="list-disc pl-5 space-y-2 text-gray-600 dark:text-gray-300">
       <li>Ketua Pramuka 2 periode</li>
       <li>Menyelenggarakan 5+ kegiatan perkemahan</li>
       <li>Meningkatkan keaktifan anggota hingga 40%</li>
@@ -399,7 +493,7 @@ Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang bes
 
     <!-- Navigasi -->
     <div class="flex justify-between mt-6">
-      <button class="px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200"
+      <button class="px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:bg-gray-700"
               data-prev="exp2Modal">← Prev</button>
       <button class="px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary/90"
               data-next="exp2Modal">Next →</button>
@@ -409,18 +503,18 @@ Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang bes
 
 <!-- === MODAL EXP 2 === -->
 <div id="exp2Modal" class="journey-modal hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-  <div class="modal-content bg-white rounded-xl p-8 max-w-2xl mx-4 relative transform opacity-0 scale-95 transition-all duration-300 ease-out">
+  <div class="modal-content bg-white dark:bg-gray-900 rounded-xl p-8 max-w-2xl mx-4 relative transform opacity-0 scale-95 transition-all duration-300 ease-out">
 
-    <button class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100"
+    <button class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 dark:bg-gray-800"
             onclick="closeJourneyModal('exp2Modal')">
       <i class="ri-close-line text-xl"></i>
     </button>
 
     <h2 class="text-2xl font-bold mb-4">OSIS</h2>
-    <p class="text-gray-600">Bendahara Pria, mengatur keuangan kegiatan OSIS dan memastikan laporan transparan.</p>
+    <p class="text-gray-600 dark:text-gray-300">Bendahara Pria, mengatur keuangan kegiatan OSIS dan memastikan laporan transparan.</p>
 
     <div class="flex justify-between mt-6">
-      <button class="px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200"
+      <button class="px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:bg-gray-700"
               data-prev="exp1Modal">← Prev</button>
       <button class="px-4 py-2 rounded-lg bg-primary text-white hover:bg-primary/90"
               data-next="exp1Modal">Next →</button>
@@ -432,11 +526,11 @@ Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang bes
      class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden"
      role="dialog" aria-modal="true">
   <div id="hobbyContent"
-       class="bg-white rounded-xl p-6 max-w-md mx-4 relative transform scale-95 opacity-0 transition-all duration-300 ease-out">
+       class="bg-white dark:bg-gray-900 rounded-xl p-6 max-w-md mx-4 relative transform scale-95 opacity-0 transition-all duration-300 ease-out">
     
     <!-- Close -->
     <button id="closeHobbyModal"
-            class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100">
+            class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 dark:bg-gray-800">
       <i class="ri-close-line text-xl"></i>
     </button>
 
@@ -447,16 +541,16 @@ Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang bes
     </div>
 
     <!-- Bullet list -->
-    <ul id="hobbyDesc" class="list-none space-y-2 text-gray-600"></ul>
+    <ul id="hobbyDesc" class="list-none space-y-2 text-gray-600 dark:text-gray-300"></ul>
 
     <!-- Navigation -->
     <div class="flex justify-between mt-6">
       <button id="prevHobby"
-              class="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-100 flex items-center gap-2">
+              class="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:bg-gray-800 flex items-center gap-2">
         <i class="ri-arrow-left-s-line"></i> Prev
       </button>
       <button id="nextHobby"
-              class="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-100 flex items-center gap-2">
+              class="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:bg-gray-800 flex items-center gap-2">
         Next <i class="ri-arrow-right-s-line"></i>
       </button>
     </div>
@@ -479,7 +573,7 @@ Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang bes
   <path fill="url(#grad-ripple)" filter="url(#glow-ripple)" d="M0,120 Q240,80 480,120 T960,120 T1440,100 L1440,200 L0,200 Z"/>
   <path fill="#FFFFFF" opacity="0.5" d="M0,160 Q300,140 600,160 T1200,160 T1440,150 L1440,200 L0,200 Z"/>
 </svg>
-<section id="gallery" class="bg-white">
+<section id="gallery" class="bg-white dark:bg-gray-900">
 <svg viewBox="0 0 1440 200" preserveAspectRatio="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <filter id="glow-ripple-top" x="-50%" y="-50%" width="200%" height="200%">
@@ -502,12 +596,12 @@ Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang bes
 
     <!-- FILTER BUTTONS -->
     <div class="flex justify-center mb-12">
-      <div class="bg-gray-100 p-2 rounded-xl flex space-x-2">
+      <div class="bg-gray-100 dark:bg-gray-800 p-2 rounded-xl flex space-x-2">
         <button class="gallery-filter px-6 py-3 !rounded-button font-medium transition-all active bg-primary text-white"
           data-filter="projects" aria-pressed="true">Projects</button>
-        <button class="gallery-filter px-6 py-3 !rounded-button font-medium transition-all text-gray-600 hover:text-primary"
+        <button class="gallery-filter px-6 py-3 !rounded-button font-medium transition-all text-gray-600 dark:text-gray-300 hover:text-primary"
           data-filter="certificates" aria-pressed="false">Certificates</button>
-        <button class="gallery-filter px-6 py-3 !rounded-button font-medium transition-all text-gray-600 hover:text-primary"
+        <button class="gallery-filter px-6 py-3 !rounded-button font-medium transition-all text-gray-600 dark:text-gray-300 hover:text-primary"
           data-filter="designs" aria-pressed="false">Designs</button>
       </div>
     </div>
@@ -517,12 +611,12 @@ Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang bes
       <div id="projects" class="gallery-content">
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-          <article class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+          <article class="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden card-hover">
             <img src="assets/p1/p1.jpg"
               alt="Screenshot of modern E-commerce Platform" class="w-full h-48 object-cover object-top" loading="lazy">
             <div class="p-6">
               <h3 class="text-xl font-bold mb-2">Whatsapp Bot</h3>
-              <p class="text-gray-600 mb-4">Lumakara Bot – asisten WhatsApp serbaguna dengan AI, downloader, moderasi, game, dan fitur premium.</p>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">Lumakara Bot – asisten WhatsApp serbaguna dengan AI, downloader, moderasi, game, dan fitur premium.</p>
               <div class="flex space-x-3">
                 <a href="preview.html" class="bg-primary text-white px-4 py-2 !rounded-button text-sm whitespace-nowrap inline-block">Preview</a>
                 <a href="#" class="border border-primary text-primary px-4 py-2 !rounded-button text-sm whitespace-nowrap">Demo</a>
@@ -551,22 +645,22 @@ Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang bes
   role="dialog" aria-modal="true" aria-labelledby="certificateTitle">
 
   <div id="certificateContent"
-    class="bg-white rounded-xl p-8 max-w-4xl mx-4 relative transform scale-95 opacity-0 transition-all duration-300 ease-out">
+    class="bg-white dark:bg-gray-900 rounded-xl p-8 max-w-4xl mx-4 relative transform scale-95 opacity-0 transition-all duration-300 ease-out">
 
     <!-- Close Button -->
     <button id="closeCertificateModal"
-      class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100" aria-label="Close">
+      class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 dark:bg-gray-800" aria-label="Close">
       <i class="ri-close-line text-xl"></i>
     </button>
 
     <!-- Navigation -->
     <div class="absolute inset-y-0 left-0 flex items-center">
-      <button id="prevCertificate" class="p-2 bg-white/70 rounded-full shadow hover:bg-white" aria-label="Previous">
+      <button id="prevCertificate" class="p-2 bg-white dark:bg-gray-900/70 rounded-full shadow hover:bg-white dark:bg-gray-900" aria-label="Previous">
         <i class="ri-arrow-left-s-line text-2xl"></i>
       </button>
     </div>
     <div class="absolute inset-y-0 right-0 flex items-center">
-      <button id="nextCertificate" class="p-2 bg-white/70 rounded-full shadow hover:bg-white" aria-label="Next">
+      <button id="nextCertificate" class="p-2 bg-white dark:bg-gray-900/70 rounded-full shadow hover:bg-white dark:bg-gray-900" aria-label="Next">
         <i class="ri-arrow-right-s-line text-2xl"></i>
       </button>
     </div>
@@ -581,24 +675,24 @@ Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang bes
         <h2 id="certificateTitle" class="text-2xl font-bold mb-4"></h2>
         <div class="space-y-4">
           <div>
-            <h4 class="font-semibold text-gray-700">Issuing Organization</h4>
-            <p id="certificateOrg" class="text-gray-600"></p>
+            <h4 class="font-semibold text-gray-700 dark:text-gray-300">Issuing Organization</h4>
+            <p id="certificateOrg" class="text-gray-600 dark:text-gray-300"></p>
           </div>
           <div>
-            <h4 class="font-semibold text-gray-700">Completion Date</h4>
-            <p id="certificateDate" class="text-gray-600"></p>
+            <h4 class="font-semibold text-gray-700 dark:text-gray-300">Completion Date</h4>
+            <p id="certificateDate" class="text-gray-600 dark:text-gray-300"></p>
           </div>
           <div>
-            <h4 class="font-semibold text-gray-700">Skills Covered</h4>
+            <h4 class="font-semibold text-gray-700 dark:text-gray-300">Skills Covered</h4>
             <div id="certificateSkills" class="flex flex-wrap gap-2 mt-1"></div>
           </div>
           <div>
-            <h4 class="font-semibold text-gray-700">Certificate ID</h4>
-            <p id="certificateID" class="text-gray-600"></p>
+            <h4 class="font-semibold text-gray-700 dark:text-gray-300">Certificate ID</h4>
+            <p id="certificateID" class="text-gray-600 dark:text-gray-300"></p>
           </div>
           <div>
-            <h4 class="font-semibold text-gray-700">Verification</h4>
-            <p id="certificateVerification" class="text-gray-600"></p>
+            <h4 class="font-semibold text-gray-700 dark:text-gray-300">Verification</h4>
+            <p id="certificateVerification" class="text-gray-600 dark:text-gray-300"></p>
           </div>
         </div>
       </div>
@@ -616,12 +710,12 @@ Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang bes
       <div id="designs" class="gallery-content hidden">
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-          <article class="bg-white rounded-xl shadow-lg overflow-hidden gallery-item card-hover">
+          <article class="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden gallery-item card-hover">
             <img src="https://readdy.ai/api/search-image?query=modern%20logo%20design%20showcase%2C%20creative%20branding%2C%20minimalist%20logo%20collection%2C%20professional%20graphic%20design%2C%20clean%20presentation%2C%20design%20portfolio%20piece&width=400&height=300&seq=design001&orientation=landscape"
               alt="Logo Design showcase" class="w-full h-48 object-cover object-top" loading="lazy">
             <div class="p-6">
               <h3 class="text-lg font-bold">Brand Identity Design</h3>
-              <p class="text-gray-600">Logo and branding package</p>
+              <p class="text-gray-600 dark:text-gray-300">Logo and branding package</p>
             </div>
           </article>
 
@@ -666,28 +760,28 @@ Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang bes
   <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center float-icon glow-blue">
     <i class="ri-mail-line text-primary"></i>
   </div>
-  <span class="text-gray-700">fakhulrohman2@gmail.com</span>
+  <span class="text-gray-700 dark:text-gray-300">fakhulrohman2@gmail.com</span>
 </div>
 
 <div class="flex items-center space-x-4 hover:translate-x-1 transition-transform">
   <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center float-icon glow-green">
     <i class="ri-phone-line text-primary"></i>
   </div>
-  <span class="text-gray-700">+62 851-8351-8016</span>
+  <span class="text-gray-700 dark:text-gray-300">+62 851-8351-8016</span>
 </div>
 
 <div class="flex items-center space-x-4 hover:translate-x-1 transition-transform">
   <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center float-icon glow-purple">
     <i class="ri-map-pin-line text-primary"></i>
   </div>
-  <span class="text-gray-700">Indonesia, Jawa Barat, Depok</span>
+  <span class="text-gray-700 dark:text-gray-300">Indonesia, Jawa Barat, Depok</span>
 </div>
 </div>
 </div>
 
       <!-- FORM -->
       <div data-aos="fade-left">
-        <div class="bg-white/80 backdrop-blur-lg p-8 rounded-2xl shadow-2xl relative">
+        <div class="bg-white dark:bg-gray-900/80 backdrop-blur-lg p-8 rounded-2xl shadow-2xl relative">
           <form id="contactForm" class="space-y-6">
 <!-- Title Contact Me -->
 <div class="text-center mb-10">
@@ -811,6 +905,64 @@ Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang bes
     © 2025 Fakhul Rohman. All rights reserved.
   </div>
 </footer>
+
+<!-- === MODAL EXP WORK 1 === -->
+<div id="expWork1Modal" class="journey-modal hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+  <div class="modal-content bg-white dark:bg-gray-800 rounded-xl p-8 max-w-2xl mx-4 relative transform opacity-0 scale-95 transition-all duration-300 ease-out border border-gray-100 dark:border-gray-700">
+    <button class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200" onclick="document.getElementById('expWork1Modal').classList.remove('show'); setTimeout(() => document.getElementById('expWork1Modal').classList.add('hidden'), 300)">
+      <i class="ri-close-line text-xl"></i>
+    </button>
+    <h2 class="text-2xl font-bold mb-4 dark:text-white flex items-center gap-2"><i class="ri-code-box-line text-blue-500"></i> Frontend Developer</h2>
+    <p class="text-sm text-blue-500 font-semibold mb-4">2024 - Present</p>
+    <ul class="list-disc pl-5 space-y-2 text-gray-600 dark:text-gray-300">
+      <li>Membangun antarmuka interaktif dan responsif menggunakan React, Vue.js, dan Tailwind CSS.</li>
+      <li>Mengoptimalkan performa rendering halaman dan aksesibilitas untuk memberikan pengalaman pengguna yang lebih baik.</li>
+      <li>Berkolaborasi dengan desainer UI/UX untuk mengimplementasikan desain pixel-perfect.</li>
+    </ul>
+    <div class="flex justify-end mt-6">
+      <button class="px-6 py-2 rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition-colors" onclick="document.getElementById('expWork1Modal').classList.remove('show'); setTimeout(() => document.getElementById('expWork1Modal').classList.add('hidden'), 300)">Tutup</button>
+    </div>
+  </div>
+</div>
+
+<!-- === MODAL EXP WORK 2 === -->
+<div id="expWork2Modal" class="journey-modal hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+  <div class="modal-content bg-white dark:bg-gray-800 rounded-xl p-8 max-w-2xl mx-4 relative transform opacity-0 scale-95 transition-all duration-300 ease-out border border-gray-100 dark:border-gray-700">
+    <button class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200" onclick="document.getElementById('expWork2Modal').classList.remove('show'); setTimeout(() => document.getElementById('expWork2Modal').classList.add('hidden'), 300)">
+      <i class="ri-close-line text-xl"></i>
+    </button>
+    <h2 class="text-2xl font-bold mb-4 dark:text-white flex items-center gap-2"><i class="ri-brush-line text-purple-500"></i> UI/UX Designer</h2>
+    <p class="text-sm text-purple-500 font-semibold mb-4">2023 - 2024</p>
+    <ul class="list-disc pl-5 space-y-2 text-gray-600 dark:text-gray-300">
+      <li>Merancang wireframe, mockup, dan prototipe interaktif menggunakan Figma.</li>
+      <li>Melakukan riset pengguna untuk mengidentifikasi pain points dan mengembangkan solusi antarmuka yang intuitif.</li>
+      <li>Memastikan konsistensi design system di seluruh produk digital perusahaan.</li>
+    </ul>
+    <div class="flex justify-end mt-6">
+      <button class="px-6 py-2 rounded-lg bg-purple-500 text-white hover:bg-purple-600 transition-colors" onclick="document.getElementById('expWork2Modal').classList.remove('show'); setTimeout(() => document.getElementById('expWork2Modal').classList.add('hidden'), 300)">Tutup</button>
+    </div>
+  </div>
+</div>
+
+<!-- === MODAL EXP WORK 3 === -->
+<div id="expWork3Modal" class="journey-modal hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+  <div class="modal-content bg-white dark:bg-gray-800 rounded-xl p-8 max-w-2xl mx-4 relative transform opacity-0 scale-95 transition-all duration-300 ease-out border border-gray-100 dark:border-gray-700">
+    <button class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200" onclick="document.getElementById('expWork3Modal').classList.remove('show'); setTimeout(() => document.getElementById('expWork3Modal').classList.add('hidden'), 300)">
+      <i class="ri-close-line text-xl"></i>
+    </button>
+    <h2 class="text-2xl font-bold mb-4 dark:text-white flex items-center gap-2"><i class="ri-server-line text-green-500"></i> Backend Intern</h2>
+    <p class="text-sm text-green-500 font-semibold mb-4">2022 - 2023</p>
+    <ul class="list-disc pl-5 space-y-2 text-gray-600 dark:text-gray-300">
+      <li>Membantu pengembangan RESTful API menggunakan Node.js dan Express.</li>
+      <li>Mengintegrasikan database NoSQL (MongoDB) dan relasional (PostgreSQL).</li>
+      <li>Menulis unit test dan berpartisipasi dalam proses code review untuk memastikan kualitas kode.</li>
+    </ul>
+    <div class="flex justify-end mt-6">
+      <button class="px-6 py-2 rounded-lg bg-green-500 text-white hover:bg-green-600 transition-colors" onclick="document.getElementById('expWork3Modal').classList.remove('show'); setTimeout(() => document.getElementById('expWork3Modal').classList.add('hidden'), 300)">Tutup</button>
+    </div>
+  </div>
+</div>
+
 </main>
 <div id="settingsPanel" class="settings-panel fixed top-0 right-0 h-full w-80 bg-white dark:bg-gray-900 shadow-[0_0_40px_rgba(0,0,0,0.3)] z-50 p-6 overflow-y-auto transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]">
 <div class="flex items-center justify-between mb-8 group">
@@ -872,11 +1024,11 @@ Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang bes
 </div>
 
 <div id="profileModal" class="modal fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
-<div class="bg-white rounded-xl p-8 max-w-md mx-4">
+<div class="bg-white dark:bg-gray-900 rounded-xl p-8 max-w-md mx-4">
 <div class="text-center">
 <img src="assets/profile/p.webp" alt="Profile" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover object-top">
 <h3 class="text-2xl font-bold mb-4">Fakhul Rohman N.</h3>
-<p class="text-gray-600 leading-relaxed">
+<p class="text-gray-600 dark:text-gray-300 leading-relaxed">
 Perkenalkan, saya Fakhul Rohman Nurokhim. Dengan rasa ingin tahu yang besar, saya terbuka pada hal-hal baru serta tantangan yang mendukung pengembangan diri. Setiap karya bagi saya adalah ruang untuk bertanya, menganalisis, dan menemukan makna, hingga lahirlah portofolio ini sebagai cermin perjalanan berpikir kritis dan berkarya.
 </p>
 <button id="closeModal" class="mt-6 bg-primary text-white px-6 py-2 !rounded-button whitespace-nowrap">Close</button>
@@ -885,7 +1037,7 @@ Perkenalkan, saya Fakhul Rohman Nurokhim. Dengan rasa ingin tahu yang besar, say
 </div>
 <!-- ===== MINI SPOTIFY-LIKE PLAYER (UPDATED) ===== -->
 <div id="miniPlayer" class="fixed left-0 right-0 bottom-4 z-60 flex justify-center">
-  <div id="mpCard" class="w-[94%] max-w-3xl rounded-2xl bg-white/95 overflow-hidden transition-all duration-300 transform translate-y-0">
+  <div id="mpCard" class="w-[94%] max-w-3xl rounded-2xl bg-white dark:bg-gray-900/95 overflow-hidden transition-all duration-300 transform translate-y-0">
 
     <!-- Compact (mini) -->
     <div id="mpMini" class="flex items-center gap-3 px-4 py-2 cursor-grab">
@@ -914,11 +1066,11 @@ Perkenalkan, saya Fakhul Rohman Nurokhim. Dengan rasa ingin tahu yang besar, say
 
   <!-- detail card -->
   <div id="mpDetailCard_ux9"
-       class="absolute bottom-0 left-0 right-0 w-full max-w-3xl mx-auto bg-white/95 backdrop-blur-2xl shadow-lg transform translate-y-full transition-transform duration-300 flex flex-col">
+       class="absolute bottom-0 left-0 right-0 w-full max-w-3xl mx-auto bg-white dark:bg-gray-900/95 backdrop-blur-2xl shadow-lg transform translate-y-full transition-transform duration-300 flex flex-col">
     
     <!-- Close Button -->
     <button id="mpClose_ux9"
-            class="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-100 z-10">
+            class="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-100 dark:bg-gray-800 z-10">
       <i class="ri-close-line text-2xl"></i>
     </button>
 
@@ -940,11 +1092,11 @@ Perkenalkan, saya Fakhul Rohman Nurokhim. Dengan rasa ingin tahu yang besar, say
       <p id="mpArtist_ux9" class="text-sm text-gray-500 mb-4">Artist</p>
 
       <!-- Seekbar -->
-      <div id="seekBar_ux9" class="relative w-full h-2 bg-gray-200 rounded-full cursor-pointer my-4">
+      <div id="seekBar_ux9" class="relative w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full cursor-pointer my-4">
         <div id="seekFill_ux9"
              class="absolute left-0 top-0 h-full w-0 rounded-full bg-gradient-to-r from-indigo-500 to-pink-500"></div>
         <div id="seekHandle_ux9"
-             class="absolute top-1/2 -translate-y-1/2 left-0 w-4 h-4 rounded-full bg-white border shadow"></div>
+             class="absolute top-1/2 -translate-y-1/2 left-0 w-4 h-4 rounded-full bg-white dark:bg-gray-900 border shadow"></div>
       </div>
       <div class="flex justify-between w-full text-xs text-gray-500 mb-6">
         <div id="currentTime_ux9">0:00</div>
@@ -970,11 +1122,11 @@ Perkenalkan, saya Fakhul Rohman Nurokhim. Dengan rasa ingin tahu yang besar, say
   <button id="galleryPrev_x9" class="absolute left-4 text-white text-4xl">&#10094;</button>
   <button id="galleryNext_x9" class="absolute right-4 text-white text-4xl">&#10095;</button>
   
-  <div class="max-w-3xl w-[90%] bg-white rounded-xl overflow-hidden shadow-xl">
+  <div class="max-w-3xl w-[90%] bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-xl">
     <img id="galleryImg_x9" src="" alt="Preview" class="w-full max-h-[70vh] object-contain bg-black">
     <div class="p-4">
       <h3 id="galleryTitle_x9" class="text-lg font-bold"></h3>
-      <p id="galleryDesc_x9" class="text-gray-600"></p>
+      <p id="galleryDesc_x9" class="text-gray-600 dark:text-gray-300"></p>
     </div>
   </div>
 </div>

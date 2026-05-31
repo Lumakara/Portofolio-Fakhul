@@ -4,6 +4,7 @@
 
 // 1. Tailwind config (ONCE)
 tailwind.config = {
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -289,27 +290,43 @@ document.addEventListener('DOMContentLoaded', function() {
   settingsManager.init();
 
   // ──────────────────────────────────────
-  // 2g. About section tabs
+  // ──────────────────────────────────────
+  // 2g. About section tabs (iOS Style)
   // ──────────────────────────────────────
   const aboutFilters = document.querySelectorAll('.about-filter');
   const aboutContents = document.querySelectorAll('.about-content');
+  const tabIndicator = document.getElementById('aboutTabIndicator');
 
-  aboutFilters.forEach(filter => {
+  aboutFilters.forEach((filter, index) => {
     filter.addEventListener('click', function() {
       const target = this.dataset.filter;
+      
+      // Move indicator
+      if(tabIndicator) {
+        tabIndicator.style.transform = `translateX(${index * 100}%)`;
+      }
+
+      // Update button styles
       aboutFilters.forEach(f => {
-        f.classList.remove('active', 'bg-primary', 'text-white');
-        f.classList.add('text-gray-600');
+        f.classList.remove('active', 'text-primary', 'dark:text-white');
+        f.classList.add('text-gray-600', 'dark:text-gray-400');
       });
-      this.classList.add('active', 'bg-primary', 'text-white');
-      this.classList.remove('text-gray-600');
+      this.classList.add('active', 'text-primary', 'dark:text-white');
+      this.classList.remove('text-gray-600', 'dark:text-gray-400');
+      
+      // Update contents with smooth animation
       aboutContents.forEach(content => {
-        content.classList.add('hidden');
+        content.classList.remove('translate-y-0', 'opacity-100', 'z-10');
+        content.classList.add('translate-y-8', 'opacity-0', 'pointer-events-none', 'z-0');
       });
+      
       const targetEl = document.getElementById(target);
-      if (targetEl) targetEl.classList.remove('hidden');
-      if (target === 'overview') {
-        startTypingEffect();
+      if (targetEl) {
+        // small delay for smooth transition
+        setTimeout(() => {
+          targetEl.classList.remove('translate-y-8', 'opacity-0', 'pointer-events-none', 'z-0');
+          targetEl.classList.add('translate-y-0', 'opacity-100', 'z-10');
+        }, 50);
       }
     });
   });
