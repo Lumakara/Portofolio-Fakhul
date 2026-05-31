@@ -8,6 +8,8 @@
 :root {
   --color-primary: #3b82f6;
   --color-secondary: #8b5cf6;
+  --color-primary-rgb: 59, 130, 246;
+  --color-secondary-rgb: 139, 92, 246;
 }
 
 body {
@@ -219,4 +221,46 @@ body {
 :root {
   --mp-primary: #3b82f6;
   --mp-accent: #ec4899;
+}
+
+/* Float particles animation */
+@keyframes particleFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+    opacity: 0.9;
+  }
+}
+
+/* Premium Button Glow Effect */
+.glow-button {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1), 0 0 20px rgba(var(--color-primary-rgb), 0.2);
+}
+
+.glow-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.glow-button:hover {
+  transform: translateY(-3px) scale(1.03) !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -4px rgba(0, 0, 0, 0.15), 0 0 30px rgba(var(--color-primary-rgb), 0.45);
+}
+
+.glow-button:hover::before {
+  opacity: 1;
+}
+
+.glow-button:active {
+  transform: translateY(-1px) scale(0.98) !important;
 }

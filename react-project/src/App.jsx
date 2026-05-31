@@ -10,6 +10,7 @@ import PageTransition from './components/PageTransition';
 import SettingsPanel from './components/SettingsPanel';
 import MusicPlayer, { playlist } from './components/MusicPlayer';
 import AdminDashboard from './components/AdminDashboard';
+import ParticlesBg from './components/ParticlesBg';
 
 // EN/ID Dictionary for Dynamic Translations
 const dict = {
@@ -131,6 +132,7 @@ function AppContent() {
   return (
     <>
       <MeshGradient />
+      <ParticlesBg />
       <ClickRipple />
       
       <PageTransition
@@ -582,3 +584,16 @@ export default function App() {
     </ThemeProvider>
   );
 }
+
+/* TAILWIND CLASS SAFELIST COMMENT (for dynamic rendering compilation)
+bg-blue-500/10 bg-purple-500/10 bg-green-500/10 bg-indigo-500/10 bg-orange-500/10 bg-emerald-500/10
+bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400
+bg-green-100 dark:bg-green-900/40 text-green-600 dark:text-green-400
+bg-purple-100 dark:bg-purple-900/40 text-purple-600 dark:text-purple-400
+bg-blue-100 dark:bg-blue-900/30 rounded-xl text-3xl text-blue-600 dark:text-blue-400 text-sm font-bold text-blue-500 group-hover:text-blue-500
+bg-purple-100 dark:bg-purple-900/30 rounded-xl text-3xl text-purple-600 dark:text-purple-400 text-sm font-bold text-purple-500 group-hover:text-purple-500
+bg-green-100 dark:bg-green-900/30 rounded-xl text-3xl text-green-600 dark:text-green-400 text-sm font-bold text-green-500 group-hover:text-green-500
+bg-gradient-to-br from-indigo-50 to-indigo-100/50 dark:from-gray-800 dark:to-indigo-950/20 border-indigo-100 bg-indigo-500 text-indigo-500 dark:text-indigo-400
+bg-gradient-to-br from-orange-50 to-orange-100/50 dark:from-gray-800 dark:to-orange-950/20 border-orange-100 bg-orange-500 text-orange-500 dark:text-orange-400
+bg-gradient-to-br from-emerald-50 to-emerald-100/50 dark:from-gray-800 dark:to-emerald-950/20 border-emerald-100 bg-emerald-500 text-emerald-500 dark:text-emerald-400
+*/
