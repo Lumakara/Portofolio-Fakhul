@@ -1741,3 +1741,252 @@ body.perf-low .particle {
 .animate-fadeIn {
   animation: fadeIn 0.6s var(--ease-out-expo) forwards;
 }
+
+/* ============================================================
+   GLASSMORPHISM 2.0 & PREMIUM UI EFFECTS
+   ============================================================ */
+
+/* Animated Mesh Gradient / Aurora Background */
+.mesh-gradient-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -20;
+  overflow: hidden;
+  background: #f8fafc; /* Light Mode base */
+  transition: background 0.5s ease;
+}
+
+.dark .mesh-gradient-bg {
+  background: #0f172a; /* Dark Mode base */
+}
+
+.mesh-gradient-bg .blob {
+  position: absolute;
+  width: min(80vw, 700px);
+  height: min(80vw, 700px);
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.35;
+  mix-blend-mode: multiply;
+  animation: blob-move 35s infinite alternate ease-in-out;
+  transition: opacity 0.5s ease, filter 0.5s ease;
+}
+
+.dark .mesh-gradient-bg .blob {
+  mix-blend-mode: screen;
+  opacity: 0.25;
+  filter: blur(140px);
+}
+
+.mesh-gradient-bg .blob-1 {
+  background: radial-gradient(circle, #3b82f6 0%, rgba(59, 130, 246, 0) 70%);
+  top: -15%;
+  left: -10%;
+  animation-duration: 25s;
+}
+
+.mesh-gradient-bg .blob-2 {
+  background: radial-gradient(circle, #ec4899 0%, rgba(236, 72, 153, 0) 70%);
+  bottom: -15%;
+  right: -10%;
+  animation-duration: 30s;
+  animation-delay: -7s;
+}
+
+.mesh-gradient-bg .blob-3 {
+  background: radial-gradient(circle, #8b5cf6 0%, rgba(139, 92, 246, 0) 70%);
+  top: 35%;
+  left: 25%;
+  animation-duration: 38s;
+  animation-delay: -14s;
+}
+
+.mesh-gradient-bg .blob-4 {
+  background: radial-gradient(circle, #10b981 0%, rgba(16, 185, 129, 0) 70%);
+  bottom: 15%;
+  left: 5%;
+  animation-duration: 28s;
+  animation-delay: -21s;
+}
+
+@keyframes blob-move {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(120px, -90px) scale(1.25);
+  }
+  66% {
+    transform: translate(-80px, 140px) scale(0.85);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+/* Glassmorphism 2.0 Cards (Exp & Org) */
+.exp-card, .org-card {
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  background: rgba(255, 255, 255, 0.45) !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05) !important;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.dark .exp-card, .dark .org-card {
+  background: rgba(15, 23, 42, 0.45) !important;
+  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3) !important;
+}
+
+.exp-card:hover, .org-card:hover {
+  background: rgba(255, 255, 255, 0.6) !important;
+  border-color: rgba(59, 130, 246, 0.5) !important;
+  box-shadow: 0 20px 40px 0 rgba(31, 38, 135, 0.12) !important;
+}
+
+.dark .exp-card:hover, .dark .org-card:hover {
+  background: rgba(15, 23, 42, 0.65) !important;
+  border-color: rgba(99, 102, 241, 0.4) !important;
+  box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Tilt pop-out effect for text/icons inside cards */
+.exp-card > *, .org-card > * {
+  transform: translateZ(30px);
+  transition: transform 0.3s ease;
+}
+
+/* 3D Skills Orbit Sphere */
+.skills-sphere-wrapper {
+  perspective: 1200px;
+}
+
+.skill-tag-3d {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+  transition: transform 0.1s ease, opacity 0.3s ease;
+  z-index: 1;
+}
+
+.skill-tag-inner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1e293b;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.06);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.dark .skill-tag-inner {
+  color: #f1f5f9;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+}
+
+.skill-tag-inner:hover {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6) !important;
+  color: white !important;
+  border-color: transparent !important;
+  transform: scale(1.15) translateZ(40px);
+  box-shadow: 0 12px 28px rgba(59, 130, 246, 0.4);
+  cursor: pointer;
+}
+
+.skill-tag-inner i {
+  font-size: 1.25rem;
+  transition: transform 0.3s ease;
+}
+
+.skill-tag-inner:hover i {
+  transform: rotate(15deg) scale(1.1);
+}
+
+/* Click Ripples */
+.click-ripple {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, rgba(59,130,246,0.5) 0%, rgba(139,92,246,0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 100000;
+  transform: translate(-50%, -50%) scale(1);
+  animation: clickRippleAnim 0.7s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+@keyframes clickRippleAnim {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(7);
+    opacity: 0;
+  }
+}
+
+/* Seamless Page Transition Overlay */
+.page-transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #3b82f6, #ec4899);
+  z-index: 100000;
+  pointer-events: none;
+  transform: scaleY(0);
+  transform-origin: bottom center;
+  transition: transform 0.7s cubic-bezier(0.85, 0, 0.15, 1);
+}
+
+.page-transition-overlay.active {
+  transform: scaleY(1);
+  transform-origin: top center;
+}
+
+.page-transition-overlay.exit {
+  transform: scaleY(0);
+  transform-origin: bottom center;
+}
+
+/* Text Reveal Animation */
+.text-reveal-char {
+  display: inline-block;
+  transform: translateY(115%);
+  will-change: transform;
+}
+
+/* Make backgrounds of sections transparent to overlay on mesh-gradient */
+#welcome, #about, #contact {
+  background: transparent !important;
+}
+
+section {
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure canvas background for game does not break */
+#welcome canvas {
+  pointer-events: none;
+}

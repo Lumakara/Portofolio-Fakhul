@@ -1116,6 +1116,365 @@ document.addEventListener('DOMContentLoaded', function() {
     if (e.key === 'ArrowLeft' && hobbyModal && !hobbyModal.classList.contains('hidden') && prevHobbyBtn) prevHobbyBtn.click();
   });
 
+  // ============================================================
+  // PREMIUM UI/UX INTEGRATIONS
+  // ============================================================
+
+  // 1. VanillaTilt Card Initialization (Exp & Org)
+  if (typeof VanillaTilt !== 'undefined') {
+    VanillaTilt.init(document.querySelectorAll('.exp-card, .org-card'), {
+      max: 12,
+      speed: 600,
+      glare: true,
+      'max-glare': 0.3,
+      scale: 1.02,
+      perspective: 1000,
+      gyroscope: true
+    });
+  }
+
+  // 2. GSAP + ScrollTrigger Premium Text Reveal & Parallax
+  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Dynamic Text Reveal (char-by-char)
+    document.querySelectorAll('[data-gsap-reveal]').forEach(el => {
+      const text = el.innerText.trim();
+      el.innerHTML = '';
+      
+      text.split('').forEach(char => {
+        const span = document.createElement('span');
+        span.className = 'inline-block overflow-hidden';
+        const inner = document.createElement('span');
+        inner.className = 'text-reveal-char';
+        inner.innerText = char === ' ' ? '\u00A0' : char;
+        span.appendChild(inner);
+        el.appendChild(span);
+      });
+
+      gsap.fromTo(el.querySelectorAll('.text-reveal-char'), 
+        { y: '115%', opacity: 0 },
+        { 
+          y: '0%', 
+          opacity: 1,
+          duration: 1.1, 
+          ease: 'power4.out',
+          stagger: 0.02,
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 85%',
+            toggleActions: 'play none none none'
+          }
+        }
+      );
+    });
+
+    // Parallax Scrolling Decorators
+    const welcome = document.getElementById('welcome');
+    if (welcome) {
+      const shape1 = document.createElement('div');
+      shape1.className = 'absolute top-1/4 left-10 w-24 h-24 border border-blue-500/10 rounded-full pointer-events-none hidden md:block z-0';
+      shape1.setAttribute('data-speed', '0.12');
+      const shape2 = document.createElement('div');
+      shape2.className = 'absolute bottom-1/4 right-12 w-32 h-32 border border-purple-500/10 rounded-full pointer-events-none hidden md:block z-0';
+      shape2.setAttribute('data-speed', '-0.08');
+      welcome.appendChild(shape1);
+      welcome.appendChild(shape2);
+    }
+
+    const about = document.getElementById('about');
+    if (about) {
+      const shape = document.createElement('div');
+      shape.className = 'absolute top-10 right-20 w-44 h-44 border border-green-500/5 rounded-full pointer-events-none hidden md:block z-0';
+      shape.setAttribute('data-speed', '0.06');
+      about.appendChild(shape);
+    }
+
+    gsap.utils.toArray('[data-speed]').forEach(el => {
+      const speed = parseFloat(el.getAttribute('data-speed')) || 0.1;
+      gsap.to(el, {
+        yPercent: speed * 100,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true
+        }
+      });
+    });
+  }
+
+  // 3. 3D Skills Orbital Sphere (HTML elements version)
+  const skills = [
+    { name: 'Node.js', icon: 'ri-nodejs-line', color: '#339933' },
+    { name: 'HTML5', icon: 'ri-html5-fill', color: '#e34f26' },
+    { name: 'CSS3', icon: 'ri-css3-fill', color: '#1572b6' },
+    { name: 'JavaScript', icon: 'ri-javascript-fill', color: '#f7df1e' },
+    { name: 'React', icon: 'ri-reactjs-line', color: '#61dafb' },
+    { name: 'Tailwind', icon: 'ri-css3-line', color: '#38bdf8' },
+    { name: 'Git', icon: 'ri-git-branch-line', color: '#f05032' },
+    { name: 'Figma', icon: 'ri-pencil-ruler-2-line', color: '#f24e1e' },
+    { name: 'PHP', icon: 'ri-braces-line', color: '#777bb4' },
+    { name: 'Laravel', icon: 'ri-code-box-line', color: '#ff2d20' },
+    { name: 'MySQL', icon: 'ri-database-2-line', color: '#00758f' },
+    { name: 'Next.js', icon: 'ri-code-line', color: '#000000' }
+  ];
+
+  const sphereContainer = document.getElementById('skills-sphere');
+  if (sphereContainer) {
+    const tags = [];
+    const sphereRadius = window.innerWidth < 640 ? 110 : 150;
+    const totalSkills = skills.length;
+
+    skills.forEach((skill, i) => {
+      const phi = Math.acos(-1 + (2 * i) / totalSkills);
+      const theta = Math.sqrt(totalSkills * Math.PI) * phi;
+
+      const x = sphereRadius * Math.sin(phi) * Math.cos(theta);
+      const y = sphereRadius * Math.sin(phi) * Math.sin(theta);
+      const z = sphereRadius * Math.cos(phi);
+
+      const tagEl = document.createElement('div');
+      tagEl.className = 'skill-tag-3d';
+      tagEl.innerHTML = `
+        <div class="skill-tag-inner">
+          <i class="${skill.icon}" style="color: ${skill.color}"></i>
+          <span>${skill.name}</span>
+        </div>
+      `;
+      sphereContainer.appendChild(tagEl);
+
+      tags.push({ el: tagEl, x, y, z, phi, theta });
+    });
+
+    let rotX = 0.003;
+    let rotY = 0.003;
+
+    window.addEventListener('mousemove', (e) => {
+      const rect = sphereContainer.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      
+      const mx = (e.clientX - cx) / 200;
+      const my = (e.clientY - cy) / 200;
+      
+      rotY = mx * 0.015;
+      rotX = -my * 0.015;
+    });
+
+    function updateSphere() {
+      const cosX = Math.cos(rotX);
+      const sinX = Math.sin(rotX);
+      const cosY = Math.cos(rotY);
+      const sinY = Math.sin(rotY);
+
+      tags.forEach(tag => {
+        let y1 = tag.y * cosX - tag.z * sinX;
+        let z1 = tag.z * cosX + tag.y * sinX;
+
+        let x2 = tag.x * cosY - z1 * sinY;
+        let z2 = z1 * cosY + tag.x * sinY;
+
+        tag.x = x2;
+        tag.y = y1;
+        tag.z = z2;
+
+        const depth = 2 * sphereRadius;
+        const scale = depth / (depth - tag.z);
+        const opacity = (tag.z + sphereRadius) / (2 * sphereRadius) + 0.2;
+
+        tag.el.style.transform = `translate3d(calc(-50% + ${tag.x}px), calc(-50% + ${tag.y}px), ${tag.z}px) scale(${scale})`;
+        tag.el.style.opacity = opacity;
+        tag.el.style.zIndex = Math.round(scale * 100);
+      });
+
+      requestAnimationFrame(updateSphere);
+    }
+
+    updateSphere();
+  }
+
+  // 4. Web Audio API Sound Effects Synthesizer
+  class UI_SFX {
+    constructor() {
+      this.audioCtx = null;
+    }
+    init() {
+      if (!this.audioCtx) {
+        this.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (this.audioCtx.state === 'suspended') {
+        this.audioCtx.resume();
+      }
+    }
+    playHover() {
+      try {
+        this.init();
+        if (!this.audioCtx) return;
+        const osc = this.audioCtx.createOscillator();
+        const gain = this.audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(850, this.audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(1150, this.audioCtx.currentTime + 0.04);
+        
+        gain.gain.setValueAtTime(0.007, this.audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, this.audioCtx.currentTime + 0.04);
+        
+        osc.connect(gain);
+        gain.connect(this.audioCtx.destination);
+        osc.start();
+        osc.stop(this.audioCtx.currentTime + 0.04);
+      } catch (err) {}
+    }
+    playClick() {
+      try {
+        this.init();
+        if (!this.audioCtx) return;
+        const osc = this.audioCtx.createOscillator();
+        const gain = this.audioCtx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(450, this.audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(180, this.audioCtx.currentTime + 0.07);
+        
+        gain.gain.setValueAtTime(0.04, this.audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, this.audioCtx.currentTime + 0.07);
+        
+        osc.connect(gain);
+        gain.connect(this.audioCtx.destination);
+        osc.start();
+        osc.stop(this.audioCtx.currentTime + 0.07);
+      } catch (err) {}
+    }
+    playTab() {
+      try {
+        this.init();
+        if (!this.audioCtx) return;
+        const now = this.audioCtx.currentTime;
+        const playTone = (freq, delay, dur) => {
+          const osc = this.audioCtx.createOscillator();
+          const gain = this.audioCtx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, now + delay);
+          
+          gain.gain.setValueAtTime(0.02, now + delay);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + delay + dur);
+          
+          osc.connect(gain);
+          gain.connect(this.audioCtx.destination);
+          osc.start(now + delay);
+          osc.stop(now + delay + dur);
+        };
+        playTone(523.25, 0, 0.12); // C5
+        playTone(659.25, 0.04, 0.15); // E5
+      } catch (err) {}
+    }
+    playOpenModal() {
+      try {
+        this.init();
+        if (!this.audioCtx) return;
+        const now = this.audioCtx.currentTime;
+        const playTone = (freq, delay, dur) => {
+          const osc = this.audioCtx.createOscillator();
+          const gain = this.audioCtx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, now + delay);
+          osc.frequency.exponentialRampToValueAtTime(freq * 1.35, now + delay + dur);
+          
+          gain.gain.setValueAtTime(0.022, now + delay);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + delay + dur);
+          
+          osc.connect(gain);
+          gain.connect(this.audioCtx.destination);
+          osc.start(now + delay);
+          osc.stop(now + delay + dur);
+        };
+        playTone(392.00, 0, 0.22); // G4 -> D5
+      } catch (err) {}
+    }
+  }
+  const sfx = new UI_SFX();
+
+  // 5. Global Click Ripple and UI sounds
+  window.addEventListener('click', (e) => {
+    // Generate Ripple
+    const ripple = document.createElement('div');
+    ripple.className = 'click-ripple';
+    ripple.style.left = `${e.clientX}px`;
+    ripple.style.top = `${e.clientY}px`;
+    document.body.appendChild(ripple);
+    
+    // Play synthesizer pop audio
+    sfx.playClick();
+    
+    setTimeout(() => ripple.remove(), 700);
+  });
+
+  // Sound Bindings
+  document.querySelectorAll('.about-filter').forEach(tab => {
+    tab.addEventListener('click', () => sfx.playTab());
+  });
+
+  document.querySelectorAll('.glow-button, .about-filter, .nav-item, .exp-card, .org-card, .drawer-link, .lang-btn, .theme-btn').forEach(btn => {
+    btn.addEventListener('mouseenter', () => sfx.playHover());
+  });
+
+  document.querySelectorAll('[data-modal]').forEach(item => {
+    item.addEventListener('click', () => sfx.playOpenModal());
+  });
+
+  // 6. Lottie Icon Binding for Paperplane
+  const lottieContainer = document.getElementById('lottie-paperplane');
+  if (lottieContainer && typeof lottie !== 'undefined') {
+    const lottieAnim = lottie.loadAnimation({
+      container: lottieContainer,
+      renderer: 'svg',
+      loop: false,
+      autoplay: false,
+      path: 'https://assets5.lottiefiles.com/packages/lf20_myejio2g.json'
+    });
+    
+    const submitBtn = lottieContainer.closest('button');
+    if (submitBtn) {
+      submitBtn.addEventListener('mouseenter', () => {
+        lottieAnim.setDirection(1);
+        lottieAnim.play();
+      });
+      submitBtn.addEventListener('mouseleave', () => {
+        lottieAnim.stop();
+      });
+    }
+  }
+
+  // 7. Seamless Page Transitions Sweep
+  const pageTransition = document.createElement('div');
+  pageTransition.className = 'page-transition-overlay';
+  document.body.appendChild(pageTransition);
+
+  // Exit transition on load
+  window.addEventListener('load', () => {
+    pageTransition.classList.add('exit');
+    setTimeout(() => {
+      pageTransition.classList.remove('exit');
+    }, 750);
+  });
+
+  // Transition on html links
+  document.querySelectorAll('a').forEach(anchor => {
+    const href = anchor.getAttribute('href');
+    if (href && href.endsWith('.html') && !href.startsWith('#')) {
+      anchor.addEventListener('click', (e) => {
+        e.preventDefault();
+        pageTransition.classList.remove('exit');
+        pageTransition.classList.add('active');
+        sfx.playOpenModal(); // springy sweep chime
+        setTimeout(() => {
+          window.location.href = href;
+        }, 750);
+      });
+    }
+  });
+
 }); // end DOMContentLoaded
 
 

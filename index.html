@@ -20,6 +20,13 @@
 <script src="mp-player.js" defer></script>
 </head>
 <body class="bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white transition-colors duration-300">
+<!-- === ANIMATED MESH GRADIENT BG === -->
+<div class="mesh-gradient-bg">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="blob blob-4"></div>
+</div>
 <a href="#welcome" class="skip-link">Skip to content</a>
   <div id="progressBar"></div>
 <div class="particle-bg" id="particleContainer" aria-hidden="true"></div>
@@ -32,8 +39,6 @@
 <nav class="hidden md:flex items-center space-x-8">
 <a href="#welcome" data-i18n="nav_home" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Home</a>
 <a href="#about" data-i18n="nav_about" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">About</a>
-<a href="#journey" data-i18n="nav_journey" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Journey</a>
-<a href="#gallery" data-i18n="nav_gallery" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Gallery</a>
 <a href="#contact" data-i18n="nav_contact" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">Contact</a>
 </nav>
 <div class="flex items-center space-x-2">
@@ -90,25 +95,17 @@
 <i class="ri-code-s-slash-line text-4xl text-primary"></i>
 </div>
 </div>
-<h1 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent" data-i18n="welcome_title">
+<h1 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent" data-i18n="welcome_title" data-gsap-reveal="char">
 Welcome To My Portfolio
 </h1>
 <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto" data-i18n="welcome_desc">
 Tanpa batas untuk berkarya, tanpa henti untuk terus berkembang
 </p>
-<div class="flex flex-wrap justify-center gap-4 mb-12">
-<div class="skill-icon w-16 h-16 bg-white dark:bg-gray-900 rounded-xl shadow-lg flex items-center justify-center cursor-pointer">
-<i class="ri-nodejs-line text-2xl text-green-500"></i>
-</div>
-<div class="skill-icon w-16 h-16 bg-white dark:bg-gray-900 rounded-xl shadow-lg flex items-center justify-center cursor-pointer">
-<i class="ri-html5-line text-2xl text-orange-500"></i>
-</div>
-<div class="skill-icon w-16 h-16 bg-white dark:bg-gray-900 rounded-xl shadow-lg flex items-center justify-center cursor-pointer">
-<i class="ri-css3-line text-2xl text-blue-600"></i>
-</div>
-<div class="skill-icon w-16 h-16 bg-white dark:bg-gray-900 rounded-xl shadow-lg flex items-center justify-center cursor-pointer">
-<i class="ri-javascript-line text-2xl text-yellow-500"></i>
-</div>
+<!-- 3D Skill Orbital Sphere -->
+<div class="skills-sphere-wrapper py-6 flex justify-center items-center w-full relative z-10" data-aos="zoom-in">
+  <div id="skills-sphere" class="relative w-[320px] h-[320px] sm:w-[360px] sm:h-[360px] md:w-[400px] md:h-[400px] flex items-center justify-center">
+    <!-- Populated dynamically via JS -->
+  </div>
 </div>
 <div class="flex flex-wrap justify-center gap-4">
 <button id="downloadCvBtn" class="glow-button bg-primary text-white px-8 py-4 !rounded-button font-semibold flex items-center space-x-2 whitespace-nowrap">
@@ -139,7 +136,7 @@ Tanpa batas untuk berkarya, tanpa henti untuk terus berkembang
 <div class="w-32 h-32 mx-auto mb-8 rounded-full overflow-hidden cursor-pointer card-hover" id="profilePhoto">
 <img src="assets/profile/p.webp" alt="Profile" class="w-full h-full object-cover object-top">
 </div>
-<h2 class="text-4xl font-bold mb-4 text-gray-900 dark:text-white" data-i18n="about_title">About Me</h2>
+<h2 class="text-4xl font-bold mb-4 text-gray-900 dark:text-white" data-i18n="about_title" data-gsap-reveal="char">About Me</h2>
 <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
 Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang besar, saya terbuka pada hal-hal baru serta tantangan yang mendukung pengembangan diri.
 </p>
@@ -323,155 +320,7 @@ Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang bes
 </div>
 </div>
 </section>
-<section id="journey" class="relative">
-<svg viewBox="0 0 1440 180" preserveAspectRatio="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-  <g transform="scale(1,-1) translate(0,-180)">
-    <path fill="#E8F8FF" d="M0,60 Q180,20 360,70 T720,60 T1080,100 T1440,60 L1440,180 L0,180 Z"/>
-    <path fill="#FFF5FF" d="M0,110 Q240,70 480,120 T960,100 T1440,130 L1440,180 L0,180 Z"/>
-    <path fill="#FFFFFF" d="M0,150 Q300,120 600,160 T1200,140 T1440,170 L1440,180 L0,180 Z"/>
-  </g>
-</svg>
-  <div class="max-w-6xl mx-auto px-6">
-    <h2 class="text-5xl font-bold text-center mb-16 text-gray-900 dark:text-white" data-i18n="journey_title">My Journey</h2>
 
-    <!-- Filter -->
-    <div class="flex justify-center mb-12">
-      <div class="bg-white dark:bg-gray-900 p-2 rounded-xl flex space-x-2 shadow-lg">
-        <button class="journey-filter px-6 py-3 !rounded-button font-medium transition-all active bg-primary text-white" data-filter="education">Education</button>
-        <button class="journey-filter px-6 py-3 !rounded-button font-medium transition-all text-gray-600 dark:text-gray-300 hover:text-primary" data-filter="experience">Experience</button>
-        <button class="journey-filter px-6 py-3 !rounded-button font-medium transition-all text-gray-600 dark:text-gray-300 hover:text-primary" data-filter="hobbies">Hobbies</button>
-      </div>
-    </div>
-
-    <div id="journeyContent">
-
-<!-- === EDUCATION TIMELINE === -->
-<div id="education" class="journey-content">
-  <div class="max-w-3xl mx-auto relative">
-    <div class="progress-bar absolute left-1/2 transform -translate-x-1/2 top-0 w-1 bg-gray-200 dark:bg-gray-700 h-full">
-      <div id="progressFill" class="bg-primary w-1 rounded-full transition-all duration-300" style="height:0"></div>
-    </div>
-    <div class="space-y-12 relative z-10">
-      
-      <!-- Item kiri -->
-      <div class="timeline-item-left" data-modal="edu1">
-        <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl cursor-pointer">
-          <span class="text-primary font-semibold">2013 - 2019</span>
-          <h3 class="text-xl font-bold">MI HAYATUL ISLAMIYAH</h3>
-          <p class="text-gray-600 dark:text-gray-300">Madrasah Ibtidaiyah <b>(MI)</b></p>
-        </div>
-      </div>
-
-      <!-- Item kanan -->
-      <div class="timeline-item-right" data-modal="edu2">
-        <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl cursor-pointer">
-          <span class="text-primary font-semibold">2019 - 2022</span>
-          <h3 class="text-xl font-bold">SMP ISLAM YAPKUM</h3>
-          <p class="text-gray-600 dark:text-gray-300">Sekolah Menengah Pertama <b>(SMP)</b></p>
-        </div>
-      </div>
-
-      <!-- Item kiri -->
-      <div class="timeline-item-left" data-modal="edu3">
-        <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg hover:shadow-xl cursor-pointer">
-          <span class="text-primary font-semibold">2022 - 2025</span>
-          <h3 class="text-xl font-bold">SMK AL-HIDAYAH</h3>
-          <p class="text-gray-600 dark:text-gray-300">Sekolah Menengah Kejuruan <b>(SMK) AKUNTANSI</b></p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- === EXPERIENCE === -->
-<div id="experience" class="journey-content hidden">
-  <div class="grid md:grid-cols-2 gap-6">
-
-    <div class="exp-item" data-modal="exp1">
-      <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg card-hover cursor-pointer">
-        <span class="text-primary font-semibold">2023 - 2025</span>
-        <h3 class="text-xl font-bold mb-3">Pramuka</h3>
-        <p class="text-gray-600 dark:text-gray-300">Sebagai Ketua Pramuka Selama 2 Periode</p>
-      </div>
-    </div>
-
-    <div class="exp-item" data-modal="exp2">
-      <div class="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg card-hover cursor-pointer">
-        <span class="text-primary font-semibold">2024 - 2025</span>
-        <h3 class="text-xl font-bold mb-3">OSIS</h3>
-        <p class="text-gray-600 dark:text-gray-300">Sebagai Bendahara Pria</p>
-      </div>
-    </div>
-
-  </div>
-</div>
-<!-- === HOBBIES === -->
-<div id="hobbies" class="journey-content hidden">
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-
-    <!-- Photography -->
-    <div class="text-center hobby-item cursor-pointer"
-         data-title="Photography"
-         data-desc='[
-           "Landscape & portrait photography",
-           "Editing with Lightroom & Photoshop",
-           "Experienced with DSLR & mirrorless cameras"
-         ]'>
-      <div class="hobby-icon w-20 h-20 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center">
-        <i class="ri-camera-line text-3xl text-blue-500"></i>
-      </div>
-      <p class="font-semibold">Photography</p>
-    </div>
-
-    <!-- Traveling -->
-    <div class="text-center hobby-item cursor-pointer"
-         data-title="Traveling"
-         data-desc='[
-           "Exploring mountains, beaches, and cultural destinations",
-           "Solo backpacking and group trips",
-           "Passionate about nature photography while traveling"
-         ]'>
-      <div class="hobby-icon w-20 h-20 mx-auto mb-4 bg-green-100 rounded-full flex items-center justify-center">
-        <i class="ri-map-line text-3xl text-green-500"></i>
-      </div>
-      <p class="font-semibold">Traveling</p>
-    </div>
-
-    <!-- Music -->
-    <div class="text-center hobby-item cursor-pointer"
-         data-title="Music"
-         data-desc='[
-           "Playing acoustic & electric guitar",
-           "Listening to indie and jazz music",
-           "Composing simple melodies and lyrics"
-         ]'>
-      <div class="hobby-icon w-20 h-20 mx-auto mb-4 bg-purple-100 rounded-full flex items-center justify-center">
-        <i class="ri-music-line text-3xl text-purple-500"></i>
-      </div>
-      <p class="font-semibold">Music</p>
-    </div>
-
-    <!-- Gaming -->
-    <div class="text-center hobby-item cursor-pointer"
-         data-title="Gaming"
-         data-desc='[
-           "Enjoying RPG, strategy, and FPS games",
-           "Playing online multiplayer with friends",
-           "Streaming gameplay casually on weekends"
-         ]'>
-      <div class="hobby-icon w-20 h-20 mx-auto mb-4 bg-red-100 rounded-full flex items-center justify-center">
-        <i class="ri-gamepad-line text-3xl text-red-500"></i>
-      </div>
-      <p class="font-semibold">Gaming</p>
-    </div>
-
-  </div>
-</div>
-    </div>
-  </div>
-  
-</section>
 <!-- === MODALS EXPERIENCE === -->
 <!-- === MODAL EXP 1 === -->
 <div id="exp1Modal" class="journey-modal hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
@@ -573,181 +422,14 @@ Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang bes
   <path fill="url(#grad-ripple)" filter="url(#glow-ripple)" d="M0,120 Q240,80 480,120 T960,120 T1440,100 L1440,200 L0,200 Z"/>
   <path fill="#FFFFFF" opacity="0.5" d="M0,160 Q300,140 600,160 T1200,160 T1440,150 L1440,200 L0,200 Z"/>
 </svg>
-<section id="gallery" class="bg-white dark:bg-gray-900">
-<svg viewBox="0 0 1440 200" preserveAspectRatio="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <filter id="glow-ripple-top" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="18" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-    <linearGradient id="grad-ripple-top" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#DFF6FF"/>
-      <stop offset="100%" stop-color="#FFF0FA"/>
-    </linearGradient>
-  </defs>
-  <path fill="url(#grad-ripple-top)" filter="url(#glow-ripple-top)" d="M0,80 Q240,120 480,80 T960,80 T1440,100 L1440,0 L0,0 Z"/>
-  <path fill="#FFFFFF" opacity="0.5" d="M0,40 Q300,60 600,40 T1200,40 T1440,50 L1440,0 L0,0 Z"/>
-</svg>
-  <div class="max-w-6xl mx-auto px-6">
-    <h2 class="text-4xl font-bold text-center mb-16 text-gray-900 dark:text-white" data-i18n="gallery_title">Gallery & Projects</h2>
 
-    <!-- FILTER BUTTONS -->
-    <div class="flex justify-center mb-12">
-      <div class="bg-gray-100 dark:bg-gray-800 p-2 rounded-xl flex space-x-2">
-        <button class="gallery-filter px-6 py-3 !rounded-button font-medium transition-all active bg-primary text-white"
-          data-filter="projects" aria-pressed="true">Projects</button>
-        <button class="gallery-filter px-6 py-3 !rounded-button font-medium transition-all text-gray-600 dark:text-gray-300 hover:text-primary"
-          data-filter="certificates" aria-pressed="false">Certificates</button>
-        <button class="gallery-filter px-6 py-3 !rounded-button font-medium transition-all text-gray-600 dark:text-gray-300 hover:text-primary"
-          data-filter="designs" aria-pressed="false">Designs</button>
-      </div>
-    </div>
-
-    <div id="galleryContent">
-      <!-- PROJECTS -->
-      <div id="projects" class="gallery-content">
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-          <article class="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden card-hover">
-            <img src="assets/p1/p1.jpg"
-              alt="Screenshot of modern E-commerce Platform" class="w-full h-48 object-cover object-top" loading="lazy">
-            <div class="p-6">
-              <h3 class="text-xl font-bold mb-2">Whatsapp Bot</h3>
-              <p class="text-gray-600 dark:text-gray-300 mb-4">Lumakara Bot – asisten WhatsApp serbaguna dengan AI, downloader, moderasi, game, dan fitur premium.</p>
-              <div class="flex space-x-3">
-                <a href="preview.html" class="bg-primary text-white px-4 py-2 !rounded-button text-sm whitespace-nowrap inline-block">Preview</a>
-                <a href="#" class="border border-primary text-primary px-4 py-2 !rounded-button text-sm whitespace-nowrap">Demo</a>
-              </div>
-            </div>
-          </article>
-
-        </div>
-      </div>
-
-<!-- CERTIFICATES -->
-<div id="certificates" class="gallery-content hidden">
-  <div id="certificatesGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-
-  <div class="mt-6 flex justify-center">
-    <button id="loadMoreCertificates"
-      class="px-4 py-2 rounded-lg bg-primary text-white hover:opacity-90 focus:outline-none focus:ring">
-      Load more
-    </button>
-  </div>
-</div>
-
-<!-- MODAL (shared for all certificates) -->
-<div id="certificateModal"
-  class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden"
-  role="dialog" aria-modal="true" aria-labelledby="certificateTitle">
-
-  <div id="certificateContent"
-    class="bg-white dark:bg-gray-900 rounded-xl p-8 max-w-4xl mx-4 relative transform scale-95 opacity-0 transition-all duration-300 ease-out">
-
-    <!-- Close Button -->
-    <button id="closeCertificateModal"
-      class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 dark:bg-gray-800" aria-label="Close">
-      <i class="ri-close-line text-xl"></i>
-    </button>
-
-    <!-- Navigation -->
-    <div class="absolute inset-y-0 left-0 flex items-center">
-      <button id="prevCertificate" class="p-2 bg-white dark:bg-gray-900/70 rounded-full shadow hover:bg-white dark:bg-gray-900" aria-label="Previous">
-        <i class="ri-arrow-left-s-line text-2xl"></i>
-      </button>
-    </div>
-    <div class="absolute inset-y-0 right-0 flex items-center">
-      <button id="nextCertificate" class="p-2 bg-white dark:bg-gray-900/70 rounded-full shadow hover:bg-white dark:bg-gray-900" aria-label="Next">
-        <i class="ri-arrow-right-s-line text-2xl"></i>
-      </button>
-    </div>
-
-    <!-- Modal Body -->
-    <div class="grid md:grid-cols-2 gap-8">
-      <div class="flex items-center">
-        <img id="certificateImage" src="assets/project/p1.webp" alt="Certificate Image"
-          class="w-full rounded-lg shadow-lg cursor-zoom-in transition duration-300 ease-in-out" loading="lazy">
-      </div>
-      <div>
-        <h2 id="certificateTitle" class="text-2xl font-bold mb-4"></h2>
-        <div class="space-y-4">
-          <div>
-            <h4 class="font-semibold text-gray-700 dark:text-gray-300">Issuing Organization</h4>
-            <p id="certificateOrg" class="text-gray-600 dark:text-gray-300"></p>
-          </div>
-          <div>
-            <h4 class="font-semibold text-gray-700 dark:text-gray-300">Completion Date</h4>
-            <p id="certificateDate" class="text-gray-600 dark:text-gray-300"></p>
-          </div>
-          <div>
-            <h4 class="font-semibold text-gray-700 dark:text-gray-300">Skills Covered</h4>
-            <div id="certificateSkills" class="flex flex-wrap gap-2 mt-1"></div>
-          </div>
-          <div>
-            <h4 class="font-semibold text-gray-700 dark:text-gray-300">Certificate ID</h4>
-            <p id="certificateID" class="text-gray-600 dark:text-gray-300"></p>
-          </div>
-          <div>
-            <h4 class="font-semibold text-gray-700 dark:text-gray-300">Verification</h4>
-            <p id="certificateVerification" class="text-gray-600 dark:text-gray-300"></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Lightbox Zoom -->
-<div id="lightboxZoom" 
-     class="fixed inset-0 bg-black/90 flex items-center justify-center z-50 hidden cursor-zoom-out">
-  <img id="lightboxImage" src="assets/project/p1.webp" alt="Zoomed Certificate" class="max-h-[90vh] max-w-[90vw] rounded-lg shadow-xl">
-</div>
-
-      <!-- DESIGNS -->
-      <div id="designs" class="gallery-content hidden">
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-          <article class="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden gallery-item card-hover">
-            <img src="https://readdy.ai/api/search-image?query=modern%20logo%20design%20showcase%2C%20creative%20branding%2C%20minimalist%20logo%20collection%2C%20professional%20graphic%20design%2C%20clean%20presentation%2C%20design%20portfolio%20piece&width=400&height=300&seq=design001&orientation=landscape"
-              alt="Logo Design showcase" class="w-full h-48 object-cover object-top" loading="lazy">
-            <div class="p-6">
-              <h3 class="text-lg font-bold">Brand Identity Design</h3>
-              <p class="text-gray-600 dark:text-gray-300">Logo and branding package</p>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </div>
-  </div>
-  <svg viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <filter id="glow-soft1" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="20" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-    <linearGradient id="grad-soft1" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#FFDEE9"/>
-      <stop offset="100%" stop-color="#B5FFFC"/>
-    </linearGradient>
-  </defs>
-  <path fill="url(#grad-soft1)" filter="url(#glow-soft1)" d="M0,120 C300,80 500,150 800,120 C1100,90 1300,140 1440,100 L1440,220 L0,220 Z"/>
-  <path fill="#FFFFFF" opacity="0.6" d="M0,180 C400,140 900,200 1440,150 L1440,220 L0,220 Z"/>
-</svg>
-</section>
 <section id="contact" class="relative bg-gradient-to-br from-blue-50 via-white to-indigo-50 overflow-hidden">
 
   <div class="relative max-w-6xl mx-auto px-6">
     <div class="grid lg:grid-cols-2 gap-12 items-center">
       <!-- TEXT -->
       <div data-aos="fade-right">
-        <h2 class="text-5xl font-extrabold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent" data-i18n="contact_title">
+        <h2 class="text-5xl font-extrabold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent" data-i18n="contact_title" data-gsap-reveal="char">
           Let’s Work Together
         </h2>
         <p class="text-lg text-gray-600 dark:text-gray-300 mb-8" data-i18n="contact_desc">
@@ -832,10 +514,13 @@ Perkenalkan, saya <b>Fakhul Rohman Nurokhim</b>. Dengan rasa ingin tahu yang bes
             </div>
             <div class="stagger">
               <button type="submit"
-                class="group relative w-full bg-primary text-white py-3 rounded-lg font-semibold overflow-hidden ripple">
+                class="group relative w-full bg-primary text-white py-3 rounded-lg font-semibold overflow-hidden ripple flex items-center justify-center gap-2">
                 <span
                   class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 transition-transform scale-x-0 group-hover:scale-x-100 origin-left"></span>
-                <span class="relative">Send Message</span>
+                <span class="relative flex items-center justify-center gap-2">
+                  Send Message
+                  <span id="lottie-paperplane" class="w-6 h-6 inline-block"></span>
+                </span>
               </button>
             </div>
           </form>
@@ -1132,6 +817,11 @@ Perkenalkan, saya Fakhul Rohman Nurokhim. Dengan rasa ingin tahu yang besar, say
 </div>
 <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<!-- Premium UI Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
 <script>
   (function(){
     emailjs.init("nsZxZ1AosHAB-Vyo-"); // ganti dengan Public Key kamu
